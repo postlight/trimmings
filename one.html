@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Page One</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>This is page one</h1>
+    <p>We should see the &lt;p&gt; from page 2 here:</p>
+    <div class="two-container">
+      <a data-redact-prefetch="p" href="/two.html">
+        Page two is this way haha
+      </a>
+    </div>
+    <p>
+      <a data-redact-inline="body, #inline-loading-lander" href="/two.html">
+        This link
+      </a>
+    should load page 2 here:
+    </p>
+    <div class="two-container" id="inline-loading-lander"></div>
+    <p>
+      This button will toggle the previous container's outline color:
+      <button data-redact-toggle="#inline-loading-lander, two-container--alternate">
+        Toggle please
+      </button>
+    </p>
+    <p>
+      <span class="red-mode">This text indicates the presence of Red Mode</span>
+      <input type="checkbox" id="red-mode-enabler" data-redact-toggle=".red-mode, red-mode--enabled">
+      <label for="red-mode-enabler">Toggle Red Mode</label>
+    </p>
+    <p>
+      <span class="alt-mode alt-mode--blue">This text indicates the presence of Alt Mode</span>
+      <input type="radio" name="alt-mode" id="alt-mode--blue" data-redact-toggle=".alt-mode, alt-mode--blue" checked>
+      <label for="alt-mode--blue">Alt Mode Blue</label>
+      <input type="radio" name="alt-mode" id="alt-mode--green" data-redact-toggle=".alt-mode, alt-mode--green">
+      <label for="alt-mode--green">Alt Mode Green</label>
+    </p>
+    <p>
+      <a id="regular-link" href="/two.html">This link</a>
+      does nothing special with Redact but you can add a hint to it later and
+      see if the MutationObserver picks it up.
+      <!--
+        document.querySelector('#regular-link').dataset.redactInline = 'body, body'
+      -->
+    </p>
+    <script src="/base.js"></script>
+  </body>
+</html>
