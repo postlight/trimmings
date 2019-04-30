@@ -1,4 +1,6 @@
 (() => {
+  const hotkeys = []
+
   const load = (url) => {
     return new Promise((resolve) => {
       const xhr = new XMLHttpRequest()
@@ -22,7 +24,9 @@
         const newNode = doc.querySelector(targetSelector)
         element.parentNode.replaceChild(newNode, element)
       })
-    } else if (match(element, 'A', 'redactInline')) {
+    }
+
+    if (match(element, 'A', 'redactInline')) {
       const [targetSelector, destinationSelector] = element.dataset.redactInline.split(', ')
       element.addEventListener('click', (e) => {
         e.preventDefault()
@@ -32,26 +36,60 @@
           destination.appendChild(doc.querySelector(targetSelector))
         })
       })
-    } else if (match(element, 'BUTTON', 'redactToggle')) {
+    }
+
+    if (match(element, 'BUTTON', 'redactToggle')) {
       const [targetSelector, className] = element.dataset.redactToggle.split(', ')
       element.addEventListener('click', () => {
         document.querySelector(targetSelector).classList.toggle(className)
       })
-    } else if (match(element, 'INPUT', 'redactToggle')) {
+    }
+
+    if (match(element, 'INPUT', 'redactToggle')) {
       const [targetSelector, className] = element.dataset.redactToggle.split(', ')
       element.addEventListener('change', () => {
         // TODO: this is not un-toggling for the previously-checked radio
         document.querySelector(targetSelector).classList.toggle(className, element.checked)
       })
     }
+
+    if (match(element, 'BUTTON', 'redactRemove')) {
+      const selector = element.dataset.redactRemove
+      element.addEventListener('click', () => {
+        const toRemove = document.querySelector(selector)
+        toRemove.parentNode.removeChild(toRemove)
+      })
+    }
+
+    if (typeof element.dataset.redactHotkey !== 'undefined') {
+      hotkeys.push([element, element.dataset.redactHotkey.toLowerCase().split(/,\s+/g).sort()])
+    }
   }
+
+  addEventListener('keydown', (e) => {
+    const { controlKey, shiftKey, altKey, metaKey, keyCode } = e
+
+    const input =
+      `${String.fromCharCode(keyCode)} ${controlKey ? 'ctrl' : ''} ${shiftKey ? 'shift' : ''} ${metaKey ? 'meta' : ''} ${altKey ? 'alt' : ''}`
+        .trim()
+        .toLowerCase()
+        .split(/\s+/g)
+        .sort()
+
+    const [element,] = hotkeys.find(hotkey => hotkey[1].join(',') === input.join(',')) || [null]
+
+    if (element) {
+      element.click()
+    }
+  })
 
   addEventListener('load', () => {
     const selectors = [
       'a[data-redact-prefetch]',
       'a[data-redact-inline]',
       'button[data-redact-toggle]',
-      'input[data-redact-toggle]'
+      'input[data-redact-toggle]',
+      'button[data-redact-remove]'
     ]
 
     Array.prototype.forEach.call(document.querySelectorAll(selectors.join(',')), (element) => {
