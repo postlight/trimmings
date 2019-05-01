@@ -1,0 +1,19 @@
+{
+  "name": "social-photos",
+  "version": "1.0.0",
+  "description": "A social photo sharing site, demo for Redact.js",
+  "main": "index.js",
+  "author": "John Holdun",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "handlebars": "^4.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
