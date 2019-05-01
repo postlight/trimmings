@@ -8,7 +8,7 @@
 - [ ] Support toggle for text inputs? (sync with :present?)
 - [x] Basic support for Autosubmit
 - [ ] Basic support for Current (auto feature)
-- [ ] Stop from binding more than once
+- [x] Stop from binding more than once
 - [ ] Support for recursive binding
 - [ ] Ensure interoperability with Turbolinks and Stimulus
 - [ ] Tests

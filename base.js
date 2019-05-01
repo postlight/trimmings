@@ -26,6 +26,7 @@
         const newNode = doc.querySelector(targetSelector)
         element.parentNode.replaceChild(newNode, element)
       })
+      element.removeAttribute('data-redact-prefetch')
     }
 
     if (match(element, 'A', 'redactInline')) {
@@ -38,6 +39,7 @@
           destination.appendChild(doc.querySelector(targetSelector))
         })
       })
+      element.removeAttribute('data-redact-inline')
     }
 
     if (match(element, 'BUTTON', 'redactToggle')) {
@@ -45,6 +47,7 @@
       element.addEventListener('click', () => {
         document.querySelector(targetSelector).classList.toggle(className)
       })
+      element.removeAttribute('data-redact-toggle')
     }
 
     if (match(element, 'INPUT', 'redactToggle')) {
@@ -53,6 +56,7 @@
         // TODO: this is not un-toggling for the previously-checked radio
         document.querySelector(targetSelector).classList.toggle(className, element.checked)
       })
+      element.removeAttribute('data-redact-toggle')
     }
 
     if (match(element, 'BUTTON', 'redactRemove')) {
@@ -61,6 +65,7 @@
         const toRemove = document.querySelector(selector)
         toRemove.parentNode.removeChild(toRemove)
       })
+      element.removeAttribute('data-redact-remove')
     }
 
     if (match(element, ['INPUT', 'BUTTON', 'FORM', 'SELECT', 'TEXTAREA'], 'redactAutosubmit')) {
@@ -69,6 +74,7 @@
         const form = (element.nodeName === 'FORM') ? element : element.closest('form')
         form.submit()
       })
+      element.removeAttribute('data-redact-autosubmit')
     }
 
     if (typeof element.dataset.redactHotkey !== 'undefined') {
