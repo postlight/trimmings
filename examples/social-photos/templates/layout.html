@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>{{title}} – Social Photos</title>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <h1>
@@ -10,6 +11,13 @@
         Social Photos
       </a>
     </h1>
+    <div class="flash-container">
+      {{#if flash}}
+        <div class="flash flash--{{flash.type}}">
+          {{{flash.message}}}
+        </div>
+      {{/if}}
+    </div>
     {{{content}}}
     <div class="modal-container">
     </div>

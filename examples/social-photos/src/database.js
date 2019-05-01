@@ -19,6 +19,7 @@ const DATA =
       rAcc[record.id] = Object.assign({ type }, record)
       return rAcc
     }, {})
+
     return acc
   }, {})
 
@@ -29,6 +30,10 @@ const database = {
 
   all: (type) => {
     return Object.values(DATA[type])
+  },
+
+  insert: (type, object) => {
+    DATA[type][object.id] = { ...object, type }
   }
 }
 

@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+.flash {
+  padding: 1rem;
+  background: #ccc;
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  animation: flash ease-out 6s 1 normal both;
+  width: 10rem;
+}
+
+.flash--success {
+  background: #bef2c2;
+}
+
+.flash--error {
+  background: #f2a09e;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+    right: 11rem;
+  }
+
+  10% {
+    opacity: 1;
+    right: 1rem;
+  }
+
+  83% {
+    opacity: 1;
+    right: 1rem;
+  }
+
+  100% {
+    opacity: 0;
+    right: -11rem;
+  }
+}

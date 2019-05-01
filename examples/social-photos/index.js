@@ -1,11 +1,32 @@
 const express = require('express')
+const session = require('express-session')
+const cookieParser = require('cookie-parser')
+const connectFlash = require('connect-flash')
+const bodyParser = require('body-parser')
 const render = require('./src/render')
 const database = require('./src/database')
+
+const getFlash = (req) => {
+  const errorFlash = req.flash('error')
+  const successFlash = req.flash('success')
+
+  if (errorFlash && errorFlash.length) {
+    return { type: 'error', message: errorFlash }
+  }
+
+  if (successFlash && successFlash.length) {
+    return { type: 'success', message: successFlash }
+  }
+}
 
 const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.static('public'))
+app.use(cookieParser('secret'))
+app.use(session({cookie: { maxAge: 60000 }}))
+app.use(connectFlash())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
   const photos = database.all('photos')
@@ -17,7 +38,14 @@ app.get('/photos/:id', (req, res) => {
   photo.comments =
     database.all('comments').filter(c => c.photoId === photo.id)
 
-  res.send(render('photo', { title: `@${photo.userId}: ${photo.caption}`, photo }))
+  res.send(render(
+    'photo',
+    {
+      title: `@${photo.userId}: ${photo.caption}`,
+      photo,
+      flash: getFlash(req)
+    }
+  ))
 })
 
 app.get('/:userId', (req, res) => {
@@ -25,6 +53,24 @@ app.get('/:userId', (req, res) => {
   user.photos = database.all('photos').filter(p => p.userId === user.id)
 
   res.send(render('user', { title: `${user.name} (@${user.id})`, user }))
+})
+
+app.post('/photos/:id/likes', (req, res) => {
+  const photo = database.get('photos', req.params.id)
+  photo.likes++
+  req.flash('success', 'Liked!')
+  res.redirect(`/photos/${photo.id}`)
+})
+
+app.post('/photos/:id/comments', (req, res) => {
+  // Hard-coded current user
+  const user = database.get('users', 'busy.rando')
+  const photo = database.get('photos', req.params.id)
+  photo.commentsCount++
+  const id = (new Date()).valueOf() + '.' + Math.random()
+  database.insert('comments', { id, photoId: photo.id, userId: user.id, text: req.body.text })
+  req.flash('success', 'Comment added!')
+  res.redirect(`/photos/${photo.id}`)
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
