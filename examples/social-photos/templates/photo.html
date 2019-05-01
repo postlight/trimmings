@@ -16,11 +16,11 @@
       {{/comments}}
     </div>
     <div class="full-photo__actions">
-      <div class="likes-count">{{likes}} likes</div>
-      <form data-redact-inline=".flash-container, .flash-container" method="post" action="/photos/{{id}}/likes">
+      <div class="full-photo__likes-count">{{likes}} likes</div>
+      <form data-redact-replace=".flash-container, .full-photo__likes-count" method="post" action="/photos/{{id}}/likes">
         <button>Like</button>
       </form>
-      <form data-redact-inline=".flash-container, .flash-container" method="post" action="/photos/{{id}}/comments">
+      <form class="comment-form" data-redact-replace=".flash-container, .comments, .comment-form" method="post" action="/photos/{{id}}/comments">
         <input type="text" name="text" placeholder="Add a comment…" />
         <button>Post</button>
       </form>

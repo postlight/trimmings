@@ -28,9 +28,23 @@ Replaces an `<a>` tag with the contents of the link it points to. Must be the sa
 
 ## Inline loading
 
-When the link is followed, loads the document it links to in a specified selector on the current page. Used for modals, partial page changes, preserving state in i.e. sidebar, etc.
+When the link is followed or form is submitted, load the target document into a specified selector on the current page. Used for modals, partial page changes, preserving state in i.e. sidebar, etc.
 
     <a data-redact-inline=".sidebar, main">Menu</a>
+
+### Arguments
+
+- selector for target in current document to replace (optional, defaults to `body`)
+- selector in target document to use (optional, defaults to `body`)
+- selector for a template that will wrap your loaded content. If this argument is present, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-react-inline-target` property will be _replaced_ with the loaded content, and all of this will replace the target specified in the first argument. (optional)
+
+## Replacement
+
+When the link is followed or form is submitted, replace all of the selected elements in the current document with their respective elements in the target document. Useful when the user takes an action that updates some data, like a shopping cart count, but shouldn’t replace the entire page.
+
+    <form data-redact-replace=".like-count, .flash-message">
+      <button>Like</button>
+    </form>
 
 ### Arguments
 
