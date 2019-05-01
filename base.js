@@ -95,31 +95,37 @@
     }
   })
 
-  addEventListener('load', () => {
-    const selectors = [
-      'a[data-redact-prefetch]',
-      'a[data-redact-inline]',
-      'button[data-redact-toggle]',
-      'input[data-redact-toggle]',
-      'button[data-redact-remove]',
-      'form[data-redact-autosubmit]',
-      'button[data-redact-autosubmit]',
-      'input[data-redact-autosubmit]',
-      'select[data-redact-autosubmit]',
-      'textarea[data-redact-autosubmit]'
-    ]
+  const bindingSelectors = [
+    'a[data-redact-prefetch]',
+    'a[data-redact-inline]',
+    'button[data-redact-toggle]',
+    'input[data-redact-toggle]',
+    'button[data-redact-remove]',
+    'form[data-redact-autosubmit]',
+    'button[data-redact-autosubmit]',
+    'input[data-redact-autosubmit]',
+    'select[data-redact-autosubmit]',
+    'textarea[data-redact-autosubmit]'
+  ]
 
-    Array.prototype.forEach.call(document.querySelectorAll(selectors.join(',')), (element) => {
+  const BINDING_SELECTORS = bindingSelectors.join(',')
+
+  const bindChildren = (container) => {
+    Array.prototype.forEach.call(container.querySelectorAll(BINDING_SELECTORS), (element) => {
       bind(element)
     })
+  }
 
+  addEventListener('load', () => {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'attributes' && mutation.attributeName.indexOf('data-redact') === 0) {
-          console.log('oh uh oh we have a new one here')
           bind(mutation.target)
         }
-        console.log(mutation)
+
+        if (mutation.type === 'childList') {
+          bindChildren(mutation.target)
+        }
       })
     })
 
@@ -127,5 +133,7 @@
       document.querySelector('body'),
       { attributes: true, childList: true, subtree: true }
     )
+
+    bindChildren(document)
   })
 })()

@@ -9,7 +9,7 @@
 - [x] Basic support for Autosubmit
 - [ ] Basic support for Current (auto feature)
 - [x] Stop from binding more than once
-- [ ] Support for recursive binding
+- [x] Support for recursive binding
 - [ ] Ensure interoperability with Turbolinks and Stimulus
 - [ ] Tests
 - [ ] Inline: specify template for modal?

@@ -28,3 +28,8 @@
 .alt-mode--gren {
   background: forestgreen;
 }
+
+.page-three-on-page-two {
+  background: yellow;
+  padding: .5rem;
+}
