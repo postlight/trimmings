@@ -9,8 +9,6 @@
 - doc: Example - Blog/portfolio, including carousel, contact form, and "load more" button for infinite scroll
 - doc: Example - CMS
 - doc: Example - eCommerce
-- feat: Bindings for touch gestures/swiping
-- feat: Hotkey - "Hotkey" or "Hot key?"
 - feat: Hotkey - Handle metaKey and controlKey???
 - feat: Hotkey - Support synonyms (i.e. alt = opt)
 - feat: Inline - Multiple render targets for inline?
@@ -18,6 +16,7 @@
 - feat: Inline - Loading states
 - feat: Inline - Form submission should support multipart
 - feat: Inline - Optionally keep destination's previous contents (i.e. sliding/page turning effects)
-- feat: Prefect - Loading states
+- feat: Prefetch - Loading states
 - feat: Support for Current (auto feature)
 - feat: Toggle - Support text inputs
+- feat: Bindings for swiping? Swipe on hinted el = click on selected button?
