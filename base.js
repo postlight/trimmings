@@ -1,18 +1,14 @@
 (() => {
   const hotkeys = []
 
-  const load = (url) => {
-    return new Promise((resolve) => {
-      const xhr = new XMLHttpRequest()
-      xhr.onload = function () {
-        resolve(this.responseXML.documentElement)
-      }
-      // TODO: Ensure href is same hostname and different path
-      xhr.open('GET', url)
-      xhr.responseType = 'document'
-      xhr.send()
-    })
-  }
+  const load = (url) =>
+    fetch(url)
+      .then(response => response.text())
+      .then((text) => {
+        const html = document.createElement('html')
+        html.innerHTML = text
+        return html
+      })
 
   const match = (element, nodeNameArg, datasetKey) => {
     const nodeNames = (nodeNameArg instanceof String) ? [nodeNameArg] : nodeNameArg
