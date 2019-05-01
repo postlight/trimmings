@@ -1,43 +1,30 @@
 const express = require('express')
-const handlebars = require('handlebars')
-const fs = require('fs')
-
-const TEMPLATES_DIRECTORY = './templates'
-
-const templates = fs.readdirSync(TEMPLATES_DIRECTORY).reduce((acc, filename) => {
-  acc[filename.replace(/\.html$/, '')] =
-    handlebars.compile(
-      fs
-        .readFileSync(`${TEMPLATES_DIRECTORY}/${filename}`)
-        .toString()
-    )
-
-  return acc
-}, {})
-
-const render = (template, context, { layout = null } = {}) => {
-  const content = templates[template](context)
-
-  if (!layout) {
-    return content
-  }
-
-  return templates[layout]({ ...context, content })
-}
+const render = require('./src/render')
+const database = require('./src/database')
 
 const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.static('public'))
 
-app.get('/', (req, res) =>
-  res.send(
-    render(
-      'root',
-      { thing: 'fresh pizza pie', title: 'Welcome!' },
-      { layout: 'layout' }
-    )
-  )
-)
+app.get('/', (req, res) => {
+  const photos = database.all('photos')
+  res.send(render('root', { title: 'Welcome!', photos }))
+})
+
+app.get('/photos/:id', (req, res) => {
+  const photo = database.get('photos', req.params.id)
+  photo.comments =
+    database.all('comments').filter(c => c.photoId === photo.id)
+
+  res.send(render('photo', { title: `@${photo.userId}: ${photo.caption}`, photo }))
+})
+
+app.get('/:userId', (req, res) => {
+  const user = database.get('users', req.params.userId)
+  user.photos = database.all('photos').filter(p => p.userId === user.id)
+
+  res.send(render('user', { title: `${user.name} (@${user.id})`, user }))
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

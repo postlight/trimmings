@@ -1,0 +1,25 @@
+{{#photo}}
+  <div class="full-photo">
+    <img src="{{url}}" alt="{{caption}}" width="500" height="500" />
+    <div class="comments">
+      {{#if caption}}
+        <div class="comment">
+          <a href="/{{userId}}">@{{userId}}</a>
+          {{caption}}
+        </div>
+      {{/if}}
+      {{#comments}}
+        <div class="comment">
+          <a href="/{{userId}}">@{{userId}}</a>
+          {{text}}
+        </div>
+      {{/comments}}
+    </div>
+    <div class="full-photo__actions">
+      <div class="likes-count">{{likes}} likes</div>
+      <form>
+        <textarea placeholder="Add a comment…"></textarea>
+        <button>Post</button>
+      </form>
+  </div>
+{{/photo}}

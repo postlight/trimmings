@@ -1,7 +1,7 @@
-<h1>Everyone’s Photos</h1>
+<h1>{{user.name}} (@{{user.id}})</h1>
 
 <div class="photos">
-  {{#each photos}}
+  {{#each user.photos}}
     <a class="photo" href="/photos/{{id}}">
       <img src="{{url}}" alt="{{caption}}" width="200" height="200" />
       <span class="likes">❤️ {{likes}}</span>
