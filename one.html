@@ -48,6 +48,25 @@
     </p>
     <p id="goodbye">This is a superfluous paragraph.</p>
     <div><button data-redact-hotkey="alt, r" data-redact-remove="#goodbye">Reduce superfluosity (Opt-R)</button></div>
+    <form data-redact-autosubmit action="/two.html" method="get">
+      <select name="hey">
+        <option>Changing this value will redirect you to page two</option>
+        <option value="haha">Goodbye!</option>
+      </select>
+    </form>
+    <form action="/two.html" method="get">
+      <div>
+        <input type="checkbox" name="oh" value="wow" id="radio-oh">
+        <label for="radio-oh">This checkbox does nothing</label>
+      </div>
+      <div>
+        <input data-redact-autosubmit type="checkbox" name="good" value="bye" id="radio-good">
+        <label for="radio-good">This checkbox redirects :)</label>
+      </div>
+      <button>
+        You can also just submit the form like regular
+      </button>
+    </form>
     <script src="/base.js"></script>
   </body>
 </html>

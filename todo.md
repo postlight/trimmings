@@ -6,7 +6,7 @@
 - [x] Basic support for Hotkey
 - [ ] When should inline loading should update history?
 - [ ] Support toggle for text inputs? (sync with :present?)
-- [ ] Basic support for Autosubmit
+- [x] Basic support for Autosubmit
 - [ ] Basic support for Current (auto feature)
 - [ ] Stop from binding more than once
 - [ ] Support for recursive binding

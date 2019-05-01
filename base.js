@@ -14,8 +14,10 @@
     })
   }
 
-  const match = (element, nodeName, datasetKey) =>
-    (element.nodeName === nodeName && typeof element.dataset[datasetKey] !== 'undefined')
+  const match = (element, nodeNameArg, datasetKey) => {
+    const nodeNames = (nodeNameArg instanceof String) ? [nodeNameArg] : nodeNameArg
+    return nodeNames.includes(element.nodeName) && typeof element.dataset[datasetKey] !== 'undefined'
+  }
 
   const bind = (element) => {
     if (match(element, 'A', 'redactPrefetch')) {
@@ -61,6 +63,14 @@
       })
     }
 
+    if (match(element, ['INPUT', 'BUTTON', 'FORM', 'SELECT', 'TEXTAREA'], 'redactAutosubmit')) {
+      element.addEventListener('change', () => {
+        // TODO: IE does not support Element.closest()
+        const form = (element.nodeName === 'FORM') ? element : element.closest('form')
+        form.submit()
+      })
+    }
+
     if (typeof element.dataset.redactHotkey !== 'undefined') {
       hotkeys.push([element, element.dataset.redactHotkey.toLowerCase().split(/,\s+/g).sort()])
     }
@@ -89,7 +99,12 @@
       'a[data-redact-inline]',
       'button[data-redact-toggle]',
       'input[data-redact-toggle]',
-      'button[data-redact-remove]'
+      'button[data-redact-remove]',
+      'form[data-redact-autosubmit]',
+      'button[data-redact-autosubmit]',
+      'input[data-redact-autosubmit]',
+      'select[data-redact-autosubmit]',
+      'textarea[data-redact-autosubmit]'
     ]
 
     Array.prototype.forEach.call(document.querySelectorAll(selectors.join(',')), (element) => {
