@@ -4,7 +4,7 @@
 - [x] Basic support for Toggle (checkbox/radio)
 - [x] Basic support for Remove
 - [x] Basic support for Hotkey
-- [ ] When should inline loading should update history?
+- [ ] When should inline loading update history?
 - [ ] Support toggle for text inputs? (sync with :present?)
 - [x] Basic support for Autosubmit
 - [ ] Basic support for Current (auto feature)
@@ -12,7 +12,7 @@
 - [x] Support for recursive binding
 - [ ] Ensure interoperability with Turbolinks and Stimulus
 - [ ] Tests
-- [ ] Inline: specify template for modal?
+- [x] Inline: specify template for modal?
 - [ ] Inline: optionally keep destination's previous contents? (i.e. sliding/page turning effects)
 - [ ] Inline: allow on forms as well?
 - [ ] "Hotkey" or "Hot key?"
@@ -25,7 +25,7 @@
 - [ ] Example: art site/blog
 - [ ] Example: iOS Mail app
 - [ ] Example: eCommerce
-- [ ] Example: Blog/portfolio, including carousel and contact form
+- [ ] Example: Blog/portfolio, including carousel, contact form, and "load more" button for infinite scroll
 - [ ] Use Rollup
 - [ ] Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
 - [ ] Multiple render targets for inline?

@@ -11,10 +11,14 @@
       </a>
     </h1>
     {{{content}}}
-    <div class="modal">
-      <button data-redact-remove=".full-photo">Close</button>
-      <div class="modal__container"></div>
+    <div class="modal-container">
     </div>
+    <template id="modal-template">
+      <div class="modal">
+        <button data-redact-remove=".modal">Close</button>
+        <div data-redact-inline-target></div>
+      </div>
+    </template>
     <script src="/base.js"></script>
   </body>
 </html>

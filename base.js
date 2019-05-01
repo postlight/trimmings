@@ -26,13 +26,24 @@
     }
 
     if (match(element, 'A', 'redactInline')) {
-      const [targetSelector, destinationSelector] = element.dataset.redactInline.split(', ')
+      const [targetSelector, destinationSelector, templateSelector] = element.dataset.redactInline.split(', ')
       element.addEventListener('click', (e) => {
         e.preventDefault()
         load(element.getAttribute('href')).then((doc) => {
           const destination = document.querySelector(destinationSelector)
           destination.innerHTML = ''
-          destination.appendChild(doc.querySelector(targetSelector))
+          let content = doc.querySelector(targetSelector)
+          if (templateSelector) {
+            const template = document.querySelector(templateSelector)
+            const holder = document.createElement('div')
+            holder.innerHTML = template.innerHTML
+            const target = holder.querySelector('[data-redact-inline-target]')
+            target.parentNode.replaceChild(content, target)
+            const fragment = document.createDocumentFragment()
+            fragment.innerHTML = holder.innerHTML
+            content = fragment
+          }
+          destination.innerHTML = content.innerHTML
         })
       })
       element.removeAttribute('data-redact-inline')
