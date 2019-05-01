@@ -1,33 +1,22 @@
-- [x] Basic support for Prefetch
-- [x] Basic support for Inline loading
-- [x] Basic support for Toggle (button)
-- [x] Basic support for Toggle (checkbox/radio)
-- [x] Basic support for Remove
-- [x] Basic support for Hotkey
-- [ ] When should inline loading update history?
-- [ ] Support toggle for text inputs? (sync with :present?)
-- [x] Basic support for Autosubmit
-- [ ] Basic support for Current (auto feature)
-- [x] Stop from binding more than once
-- [x] Support for recursive binding
-- [ ] Ensure interoperability with Turbolinks and Stimulus
-- [ ] Tests
-- [x] Inline: specify template for modal?
-- [ ] Inline: optionally keep destination's previous contents? (i.e. sliding/page turning effects)
-- [ ] Inline: allow on forms as well?
-- [ ] "Hotkey" or "Hot key?"
-- [ ] More stable arg parsing, whitespace-insensitive
-- [ ] Handle metaKey and controlKey???
-- [ ] Hotkey synonyms (i.e. alt = opt)
-- [ ] Example: Instagram
-- [ ] Example: Trello
-- [ ] Example: CMS
-- [ ] Example: art site/blog
-- [ ] Example: iOS Mail app
-- [ ] Example: eCommerce
-- [ ] Example: Blog/portfolio, including carousel, contact form, and "load more" button for infinite scroll
-- [ ] Use Rollup
-- [ ] Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
-- [ ] Multiple render targets for inline?
-- [ ] Loading states for prefetch & inline
-- [ ] Bindings for touch gestures/swiping
+- chore: Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
+- chore: Ensure interoperability with Turbolinks and Stimulus
+- chore: More stable arg parsing, whitespace-insensitive
+- chore: Tests
+- chore: Use Rollup
+- doc: Example - Blog/portfolio, including carousel, contact form, and "load more" button for infinite scroll
+- doc: Example - CMS
+- doc: Example - eCommerce
+- doc: Example - Instagram
+- doc: Example - iOS Mail app
+- doc: Example - Trello
+- feat: Bindings for touch gestures/swiping
+- feat: Hotkey - "Hotkey" or "Hot key?"
+- feat: Hotkey - Handle metaKey and controlKey???
+- feat: Hotkey - Supprot synonyms (i.e. alt = opt)
+- feat: Inline - Form submission should support multipart?
+- feat: Inline - Loading states for prefetch & inline
+- feat: Inline - Multiple render targets for inline
+- feat: Inline - optionally keep destination's previous contents? (i.e. sliding/page turning effects)
+- feat: Inline - When should inline loading update history? Additional option?
+- feat: Support for Current (auto feature)
+- feat: Toggle - Support text inputs
