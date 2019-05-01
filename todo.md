@@ -1,22 +1,24 @@
-- chore: Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
-- chore: Ensure interoperability with Turbolinks and Stimulus
-- chore: More stable arg parsing, whitespace-insensitive
-- chore: Tests
 - chore: Use Rollup
+- chore: More stable arg parsing, whitespace-insensitive
+- chore: Ensure interoperability with Turbolinks and Stimulus
+- chore: Tests
+- chore: Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
+- doc: Example - Instagram
+- doc: Example - Trello
+- doc: Example - iOS Mail app
 - doc: Example - Blog/portfolio, including carousel, contact form, and "load more" button for infinite scroll
 - doc: Example - CMS
 - doc: Example - eCommerce
-- doc: Example - Instagram
-- doc: Example - iOS Mail app
-- doc: Example - Trello
 - feat: Bindings for touch gestures/swiping
 - feat: Hotkey - "Hotkey" or "Hot key?"
 - feat: Hotkey - Handle metaKey and controlKey???
-- feat: Hotkey - Supprot synonyms (i.e. alt = opt)
-- feat: Inline - Form submission should support multipart?
-- feat: Inline - Loading states for prefetch & inline
-- feat: Inline - Multiple render targets for inline
-- feat: Inline - optionally keep destination's previous contents? (i.e. sliding/page turning effects)
-- feat: Inline - When should inline loading update history? Additional option?
+- feat: Hotkey - Support synonyms (i.e. alt = opt)
+- feat: Replace - Like inline, but just accepts a list of selectors from current and next documents to update
+- feat: Inline - Multiple render targets for inline?
+- feat: Inline - Optionally update history
+- feat: Inline - Loading states
+- feat: Inline - Form submission should support multipart
+- feat: Inline - Optionally keep destination's previous contents (i.e. sliding/page turning effects)
+- feat: Prefect - Loading states
 - feat: Support for Current (auto feature)
 - feat: Toggle - Support text inputs
