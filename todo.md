@@ -24,3 +24,5 @@
 - [ ] Example: CMS
 - [ ] Example: art site
 - [ ] Example: native app
+- [ ] Use rollup
+- [ ] Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
