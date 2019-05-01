@@ -66,10 +66,19 @@ app.post('/photos/:id/comments', (req, res) => {
   // Hard-coded current user
   const user = database.get('users', 'busy.rando')
   const photo = database.get('photos', req.params.id)
+  const text = req.body.text
+
+  if (!text || !text.length) {
+    req.flash('error', 'A comment requires text!')
+    res.redirect(`/photos/${photo.id}`)
+    return
+  }
+
   photo.commentsCount++
   const id = (new Date()).valueOf() + '.' + Math.random()
-  database.insert('comments', { id, photoId: photo.id, userId: user.id, text: req.body.text })
-  req.flash('success', 'Comment added!')
+  database.insert('comments', { id, photoId: photo.id, userId: user.id, text })
+
+  req.flash('success', 'Commented!')
   res.redirect(`/photos/${photo.id}`)
 })
 
