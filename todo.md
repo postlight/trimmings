@@ -22,7 +22,12 @@
 - [ ] Example: Instagram
 - [ ] Example: Trello
 - [ ] Example: CMS
-- [ ] Example: art site
-- [ ] Example: native app
-- [ ] Use rollup
+- [ ] Example: art site/blog
+- [ ] Example: iOS Mail app
+- [ ] Example: eCommerce
+- [ ] Example: Blog/portfolio, including carousel and contact form
+- [ ] Use Rollup
 - [ ] Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
+- [ ] Multiple render targets for inline?
+- [ ] Loading states for prefetch & inline
+- [ ] Bindings for touch gestures/swiping
