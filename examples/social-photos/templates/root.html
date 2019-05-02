@@ -2,10 +2,6 @@
 
 <div class="photos">
   {{#each photos}}
-    <a data-redact-inline=".full-photo, .modal-container, #modal-template" class="photo" href="/photos/{{id}}">
-      <img src="{{url}}" alt="{{caption}}" width="200" height="200" />
-      <span class="likes-count">❤️ {{likes}}</span>
-      <span class="comments-count">💬 {{commentsCount}}</span>
-    </a>
+    {{> photo photo=photo}}
   {{/each}}
 </div>

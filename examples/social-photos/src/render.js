@@ -5,12 +5,17 @@ const TEMPLATES_DIRECTORY = './templates'
 
 const loadTemplates = () =>
   fs.readdirSync(TEMPLATES_DIRECTORY).reduce((acc, filename) => {
-    acc[filename.replace(/\.html$/, '')] =
-      handlebars.compile(
-        fs
-          .readFileSync(`${TEMPLATES_DIRECTORY}/${filename}`)
-          .toString()
-      )
+    const name = filename.replace(/\.html$/, '')
+    const template =
+      fs
+        .readFileSync(`${TEMPLATES_DIRECTORY}/${filename}`)
+        .toString()
+
+    if (name.indexOf('_') === 0) {
+      handlebars.registerPartial(name.replace(/^_/, ''), template)
+    } else {
+      acc[name] = handlebars.compile(template)
+    }
 
     return acc
   }, {})

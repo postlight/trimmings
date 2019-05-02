@@ -29,7 +29,13 @@ app.use(connectFlash())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
-  const photos = database.all('photos')
+  const photos =
+    database
+      .all('photos')
+      .map(p => ({
+        ...p,
+        height500: Math.round(parseInt(p.ratio, 10) / 100 * 500)
+      }))
   res.send(render('root', { title: 'Welcome!', photos }))
 })
 

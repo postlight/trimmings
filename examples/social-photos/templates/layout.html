@@ -6,11 +6,15 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1>
-      <a href="/">
-        Social Photos
-      </a>
-    </h1>
+    <header>
+      <div class="header-inner">
+        <h1>
+          <a href="/">
+            Social Photos
+          </a>
+        </h1>
+      </div>
+    </header>
     <div class="flash-container">
       {{#if flash}}
         <div class="flash flash--{{flash.type}}">
@@ -18,12 +22,22 @@
         </div>
       {{/if}}
     </div>
-    {{{content}}}
+    <main>
+      {{{content}}}
+    </main>
     <div class="modal-container">
     </div>
+    <footer>
+      Created by
+      <a href="https://johnholdun.com">John Holdun</a>
+      to demonstrate
+      <a href="https://github.com/postlight/redact">Redact</a>!
+    </footer>
     <template id="modal-template">
       <div class="modal">
-        <button data-redact-remove=".modal">Close</button>
+        <button class="modal__close" data-redact-remove=".modal">
+          Close
+        </button>
         <div data-redact-inline-target></div>
       </div>
     </template>
