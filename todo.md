@@ -1,4 +1,3 @@
-- chore: Use Rollup
 - chore: More stable arg parsing, whitespace-insensitive
 - chore: Ensure interoperability with Turbolinks and Stimulus
 - chore: Tests
@@ -20,3 +19,4 @@
 - feat: Support for Current (auto feature)
 - feat: Toggle - Support text inputs
 - feat: Bindings for swiping? Swipe on hinted el = click on selected button?
+- feat: Autoclick - Click link (or button, or submit form?) when it scrolls into view, or after a duration; should interoperate with other features e.g. inline load

@@ -1,0 +1,18 @@
+{
+  "name": "redact",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:postlight/redact.git",
+  "author": "John Holdun <john@johnholdun.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "standard *.js src/**/*.js",
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "rollup": "^1.10.1"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
+  }
+}
