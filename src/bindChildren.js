@@ -1,26 +1,25 @@
 import bind from './bind'
-import { selectors } from './hotkeys'
+import { selectors as autosubmitSelectors } from './autosubmit'
+import { selectors as hotkeysSelectors } from './hotkeys'
+import { selectors as inlineSelectors } from './inline'
+import { selectors as prefetchSelectors } from './prefetch'
+import { selectors as removeSelectors } from './remove'
+import { selectors as replaceSelectors } from './replace'
+import { selectors as toggleSelectors } from './toggle'
 
-const bindingSelectors = [
-  'a[data-redact-prefetch]',
-  'a[data-redact-inline]',
-  'form[data-redact-inline]',
-  'a[data-redact-replace]',
-  'form[data-redact-replace]',
-  'button[data-redact-toggle]',
-  'input[data-redact-toggle]',
-  'button[data-redact-remove]',
-  'form[data-redact-autosubmit]',
-  'button[data-redact-autosubmit]',
-  'input[data-redact-autosubmit]',
-  'select[data-redact-autosubmit]',
-  'textarea[data-redact-autosubmit]'
-].concat(selectors)
-
-const BINDING_SELECTORS = bindingSelectors.join(',')
+const selectors =
+  []
+    .concat(autosubmitSelectors)
+    .concat(hotkeysSelectors)
+    .concat(inlineSelectors)
+    .concat(prefetchSelectors)
+    .concat(removeSelectors)
+    .concat(replaceSelectors)
+    .concat(toggleSelectors)
+    .join(',')
 
 const bindChildren = (container) => {
-  Array.prototype.forEach.call(container.querySelectorAll(BINDING_SELECTORS), (element) => {
+  Array.prototype.forEach.call(container.querySelectorAll(selectors), (element) => {
     bind(element)
   })
 }
