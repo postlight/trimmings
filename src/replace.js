@@ -1,4 +1,5 @@
 import loadElement from './loadElement'
+import parseArgs from './parseArgs'
 
 export const selectors = [
   'a[data-redact-replace]',
@@ -7,7 +8,7 @@ export const selectors = [
 
 export const bind = (element) => {
   if (typeof element.dataset.redactReplace !== 'undefined') {
-    const replacementSelectors = element.dataset.redactReplace.split(', ')
+    const replacementSelectors = parseArgs(element.dataset.redactReplace)
 
     const eventName = element.nodeName === 'FORM' ? 'submit' : 'click'
 

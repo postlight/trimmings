@@ -1,4 +1,4 @@
-import match from './match'
+import parseArgs from './parseArgs'
 
 export const selectors = [
   'button[data-redact-toggle]',
@@ -6,20 +6,25 @@ export const selectors = [
 ]
 
 export const bind = (element) => {
-  if (match(element, 'BUTTON', 'redactToggle')) {
-    const [targetSelector, className] = element.dataset.redactToggle.split(', ')
+  if (typeof element.dataset.redactToggle === 'undefined') {
+    return
+  }
+
+  const [targetSelector, className] = parseArgs(element.dataset.redactToggle)
+
+  if (element.nodeName === 'BUTTON') {
     element.addEventListener('click', () => {
       document.querySelector(targetSelector).classList.toggle(className)
     })
-    element.removeAttribute('data-redact-toggle')
-  }
-
-  if (match(element, 'INPUT', 'redactToggle')) {
-    const [targetSelector, className] = element.dataset.redactToggle.split(', ')
+  } else if (element.nodeName === 'INPUT') {
     element.addEventListener('change', () => {
       // TODO: this is not un-toggling for the previously-checked radio
-      document.querySelector(targetSelector).classList.toggle(className, element.checked)
+      document
+        .querySelector(targetSelector)
+        .classList
+        .toggle(className, element.checked)
     })
-    element.removeAttribute('data-redact-toggle')
   }
+
+  element.removeAttribute('data-redact-toggle')
 }

@@ -1,4 +1,3 @@
-- chore: More stable arg parsing, whitespace-insensitive
 - chore: Ensure interoperability with Turbolinks and Stimulus
 - chore: Tests
 - chore: Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)

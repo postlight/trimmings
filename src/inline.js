@@ -1,4 +1,5 @@
 import loadElement from './loadElement'
+import parseArgs from './parseArgs'
 
 export const selectors = [
   'a[data-redact-inline]',
@@ -8,7 +9,7 @@ export const selectors = [
 export const bind = (element) => {
   if (typeof element.dataset.redactInline !== 'undefined') {
     const [targetSelector, destinationSelector, templateSelector] =
-      element.dataset.redactInline.split(', ')
+      parseArgs(element.dataset.redactInline)
 
     const eventName = element.nodeName === 'FORM' ? 'submit' : 'click'
 
