@@ -5,7 +5,7 @@
 - doc: Example - Instagram
 - doc: Example - Trello
 - doc: Example - iOS Mail app
-- doc: Example - Blog/portfolio, including carousel, contact form, and "load more" button for infinite scroll
+- doc: Example - Blog/portfolio, including carousel, contact form, and infinite scroll
 - doc: Example - CMS
 - doc: Example - eCommerce
 - feat: Hotkey - Handle metaKey and controlKey???
