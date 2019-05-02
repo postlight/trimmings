@@ -1,0 +1,18 @@
+<nav class="view-nav">
+  <a href="/">
+    Mailboxes
+  </a>
+</nav>
+<main>
+  <ol>
+    {{#messages}}
+      <li>
+        <a href="/messages/{{id}}">
+          From: {{from}}<br />
+          To: {{to}}<br />
+          Subject: {{subject}}
+        </a>
+      </li>
+    {{/messages}}
+  </ol>
+</main>
