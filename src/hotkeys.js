@@ -1,3 +1,5 @@
+import parseArgs from './parseArgs'
+
 const registered = []
 
 export const selectors = [
@@ -26,6 +28,6 @@ export const listen = () => {
 
 export const bind = (element) => {
   if (typeof element.dataset.redactHotkey !== 'undefined') {
-    registered.push([element, element.dataset.redactHotkey.toLowerCase().split(/,\s+/g).sort()])
+    registered.push([element, parseArgs(element.dataset.redactHotkey.toLowerCase()).sort()])
   }
 }
