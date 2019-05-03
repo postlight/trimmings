@@ -2,54 +2,40 @@
   <a href="/{{folder.id}}">
     {{folder.name}}
   </a>
-  <div class="message-navigation">
-    {{#if nextMessage}}
-      <a href="/messages/{{nextMessage.id}}">
-        ☝️
-      </a>
-    {{else}}
-      <span style="opacity: .5;">
-        ☝️
-      </span>
-    {{/if}}
-    {{#if previousMessage}}
-      <a href="/messages/{{previousMessage.id}}">
-        👇
-      </a>
-    {{else}}
-      <span style="opacity: .5;">
-        👇
-      </span>
-    {{/if}}
+  <div class="controls">
+    <form method="post" action="/messages/{{message.id}}">
+      <input type="hidden" name="read" value="0" />
+      <button>
+        Mark Unread
+      </button>
+    </form>
+    <form method="post" action="/messages/{{message.id}}">
+      <input type="hidden" name="folderId" value="archive" />
+      <button>
+        Archive
+      </button>
+    </form>
+    <form method="post" action="/messages/new">
+      <input type="hidden" name="replyTo" value="{{message.id}}" />
+      <button>
+        Reply
+      </button>
+    </form>
   </div>
 </nav>
-<main>
+<main class="message">
   {{#message}}
-    <p><b>From</b> {{from}}</p>
-    <p><b>To</b> {{to}}</p>
-    <hr />
-    <p><b>{{subject}}</b></p>
-    <hr />
-    {{{body}}}
+    <p class="message__from">
+      From: <b>{{from}}</b>
+    </p>
+    <p class="message__from">
+      To: {{to}}
+    </p>
+    <p class="message__subject">
+      {{subject}}
+    </p>
+    <p class="message__body">
+      {{{body}}}
+    </p>
   {{/message}}
 </main>
-<aside class="controls">
-  <form method="post" action="/messages/{{message.id}}">
-    <input type="hidden" name="read" value="0" />
-    <button>
-      Mark Unread
-    </button>
-  </form>
-  <form method="post" action="/messages/{{message.id}}">
-    <input type="hidden" name="folderId" value="archive" />
-    <button>
-      Archive
-    </button>
-  </form>
-  <form method="post" action="/messages/new">
-    <input type="hidden" name="replyTo" value="{{message.id}}" />
-    <button>
-      Reply
-    </button>
-  </form>
-</aside>

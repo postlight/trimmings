@@ -19,34 +19,92 @@ ul, ol, li {
   list-style: none;
 }
 
-.view-nav {
+nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  line-height: 1.5rem;
+  line-height: 2.5rem;
   background: #ccc;
   border-bottom: 1px solid #999;
   color: #333;
-  padding: 1rem;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
+  font-size: .75rem;
 }
 
-main {
-  padding: 4rem 1rem;
+nav a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .controls {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  line-height: 1.5rem;
-  background: #ccc;
-  border-top: 1px solid #999;
-  color: #333;
-  padding: 1rem;
   display: flex;
-  justify-content: space-between;
+}
+
+.controls button {
+  display: block;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font: inherit;
+  background: none;
+  border: 0;
+}
+
+nav button {
+  display: block;
+}
+
+main {
+  padding: 2.5rem 1rem;
+}
+
+h1 {
+  margin: 1rem 0;
+}
+
+.search {
+  border: 1px solid #ccc;
+  padding: .5rem;
+  margin: 1rem 0;
+  width: 100%;
+  display: block;
+  font: inherit;
+}
+
+.messages__item {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  padding: .5rem 1rem;
+  margin: 0 -1rem -1px;
+  border: 1px solid #ddd;
+  border-width: 1px 0;
+}
+
+.messages__item__from {
+  font-weight: bold;
+}
+
+.messages__item__excerpt {
+  color: #ccc;
+  overflow: hidden;
+  height: 1.5rem;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.message {
+  margin: .5rem 0;
+}
+
+.message__subject {
+  margin: .5rem 0;
+  border: 1px solid #ccc;
+  border-width: 1px 0;
+  padding: .5rem 0;
+  font-weight: bold;
 }

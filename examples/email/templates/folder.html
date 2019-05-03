@@ -4,13 +4,28 @@
   </a>
 </nav>
 <main>
-  <ol>
+  <h1>
+    {{folder.name}}
+  </h1>
+  <form method="get" action="/{{folder.id}}">
+    <input type="text" name="q" value="{{query}}" class="search" />
+  </form>
+  {{^messages}}
+    <p>Nothing to see here!</p>
+  {{/messages}}
+  <ol class="messages">
     {{#messages}}
       <li>
-        <a href="/messages/{{id}}">
-          From: {{from}}<br />
-          To: {{to}}<br />
-          Subject: {{subject}}
+        <a href="/messages/{{id}}" class="messages__item">
+          <div class="messages__item__from">
+            {{from}}
+          </div>
+          <div class="messages__item__subject">
+            {{subject}}
+          </div>
+          <div class="messages__item__excerpt">
+            {{excerpt}}
+          </div>
         </a>
       </li>
     {{/messages}}

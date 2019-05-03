@@ -37,11 +37,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/messages/:id', (req, res) => {
-  const messages = database.all('messages')
-  const message = messages.find(m => m.id === req.params.id)
-  const messageIndex = messages.indexOf(message)
-  const nextMessage = messageIndex > 0 ? messages[messageIndex - 1] : null
-  const previousMessage = messages[messageIndex + 1]
+  const message = database.get('messages', req.params.id)
   const folder = database.get('folders', message.folderId)
 
   res.send(render(
@@ -49,8 +45,6 @@ app.get('/messages/:id', (req, res) => {
     {
       title: message.subject,
       message,
-      nextMessage,
-      previousMessage,
       folder,
       unreadCount: getUnreadCount(),
       flash: getFlash(req)
@@ -60,13 +54,30 @@ app.get('/messages/:id', (req, res) => {
 
 app.get('/:id', (req, res) => {
   const folder = database.get('folders', req.params.id)
-  const messages =
-    database.all('messages').filter(m => m.folderId === folder.id)
+  let messages = database.all('messages').filter(m => m.folderId === folder.id)
+  const query = req.query.q || ''
+
+  if (query.length) {
+    messages =
+      messages
+        .filter(m =>
+          `${m.from} ${m.subject} ${m.body}`
+            .replace(/<\/?[^>]+>/g, '')
+            .replace(/\s+/g, ' ')
+            .toLowerCase()
+            .indexOf(query.toLowerCase()) > -1
+        )
+  }
+
+  messages.forEach((message) => {
+    message.excerpt = message.body.replace(/<\/?[^>]+>/g, '')
+  })
 
   res.send(render(
     'folder',
     {
       title: folder.title,
+      query,
       folder,
       messages,
       unreadCount: getUnreadCount(),
