@@ -1,9 +1,7 @@
-- chore: Ensure interoperability with Turbolinks and Stimulus
+- chore: Ensure interoperability with Stimulus
 - chore: Tests
 - chore: Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
-- doc: Example - Instagram
 - doc: Example - Trello
-- doc: Example - iOS Mail app
 - doc: Example - Blog/portfolio, including carousel, contact form, and infinite scroll
 - doc: Example - CMS
 - doc: Example - eCommerce
