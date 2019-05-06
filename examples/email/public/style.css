@@ -65,13 +65,28 @@ h1 {
   margin: 1rem 0;
 }
 
-.search {
+label {
+  display: block;
+  font-size: .75rem;
+  line-height: 1rem;
+  color: #555;
+  margin-top: .5rem;
+}
+
+hr {
+  margin: 1rem 0;
+}
+
+input[type="text"], textarea {
   border: 1px solid #ccc;
   padding: .5rem;
-  margin: 1rem 0;
   width: 100%;
   display: block;
   font: inherit;
+}
+
+.search {
+  margin: 1rem 0;
 }
 
 .messages__item {
@@ -107,4 +122,8 @@ h1 {
   border-width: 1px 0;
   padding: .5rem 0;
   font-weight: bold;
+}
+
+.message__body p {
+  margin-bottom: 1rem;
 }

@@ -3,7 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>{{#if title}}{{title}} – {{/if}}Email</title>
+    <title>
+      {{#if unreadCount}}
+        ({{unreadCount}})
+      {{/if}}
+      {{#if title}}
+        {{title}} –
+      {{/if}}
+      Email
+    </title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
@@ -15,6 +23,7 @@
       {{/if}}
     </div>
     {{{content}}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
     <script src="/redact.js"></script>
   </body>
 </html>

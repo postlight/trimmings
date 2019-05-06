@@ -1,24 +1,35 @@
 <nav class="view-nav">
   <a href="/{{folder.id}}">
+    {{#if unreadCount}}
+      <span class="unread-count">
+        {{unreadCount}}
+      </span>
+    {{/if}}
     {{folder.name}}
   </a>
   <div class="controls">
-    <form method="post" action="/messages/{{message.id}}">
+    <form data-redact-replace="body" method="post" action="/messages/{{message.id}}">
       <input type="hidden" name="read" value="0" />
       <button>
         Mark Unread
       </button>
     </form>
-    <form method="post" action="/messages/{{message.id}}">
+    <form data-redact-replace="body" method="post" action="/messages/{{message.id}}">
       <input type="hidden" name="folderId" value="archive" />
       <button>
         Archive
       </button>
     </form>
-    <form method="post" action="/messages/new">
+    <form method="get" action="/messages/new">
       <input type="hidden" name="replyTo" value="{{message.id}}" />
       <button>
         Reply
+      </button>
+    </form>
+    <form method="get" action="/messages/new">
+      <input type="hidden" name="forwardOf" value="{{message.id}}" />
+      <button>
+        Forward
       </button>
     </form>
   </div>
@@ -32,10 +43,13 @@
       To: {{to}}
     </p>
     <p class="message__subject">
+      {{#unless read}}
+        •
+      {{/unless}}
       {{subject}}
     </p>
-    <p class="message__body">
+    <div class="message__body">
       {{{body}}}
-    </p>
+    </div>
   {{/message}}
 </main>

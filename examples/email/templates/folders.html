@@ -6,6 +6,11 @@
     {{#folders}}
       <li>
         <a href="/{{id}}">
+          {{#if unreadCount}}
+            <span class="unread-count">
+              {{unreadCount}}
+            </span>
+          {{/if}}
           {{name}}
         </a>
       </li>

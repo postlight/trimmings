@@ -21,6 +21,9 @@
             {{from}}
           </div>
           <div class="messages__item__subject">
+            {{#unless read}}
+              •
+            {{/unless}}
             {{subject}}
           </div>
           <div class="messages__item__excerpt">

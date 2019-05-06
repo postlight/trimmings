@@ -22,6 +22,17 @@ const getFlash = (req) => {
 const getUnreadCount = () =>
   database.all('messages').filter(m => !parseInt(m.read, 10)).length
 
+const formatBody = (body) =>
+  `<p>${
+    body
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\r\n/g, '\n')
+      .replace(/\\n/g, '\n')
+      .replace(/\n\n/g, '</p><p>')
+      .replace(/\n/g, '<br />')
+  }</p>`
+
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -36,20 +47,106 @@ app.get('/', (req, res) => {
   res.send(render('folders', { folders, unreadCount: getUnreadCount() }))
 })
 
+app.get('/messages/new', (req, res) => {
+  const { replyTo, forwardOf } = req.query || {}
+
+  const message = {
+    subject: '',
+    body: '',
+    to: '',
+    toAddress: '',
+    from: 'You Fakedemo',
+    fromAddress: 'you@fake.email'
+  }
+
+  let lastLocation = '/'
+
+  if (replyTo || forwardOf) {
+    const ref = database.get('messages', replyTo || forwardOf)
+    lastLocation = `/messages/${ref.id}`
+    message.subject = `${replyTo ? 'Re:' : 'Fwd'} ${ref.subject}`
+    message.body = `${ref.from} wrote:\n\n${ref.body.split(/\\n/g).map(l => `> ${l}`).join('\n')}`
+
+    if (replyTo) {
+      message.body = `\n\n${message.body}`
+      message.to = ref.to
+      message.toAddress = ref.toAddress
+    }
+  }
+
+  res.send(render(
+    'composer',
+    {
+      title: 'New Message',
+      message,
+      lastLocation,
+      unreadCount: getUnreadCount()
+    }
+  ))
+})
+
 app.get('/messages/:id', (req, res) => {
   const message = database.get('messages', req.params.id)
   const folder = database.get('folders', message.folderId)
+
+  if (req.query.edited !== 'true' && !req.headers['turbolinks-referrer']) {
+    message.read = '1'
+  }
 
   res.send(render(
     'message',
     {
       title: message.subject,
-      message,
+      message: { ...message, read: message.read === '1', body: formatBody(message.body) },
       folder,
       unreadCount: getUnreadCount(),
       flash: getFlash(req)
     }
   ))
+})
+
+app.post('/messages', (req, res) => {
+  const { subject, body, to, toAddress } = req.body || {}
+
+  const message = {
+    type: 'messages',
+    id: (new Date()).valueOf() + '.' + Math.random().toString().replace(/^0./, ''),
+    read: '1',
+    folderId: 'sent',
+    subject,
+    body,
+    to,
+    toAddress,
+    from: 'You Fakedemo',
+    fromAddress: 'you@fake.email'
+  }
+
+  console.log({ body })
+
+  database.insert('messages', message)
+
+  let destination = req.body.destination
+
+  if (!destination.match(/^\/messages\/[^/]+\/?$/)) {
+    destination = '/'
+  }
+
+  res.redirect(destination)
+})
+
+app.post('/messages/:id', (req, res) => {
+  const message = database.get('messages', req.params.id)
+  const params = req.body
+  const newMessage =
+    {
+      type: message.type,
+      id: message.id,
+      read: params.read || message.read,
+      folderId: params.folderId || message.folderId
+    }
+
+  Object.assign(message, newMessage)
+  res.redirect(`/messages/${message.id}?edited=true`)
 })
 
 app.get('/:id', (req, res) => {
@@ -69,9 +166,7 @@ app.get('/:id', (req, res) => {
         )
   }
 
-  messages.forEach((message) => {
-    message.excerpt = message.body.replace(/<\/?[^>]+>/g, '')
-  })
+  messages = messages.reverse()
 
   res.send(render(
     'folder',
@@ -79,7 +174,7 @@ app.get('/:id', (req, res) => {
       title: folder.title,
       query,
       folder,
-      messages,
+      messages: messages.map((m) => ({ ...m, excerpt: m.body.replace(/<\/?[^>]+>/g, ''), read: m.read === '1' })),
       unreadCount: getUnreadCount(),
       flash: getFlash(req)
     }
