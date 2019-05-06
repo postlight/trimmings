@@ -9,6 +9,7 @@
 - feat: Hotkey - Support synonyms (i.e. alt = opt)
 - feat: Hotkey - Consistent codes for all keys (i.e. arrows?)
 - feat: Hotkey - Rebind/unbind on change
+- feat: Inline - Follow link as usual if target does not exist
 - feat: Inline - Multiple render targets for inline?
 - feat: Inline - Optionally update history
 - feat: Inline - Loading states
