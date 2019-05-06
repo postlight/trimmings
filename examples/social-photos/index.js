@@ -45,6 +45,11 @@ app.get('/photos/:id', (req, res) => {
   const comments =
     database.all('comments').filter(c => c.photoId === photo.id)
 
+  const userPhotos = database.all('photos').filter(p => p.userId === user.id)
+  const photoIndex = userPhotos.indexOf(photo)
+  const nextPhoto = userPhotos[photoIndex + 1]
+  const previousPhoto = photoIndex > 0 ? userPhotos[photoIndex - 1] : null
+
   res.send(render(
     'photo',
     {
@@ -55,6 +60,8 @@ app.get('/photos/:id', (req, res) => {
         comments,
         height500: Math.round(parseInt(photo.ratio, 10) / 100 * 500)
       },
+      nextPhoto,
+      previousPhoto,
       flash: getFlash(req)
     }
   ))

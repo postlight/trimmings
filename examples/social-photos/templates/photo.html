@@ -1,6 +1,18 @@
-{{#photo}}
-  <div class="full-photo-wrapper">
-    <div class="full-photo">
+<div class="full-photo-wrapper">
+  <div class="full-photo">
+    {{#if previousPhoto}}
+      <a
+        data-redact-inline=".full-photo, .modal-container, #modal-template"
+        data-redact-hotkey="%"
+        class="photo-navigation photo-navigation--previous"
+        href="/photos/{{previousPhoto.id}}"
+      >
+        Previous
+      </a>
+    {{else}}
+      <span class="photo-navigation"></span>
+    {{/if}}
+    {{#photo}}
       <div class="full-photo__photo-container">
         <img
           class="full-photo__photo"
@@ -43,6 +55,18 @@
           </form>
         </div>
       </div>
-    </div>
+    {{/photo}}
+    {{#if nextPhoto}}
+      <a
+        data-redact-inline=".full-photo, .modal-container, #modal-template"
+        data-redact-hotkey="'"
+        class="photo-navigation photo-navigation--next"
+        href="/photos/{{nextPhoto.id}}"
+      >
+        Next
+      </a>
+    {{else}}
+      <span class="photo-navigation"></span>
+    {{/if}}
   </div>
-{{/photo}}
+</div>

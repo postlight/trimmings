@@ -159,9 +159,6 @@ footer a {
 
 .modal > * {
   flex: 0 0 auto;
-  max-width: 940px;
-  background: #eee;
-  border: 1px solid #ccc;
   z-index: 2;
 }
 
@@ -230,16 +227,20 @@ footer a {
 
 .full-photo {
   display: flex;
-  background: #fff;
-  border: 1px solid #ccc;
-  max-width: 900px;
-  overflow: hidden;
+  max-width: 1080px;
 }
 
 .full-photo-wrapper {
   min-height: calc(100vh - 12rem);
   display: flex;
   align-items: center;
+}
+
+@media (min-width: calc(940px + 2rem)) {
+  .full-photo-wrapper {
+    width: 1080px;
+    margin-left: -140px;
+  }
 }
 
 .full-photo__photo-container {
@@ -257,6 +258,9 @@ footer a {
   flex-direction: column;
   justify-content: space-between;
   flex: 1 1 auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-width: 1px 1px 1px 0;
 }
 
 .full-photo__author {
@@ -322,4 +326,37 @@ footer a {
 
 .comment-form input:focus {
   outline: 0;
+}
+
+.photo-navigation {
+  flex: 0 0 90px;
+  display: block;
+  align-self: center;
+  width: 90px;
+  height: 90px;
+  line-height: calc(90px - 2rem);
+  text-align: center;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.full-photo-wrapper .photo-navigation {
+  visibility: hidden;
+}
+
+.photo-navigation:before {
+  display: block;
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  margin: 1rem;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.photo-navigation--previous:before {
+  content: "👈";
+}
+
+.photo-navigation--next:before {
+  content: "👉";
 }
