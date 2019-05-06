@@ -69,8 +69,8 @@ app.get('/messages/new', (req, res) => {
 
     if (replyTo) {
       message.body = `\n\n${message.body}`
-      message.to = ref.to
-      message.toAddress = ref.toAddress
+      message.to = ref.from
+      message.toAddress = ref.fromAddress
     }
   }
 
@@ -89,7 +89,7 @@ app.get('/messages/:id', (req, res) => {
   const message = database.get('messages', req.params.id)
   const folder = database.get('folders', message.folderId)
 
-  if (req.query.edited !== 'true' && !req.headers['turbolinks-referrer']) {
+  if (req.query.edited !== 'true') {
     message.read = '1'
   }
 
