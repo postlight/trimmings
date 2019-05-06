@@ -1,19 +1,21 @@
-<main class="no-view-nav">
-  <h1>
-    Email
-  </h1>
-  <ul>
-    {{#folders}}
-      <li>
-        <a href="/{{id}}">
-          {{#if unreadCount}}
-            <span class="unread-count">
-              {{unreadCount}}
-            </span>
-          {{/if}}
-          {{name}}
-        </a>
-      </li>
-    {{/folders}}
-  </ul>
+<main>
+  <div class="big-sidebar">
+    <h1>
+      Mailboxes
+    </h1>
+    <ul class="folders">
+      {{#folders}}
+        <li>
+          <a href="/{{id}}" data-redact-replace=".big-sidebar, .big-sidebar">
+            {{#if unreadCount}}
+              <span class="unread-count">
+                {{unreadCount}}
+              </span>
+            {{/if}}
+            {{name}}
+          </a>
+        </li>
+      {{/folders}}
+    </ul>
+  </div>
 </main>

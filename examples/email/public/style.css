@@ -37,20 +37,101 @@ nav {
 nav a {
   color: inherit;
   text-decoration: none;
+  white-space: nowrap;
+}
+
+nav a:first-child:before {
+  content: "‹ ";
+}
+
+.unread-count {
+  display: inline-block;
+  background: #333;
+  color: #eee;
+  border-radius: 50%;
+  font-size: .5rem;
+  font-weight: bold;
+  width: 1rem;
+  height: 1rem;
+  line-height: 1rem;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0 .25rem;
 }
 
 .controls {
-  display: flex;
+  position: fixed;
+  right: 0;
+  top: 0;
+  line-height: 2.5rem;
+  font-size: .75rem;
+}
+
+.controls summary {
+  list-style: none;
+  outline: 0;
+  display: block;
+  cursor: pointer;
+}
+
+.controls[open] summary {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-right: 0;
+  background: #00000030;
+  transition: background .1s;
+}
+
+.controls__control {
+  width: auto;
+  height: 2.5rem;
+  padding: 0 1rem;
+  float: right;
+}
+
+.controls summary::-webkit-details-marker {
+  display: none
 }
 
 .controls button {
   display: block;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  padding: 0 1rem;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   font: inherit;
   background: none;
   border: 0;
+  white-space: nowrap;
+}
+
+.controls__body {
+  position: fixed;
+  left: 0;
+  right: 0;
+  max-height: calc(100vh - 2.5rem);
+  overflow-y: auto
+  bottom: 0;
+  width: 100%;
+  background: #eee;
+  border-bottom: 1px solid #ccc;
+  animation: drawer-slide .25s 1 both;
+}
+
+@keyframes drawer-slide {
+  0% {
+    bottom: -100vh;
+  }
+
+  100% {
+    bottom: 0;
+  }
 }
 
 nav button {
@@ -58,19 +139,38 @@ nav button {
 }
 
 main {
-  padding: 2.5rem 1rem;
+  padding: .5rem 1rem 1rem;
+  transition: padding-top 3s;
+}
+
+nav + main {
+  padding-top: 2.5rem;
 }
 
 h1 {
   margin: 1rem 0;
 }
 
+main.containing-composer {
+  margin-bottom: -3rem;
+  padding-bottom: 0;
+}
+
+.composer {
+  margin: 0 -1rem;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 2.5rem);
+}
+
 label {
   display: block;
   font-size: .75rem;
-  line-height: 1rem;
+  line-height: .5rem;
+  padding: .5rem 1rem 0;
   color: #555;
-  margin-top: .5rem;
+  height: 1rem;
+  margin-bottom: -1rem;
 }
 
 hr {
@@ -78,15 +178,36 @@ hr {
 }
 
 input[type="text"], textarea {
-  border: 1px solid #ccc;
-  padding: .5rem;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid #ccc;
+  padding: 1.25rem 0 .5rem;
   width: 100%;
   display: block;
   font: inherit;
+  position: relative;
+  z-index: 2;
+  text-indent: 1rem;
 }
 
-.search {
+textarea {
+  text-indent: 0;
+  padding: .5rem 1rem;
+}
+
+input[type="text"]:focus, textarea:focus {
+  outline: 0;
+}
+
+textarea {
+  flex: 1 1 auto;
+}
+
+input[type="text"].search {
+  border: 1px solid #ccc;
   margin: 1rem 0;
+  padding: .5rem;
+  text-indent: 0;
 }
 
 .messages__item {
@@ -126,4 +247,43 @@ input[type="text"], textarea {
 
 .message__body p {
   margin-bottom: 1rem;
+}
+
+.folders a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.big {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .smol {
+    display: none;
+  }
+
+  .big {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    display: flex;
+    padding-bottom: 0;
+  }
+
+  .sidebar {
+    flex: 0 0 auto;
+    width: 15rem;
+    border-right: 2px solid #ccc;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 0 1rem;
+  }
+
+  main {
+    flex: 1 1 auto;
+  }
 }

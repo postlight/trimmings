@@ -1,36 +1,45 @@
-<nav class="view-nav">
+<nav class="smol">
   <a href="/">
     Mailboxes
   </a>
 </nav>
 <main>
-  <h1>
-    {{folder.name}}
-  </h1>
-  <form method="get" action="/{{folder.id}}">
-    <input type="text" name="q" value="{{query}}" class="search" />
-  </form>
-  {{^messages}}
-    <p>Nothing to see here!</p>
-  {{/messages}}
-  <ol class="messages">
-    {{#messages}}
-      <li>
-        <a href="/messages/{{id}}" class="messages__item">
-          <div class="messages__item__from">
-            {{from}}
-          </div>
-          <div class="messages__item__subject">
-            {{#unless read}}
-              •
-            {{/unless}}
-            {{subject}}
-          </div>
-          <div class="messages__item__excerpt">
-            {{excerpt}}
-          </div>
-        </a>
-      </li>
+  <div class="big-sidebar">
+    <div class="big">
+      <a href="/" data-redact-replace=".big-sidebar, .big-sidebar">
+        Mailboxes
+      </a>
+    </div>
+    <h1>
+      {{folder.name}}
+    </h1>
+    <form data-redact-inline=".messages, .messages" method="get" action="/{{folder.id}}">
+      <input type="text" name="q" value="{{query}}" class="search" />
+    </form>
+    {{^messages}}
+      <div class="messages">
+        <p>Nothing to see here!</p>
+      </div>
     {{/messages}}
-  </ol>
+    <ol class="messages">
+      {{#messages}}
+        <li>
+          <a href="/messages/{{id}}" class="messages__item">
+            <div class="messages__item__from">
+              {{from}}
+            </div>
+            <div class="messages__item__subject">
+              {{#unless read}}
+                •
+              {{/unless}}
+              {{subject}}
+            </div>
+            <div class="messages__item__excerpt">
+              {{excerpt}}
+            </div>
+          </a>
+        </li>
+      {{/messages}}
+    </ol>
+  </div>
 </main>

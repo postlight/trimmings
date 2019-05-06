@@ -97,7 +97,12 @@ app.get('/messages/:id', (req, res) => {
     'message',
     {
       title: message.subject,
-      message: { ...message, read: message.read === '1', body: formatBody(message.body) },
+      message: {
+        ...message,
+        read: message.read === '1',
+        body: formatBody(message.body),
+        archived: folder.id === 'archive'
+      },
       folder,
       unreadCount: getUnreadCount(),
       flash: getFlash(req)

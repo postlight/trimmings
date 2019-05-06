@@ -1,20 +1,20 @@
-<form method="post" action="/messages">
-  <nav class="view-nav">
-    <a href="{{lastLocation}}">
-      {{#if unreadCount}}
-        <span class="unread-count">
-          {{unreadCount}}
-        </span>
-      {{/if}}
-      Cancel
-    </a>
+<nav class="smol">
+  <a href="{{lastLocation}}">
+    {{#if unreadCount}}
+      <span class="unread-count">
+        {{unreadCount}}
+      </span>
+    {{/if}}
+    Cancel
+  </a>
+</nav>
+<main class="containing-composer">
+  <form class="composer" method="post" action="/messages">
     <div class="controls">
       <button>
         Send
       </button>
     </div>
-  </nav>
-  <main class="composer">
     <input type="hidden" name="destination" value="{{lastLocation}}" />
     <label for="from">From</label>
     <input id="from" type="text" name="from" readonly value="{{message.fromAddress}}" />
@@ -22,7 +22,6 @@
     <input id="to" type="text" name="to" value="{{message.toAddress}}" />
     <label for="subject">Subject</label>
     <input id="subject" type="text" name="subject" value="{{message.subject}}" />
-    <hr />
     <textarea rows="10" cols="30" name="body">{{message.body}}</textarea>
-  </main>
-</form>
+  </form>
+</main>
