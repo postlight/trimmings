@@ -5,21 +5,24 @@
 }
 
 html {
-  font: 16px/1.5 Helvetica, sans-serif;
+  font: 16px/1.5 "Open Sans", sans-serif;
 }
 
 body {
   color: #333;
-  background: #eee;
+  background: #f9f9f9;
 }
 
 header {
   background: #fff;
   border-bottom: 1px solid #ccc;
+  text-align: center;
 }
 
 header a {
-  color: #000;
+  font-family: Pacifico;
+  font-weight: normal;
+  color: #35a7e3;
   text-decoration: none;
 }
 
@@ -176,4 +179,147 @@ footer a {
   -moz-appearance: none;
   appearance: none;
   border: 0;
+}
+
+.user {
+  display: flex;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 2rem;
+}
+
+.user__photo {
+  flex: 0 0 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+.user-photo--small {
+  width: 40px;
+  height: 40px;
+}
+
+.user__id {
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.user__stats {
+  display: flex;
+  justify-content: flex-start;
+  margin: 1rem 0;
+}
+
+.user__stat {
+  margin-right: 1rem;
+}
+
+.user__name {
+  font-weight: bold;
+}
+
+.full-photo {
+  display: flex;
+  background: #fff;
+  border: 1px solid #ccc;
+  max-width: 900px;
+  overflow: hidden;
+}
+
+.full-photo-wrapper {
+  min-height: calc(100vh - 12rem);
+  display: flex;
+  align-items: center;
+}
+
+.full-photo__photo-container {
+  flex: 0 0 65%;
+}
+
+.full-photo__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.full-photo__meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 auto;
+}
+
+.full-photo__author {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+
+.full-photo__user a {
+  display: block;
+  font-weight: bold;
+  margin-left: 1rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.full-photo__comments {
+  padding: 1rem;
+  flex: 1 1 auto;
+}
+
+.full-photo__comments a {
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+.full-photo__actions {
+  padding: 1rem 1rem 0;
+  border-top: 1px solid #ccc;
+}
+
+.full-photo__actions button {
+  cursor: pointer;
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-weight: bold;
+  color: #0a405e;
+  background: 0;
+  border: 0;
+}
+
+.comment-form {
+  display: flex;
+  margin: 1rem -1rem 0;
+  border-top: 1px solid #ccc;
+}
+
+.comment-form input {
+  flex: 1 1 auto;
+  font: inherit;
+  border: 0;
+  padding: 1rem;
+}
+
+.comment-form button {
+  padding: 0 1rem;
+}
+
+.comment-form input:focus {
+  outline: 0;
 }

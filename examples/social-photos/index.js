@@ -41,14 +41,20 @@ app.get('/', (req, res) => {
 
 app.get('/photos/:id', (req, res) => {
   const photo = database.get('photos', req.params.id)
-  photo.comments =
+  const user = database.get('users', photo.userId)
+  const comments =
     database.all('comments').filter(c => c.photoId === photo.id)
 
   res.send(render(
     'photo',
     {
-      title: `@${photo.userId}: ${photo.caption}`,
-      photo,
+      title: `${user.name || user.id}: ${photo.caption}`,
+      photo: {
+        ...photo,
+        user,
+        comments,
+        height500: Math.round(parseInt(photo.ratio, 10) / 100 * 500)
+      },
       flash: getFlash(req)
     }
   ))

@@ -1,29 +1,48 @@
 {{#photo}}
-  <div class="full-photo">
-    <img src="{{url}}" alt="{{caption}}" width="500" height="{{height500}}" />
-    <div class="comments">
-      {{#if caption}}
-        <div class="comment">
-          <a href="/{{userId}}">@{{userId}}</a>
-          {{caption}}
+  <div class="full-photo-wrapper">
+    <div class="full-photo">
+      <div class="full-photo__photo-container">
+        <img
+          class="full-photo__photo"
+          src="{{url}}"
+          alt="{{caption}}"
+          width="500"
+          height="{{height500}}"
+        />
+      </div>
+      <div class="full-photo__meta">
+        <div class="full-photo__author">
+          <div class="user-photo user-photo--small"></div>
+          <p class="full-photo__user">
+            <a href="/{{user.id}}">
+              {{user.id}}
+            </a>
+          </p>
         </div>
-      {{/if}}
-      {{#comments}}
-        <div class="comment">
-          <a href="/{{userId}}">@{{userId}}</a>
-          {{text}}
+        <div class="full-photo__comments">
+          {{#if caption}}
+            <div class="comment">
+              <a href="/{{userId}}">{{userId}}</a>
+              {{caption}}
+            </div>
+          {{/if}}
+          {{#comments}}
+            <div class="comment">
+              <a href="/{{userId}}">{{userId}}</a>
+              {{text}}
+            </div>
+          {{/comments}}
         </div>
-      {{/comments}}
-    </div>
-    <div class="full-photo__actions">
-      <div class="full-photo__likes-count">{{likes}} likes</div>
-      <form data-redact-replace=".flash-container, .full-photo__likes-count" method="post" action="/photos/{{id}}/likes">
-        <button>Like</button>
-      </form>
-      <form class="comment-form" data-redact-replace=".flash-container, .comments, .comment-form" method="post" action="/photos/{{id}}/comments">
-        <input type="text" name="text" placeholder="Add a comment…" />
-        <button>Post</button>
-      </form>
+        <div class="full-photo__actions">
+          <form data-redact-replace=".flash-container, .full-photo__likes-count" method="post" action="/photos/{{id}}/likes">
+            <span class="full-photo__likes-count">{{likes}} likes</span> • <button>Like</button>
+          </form>
+          <form class="comment-form" data-redact-replace=".flash-container, .full-photo__comments, .comment-form" method="post" action="/photos/{{id}}/comments">
+            <input type="text" name="text" placeholder="Add a comment…" />
+            <button>Post</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 {{/photo}}
