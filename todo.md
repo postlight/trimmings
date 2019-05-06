@@ -18,5 +18,5 @@
 - feat: Bindings for swiping? Swipe on hinted el = click on selected button?
 - feat: Autoclick - Click link (or button, or submit form?) when it scrolls into view, or after a duration; should interoperate with other features e.g. inline load
 - feat: Inline - Optionally update location and document.title
-- feat: Inline- Choose add method (replace, append, prepend; default is replace)
+- feat: Inline - Choose add method (replace, append, prepend; default is replace)
 - feat: Prefetch - Don't prefetch if element is not rendered/something controllable with breakpoints?
