@@ -6,7 +6,7 @@
   "author": "John Holdun <john@johnholdun.com>",
   "license": "MIT",
   "scripts": {
-    "test": "standard *.js src/**/*.js && node tests/index.js",
+    "test": "standard *.js tests/**/*.js src/**/*.js && node tests/index.js",
     "build": "rollup -c"
   },
   "dependencies": {
