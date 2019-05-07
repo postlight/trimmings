@@ -1,4 +1,4 @@
-test('remove', async () => {
+test('toggle', async () => {
   const page = await browser.newPage()
   await page.goto('http://localhost:4444/toggle.html')
   await expect(page).toMatchElement('.haha')
