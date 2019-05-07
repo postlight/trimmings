@@ -253,6 +253,11 @@ input[type="text"].search {
   border-width: 1px 0;
 }
 
+.messages__item.redact-current {
+  background: #009;
+  color: #fff;
+}
+
 .messages__item__from {
   font-weight: bold;
 }
