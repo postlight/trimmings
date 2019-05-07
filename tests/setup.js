@@ -1,4 +1,3 @@
 const foobar = require('./foobar')
 
-beforeAll(foobar.start)
-afterAll(foobar.stop)
+module.exports = foobar.start
