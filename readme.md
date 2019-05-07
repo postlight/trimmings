@@ -96,5 +96,5 @@ Treat the user pressing the specified keyboard shortcut as a click on this butto
 
 ## Current (auto feature)
 
-Any `<a>` whose `href` matches the current URL will automatically receive the `redact-link--current` class. A `<a>` whose `href` matches the current URL _including the fragment_ will additionally receive the `redact-link--current-fragment` class. If the location or fragment changes, these links will be updated on all `<a>` tags as necessary.
+Any `<a>` whose `href` matches the current URL will automatically receive the `redact-current` class. A `<a>` whose `href` matches the current URL _including the fragment_ will additionally receive the `redact-current--fragment` class. If the location or fragment changes, these links will be updated on all `<a>` tags as necessary.
 

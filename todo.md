@@ -1,7 +1,6 @@
 - chore: Ensure interoperability with Stimulus
 - test: Autosubmit
 - test: Hotkey
-- test: Current (auto feature)
 - chore: Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
 - doc: Example - Trello
 - doc: Example - Blog/portfolio, including carousel, contact form, and infinite scroll
@@ -18,7 +17,6 @@
 - feat: Inline - Form submission should support multipart
 - feat: Inline - Optionally keep destination's previous contents (i.e. sliding/page turning effects)
 - feat: Prefetch - Loading states
-- feat: Support for Current (auto feature)
 - feat: Toggle - Support text inputs
 - feat: Bindings for swiping? Swipe on hinted el = click on selected button?
 - feat: Autoclick - Click link (or button, or submit form?) when it scrolls into view, or after a duration; should interoperate with other features e.g. inline load

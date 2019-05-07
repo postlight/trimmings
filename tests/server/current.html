@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf8" />
+  <title>Redact test: Current</title>
+  <script src="/redact.js"></script>
+  <style>
+    a {
+      display: block;
+      padding: 10px;
+      background: #fff;
+    }
+    a.redact-current { background: red; }
+    a.redact-current--fragment { color: yellow; }
+  </style>
+</head>
+<body>
+  <a class="here" href="/current.html">
+    This is a link to the current page.
+  </a>
+  <a class="there" href="/elsewhere.html">
+    This one links elsewhere
+  </a>
+  <a class="fragment" href="/current.html#foobar">
+    This one links here and includes a fragment
+  </a>
+  <a class="fragment2" href="/current.html#baz">
+    This one links here and includes a different fragment
+  </a>
+  <a class="query" href="/current.html?foo=bar">
+    This one links here and includes a query
+  </a>
+</body>
+</html>

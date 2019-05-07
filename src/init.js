@@ -1,8 +1,10 @@
+import { listen as currentListen } from './current'
 import { listen as hotkeysListen } from './hotkeys'
 import bindChildren from './bindChildren'
 import observe from './observe'
 
 const init = () => {
+  currentListen()
   hotkeysListen()
   observe()
   bindChildren(document)
