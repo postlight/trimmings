@@ -63,6 +63,7 @@ nav a:first-child:before {
   position: fixed;
   right: 0;
   top: 0;
+  z-index: 10;
   line-height: 2.5rem;
   font-size: .75rem;
 }
@@ -124,6 +125,33 @@ nav a:first-child:before {
   animation: drawer-slide .25s 1 both;
 }
 
+.big-actions {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.big-actions form {
+  display: inline-block;
+}
+
+.big-actions button {
+  flex: 1 1 auto;
+  display: block;
+  width: auto;
+  cursor: pointer;
+  text-align: left;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font: inherit;
+  background: none;
+  border: 0;
+  white-space: nowrap;
+  color: #009;
+  margin-right: 1rem;
+}
+
 @keyframes drawer-slide {
   0% {
     bottom: -100vh;
@@ -145,6 +173,12 @@ main {
 
 nav + main {
   padding-top: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  main, nav + main {
+    padding-top: .5rem;
+  }
 }
 
 h1 {
@@ -238,11 +272,14 @@ input[type="text"].search {
 }
 
 .message__subject {
-  margin: .5rem 0;
-  border: 1px solid #ccc;
-  border-width: 1px 0;
-  padding: .5rem 0;
   font-weight: bold;
+  margin: 0;
+}
+
+.message__body {
+  margin-top: 1rem;
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
 }
 
 .message__body p {

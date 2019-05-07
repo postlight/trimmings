@@ -101,7 +101,8 @@ app.get('/messages/:id', (req, res) => {
         ...message,
         read: message.read === '1',
         body: formatBody(message.body),
-        archived: folder.id === 'archive'
+        archived: folder.id === 'archive',
+        sent: folder.id === 'sent'
       },
       folder,
       unreadCount: getUnreadCount(),
