@@ -1,0 +1,29 @@
+<h1>{{topic.name}}</h1>
+<div class="card">
+  <div class="card__symbol">
+    {{card.symbol}}
+  </div>
+  <div class="card__name">
+    {{card.name}}
+  </div>
+</div>
+{{#if nextCard}}
+  <p>
+    <a class="btn" href="/cards/{{nextCard.id}}">
+      Next
+    </a>
+  </p>
+{{else}}
+  <p>
+    <a class="btn" href="/topics/{{topic.id}}/quiz">
+      Continue
+    </a>
+  </p>
+{{/if}}
+{{#if previousCard}}
+  <!-- <p>
+    <a class="btn" href="/cards/{{previousCard.id}}">
+      Back
+    </a>
+  </p> -->
+{{/if}}
