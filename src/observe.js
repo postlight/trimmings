@@ -1,5 +1,6 @@
 import bind from './bind'
 import bindChildren from './bindChildren'
+import { update } from './current'
 
 const observe = () => {
   const observer = new window.MutationObserver((mutations) => {
@@ -10,6 +11,7 @@ const observe = () => {
 
       if (mutation.type === 'childList') {
         bindChildren(mutation.target)
+        update(mutation.target)
       }
     })
   })

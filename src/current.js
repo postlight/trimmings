@@ -1,12 +1,12 @@
-let currentPath = ''
-let currentFragment = ''
+let path = ''
+let fragment = ''
 
 const matchLocation = (href) => {
-  if (href.indexOf(currentPath) !== 0) {
+  if (href.indexOf(path) !== 0) {
     return false
   }
 
-  if (href.length !== currentPath.length && href.substring(currentPath.length, currentPath.length + 1) !== '#') {
+  if (href.length !== path.length && href.substring(path.length, path.length + 1) !== '#') {
     return false
   }
 
@@ -14,8 +14,7 @@ const matchLocation = (href) => {
 }
 
 const matchFragment = (href) => {
-  console.log('check', href, currentFragment)
-  if (currentFragment.match(/^#?$/)) {
+  if (fragment.match(/^#?$/)) {
     return (href.indexOf('#') === -1 || href.match(/#$/))
   }
 
@@ -23,46 +22,21 @@ const matchFragment = (href) => {
     return false
   }
 
-  return `#${href.split('#')[1]}` === currentFragment
+  return `#${href.split('#')[1]}` === fragment
 }
 
-const update = () => {
-  const { pathname, search, hash: newFragment } = window.location
-  const newPath = `${pathname}${search}`
+export const update = (parent) => {
+  const { pathname, search, hash } = window.location
 
-  if (newPath === currentPath && newFragment === currentFragment) {
-    return
-  }
+  path = `${pathname}${search}`
+  fragment = hash
 
-  if (newPath === currentPath) {
-    currentFragment = newFragment
-
-    Array.prototype.forEach.call(document.querySelectorAll('.redact-current'), (link) => {
-      link.classList.toggle('redact-current--fragment', matchFragment(link.getAttribute('href')))
-    })
-
-    return
-  }
-
-  currentPath = newPath
-  currentFragment = newFragment
-
-  Array.prototype.forEach.call(document.querySelectorAll('.redact-current'), (link) => {
-    link.classList.remove('redact-current')
-    link.classList.remove('redact-current--fragment')
-  })
-  Array.prototype.forEach.call(document.querySelectorAll('a'), (link) => {
+  Array.prototype.forEach.call(parent.querySelectorAll('a'), (link) => {
     const href = link.getAttribute('href')
-
-    if (!matchLocation(href)) {
-      return
-    }
-
-    link.classList.add('redact-current')
-
-    if (matchFragment(href)) {
-      link.classList.add('redact-current--fragment')
-    }
+    const currentPath = matchLocation(href)
+    const currentFragment = currentPath && matchFragment(href)
+    link.classList.toggle('redact-current', currentPath)
+    link.classList.toggle('redact-current--fragment', currentFragment)
   })
 }
 
@@ -75,8 +49,8 @@ const events = [
 ]
 
 export const listen = () => {
-  update()
+  update(document)
   events.forEach(([context, eventName]) => {
-    context.addEventListener(eventName, update)
+    context.addEventListener(eventName, () => { update(document) })
   })
 }
