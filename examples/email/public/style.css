@@ -168,7 +168,6 @@ nav button {
 
 main {
   padding: .5rem 1rem 1rem;
-  transition: padding-top 3s;
 }
 
 nav + main {
