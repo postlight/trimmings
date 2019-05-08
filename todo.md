@@ -1,5 +1,4 @@
 - chore: Ensure interoperability with Stimulus
-- test: Autosubmit
 - chore: Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
 - doc: Example - Trello
 - doc: Example - Blog/portfolio, including carousel, contact form, and infinite scroll
