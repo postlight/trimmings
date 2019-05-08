@@ -6,7 +6,7 @@ export const selectors = [
 ]
 
 export const bind = (element) => {
-  if (match(element, 'A', 'redactEmbed')) {
+  if (match(element, 'A', 'redactEmbed') && window.getComputedStyle(element).display !== 'none') {
     const targetSelector = element.dataset.redactEmbed || 'body'
     element.classList.add('redact-loading')
     load(element.getAttribute('href')).then((doc) => {

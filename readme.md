@@ -18,7 +18,7 @@ This project follows in the footsteps of libraries like Turbolinks and Stimulus.
 
 ## Embed
 
-Replaces an `<a>` tag with the contents of the link it points to. Must be the same host but a different path.
+Replaces an `<a>` tag with the contents of the link it points to. Must be the same host but a different path. If the element’s `display` style property is `none`, it will not be replaced. If its `display` property changes as the result of a DOM change (like adding a class), its `embed` hint will be followed immediately.
 
     <a data-redact-embed="main">Thumbnails</a>
 

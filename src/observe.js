@@ -5,7 +5,7 @@ import { update } from './current'
 const observe = () => {
   const observer = new window.MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      if (mutation.type === 'attributes' && mutation.attributeName.indexOf('data-redact') === 0) {
+      if (mutation.type === 'attributes' && Object.keys(mutation.target.dataset).join(',').indexOf('redact') > -1) {
         bind(mutation.target)
       }
 
