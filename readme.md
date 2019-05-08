@@ -10,17 +10,17 @@ This project follows in the footsteps of libraries like Turbolinks and Stimulus.
 
 - *Effortless modals.* Add a modal hint to any internal link and the contents of that link will open inline as a modal while preserving URLs and navigation history.
 
-- *Easier caching.* Keep your pages small and focused and use Redact's powerful inline-prefetch features to compose them into complex views. Now you don't need to think about fragment caching—it's all just pages.
+- *Easier caching.* Keep your pages small and focused and use Redact's powerful inline-embed features to compose them into complex views. Now you don't need to think about fragment caching—it's all just pages.
 
 - *Eject as necessary.* Redact's API was inspired by Stimulus and the two libraries work happily together. Redact is designed to never allow extension with client-side code, but if you ever need to add your own logic, you can drop in Stimulus controllers without disrupting your workflow or your existing Redact hints.
 
 # Features
 
-## Prefetch
+## Embed
 
 Replaces an `<a>` tag with the contents of the link it points to. Must be the same host but a different path.
 
-    <a data-redact-prefetch="main">Thumbnails</a>
+    <a data-redact-embed="main">Thumbnails</a>
 
 ### Arguments
 
