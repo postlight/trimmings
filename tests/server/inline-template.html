@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf8" />
+  <title>Redact test: Inline (Page 1)</title>
+  <script src="/redact.js"></script>
+</head>
+<body>
+  <p>This is page…3?.</p>
+  <a
+    data-redact-inline=".include, .inline-target, template: #template"
+    href="/inline-2.html"
+  >
+    Load page 2 with a template
+  </a>
+  <div class="inline-target"></div>
+  <template id="template">
+    <div class="template-body">
+      <p>You rendered it!</p>
+      <div data-redact-inline-target></div>
+    </div>
+  </template>
+</body>
+</html>

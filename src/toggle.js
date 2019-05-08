@@ -48,7 +48,8 @@ export const bind = (element) => {
     return
   }
 
-  const [targetSelector, className] = parseArgs(element.dataset.redactToggle)
+  const [targetSelector, className] =
+    parseArgs(element.dataset.redactToggle).args
 
   if (element.nodeName === 'BUTTON') {
     element.addEventListener('click', () => {

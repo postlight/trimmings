@@ -2,7 +2,7 @@
   <div class="full-photo">
     {{#if previousPhoto}}
       <a
-        data-redact-inline=".full-photo, .modal-container, #modal-template"
+        data-redact-inline=".full-photo, .modal-container, template: #modal-template"
         data-redact-hotkey="%"
         class="photo-navigation photo-navigation--previous"
         href="/photos/{{previousPhoto.id}}"
@@ -58,7 +58,7 @@
     {{/photo}}
     {{#if nextPhoto}}
       <a
-        data-redact-inline=".full-photo, .modal-container, #modal-template"
+        data-redact-inline=".full-photo, .modal-container, template: #modal-template"
         data-redact-hotkey="'"
         class="photo-navigation photo-navigation--next"
         href="/photos/{{nextPhoto.id}}"

@@ -36,7 +36,7 @@ When the link is followed or form is submitted, load the target document into a 
 
 - selector for target in current document to replace (optional, defaults to `body`)
 - selector in target document to use (optional, defaults to `body`)
-- selector for a template that will wrap your loaded content. If this argument is present, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-redact-inline-target` property will be _replaced_ with the loaded content, and all of this will replace the target specified in the first argument. (optional)
+- `template`: selector for a template that will wrap your loaded content. If this argument is present, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-redact-inline-target` property will be _replaced_ with the loaded content, and all of this will replace the target specified in the first argument. (optional)
 
 ## Replacement
 

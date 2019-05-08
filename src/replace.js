@@ -8,7 +8,7 @@ export const selectors = [
 
 export const bind = (element) => {
   if (typeof element.dataset.redactReplace !== 'undefined') {
-    const replacementSelectors = parseArgs(element.dataset.redactReplace)
+    const replacementSelectors = parseArgs(element.dataset.redactReplace).args
 
     const eventName = element.nodeName === 'FORM' ? 'submit' : 'click'
 

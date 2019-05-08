@@ -13,8 +13,9 @@ const followElement = (element, eventName) => {
 
 export const bind = (element) => {
   if (typeof element.dataset.redactInline !== 'undefined') {
-    const [targetSelector, destinationSelector, templateSelector] =
-      parseArgs(element.dataset.redactInline)
+    const args = parseArgs(element.dataset.redactInline)
+    const [targetSelector, destinationSelector] = args.args
+    const { template: templateSelector } = args.options
 
     const eventName = element.nodeName === 'FORM' ? 'submit' : 'click'
 

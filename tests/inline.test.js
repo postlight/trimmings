@@ -46,4 +46,11 @@ describe('inline', () => {
     await page.waitForNavigation({ timeout: 100 })
     await expect(page.url()).toContain('/inline-2.html?foo=bar')
   })
+
+  test('template', async () => {
+    const page = await browser.newPage()
+    await page.goto('http://localhost:4444/inline-template.html')
+    await expect(page).toClick('a')
+    await expect(page).toMatchElement('.inline-target .template-body .include')
+  })
 })
