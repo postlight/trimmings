@@ -1,7 +1,7 @@
 {
-  "name": "email",
+  "name": "vocabulary",
   "version": "1.0.0",
-  "description": "A fake email app, demo for Redact.js",
+  "description": "A fake learning app, demo for Redact.js",
   "main": "index.js",
   "author": "John Holdun",
   "license": "MIT",

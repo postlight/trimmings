@@ -70,6 +70,7 @@ a {
 
 .btn {
   display: block;
+  width: 100%;
   text-align: center;
   appearance: none;
   -webkit-appearance: none;
@@ -87,6 +88,12 @@ a {
 
 .topics {
   flex: 1 1 auto;
+  margin-top: 1rem;
+}
+
+.topics li {
+  list-style: decimal;
+  margin-left: 1.5rem;
 }
 
 .card {
@@ -123,17 +130,28 @@ a {
   border-bottom: 3px solid #ddddff;
 }
 
-.result {
+.answer {
   line-height: 2rem;
-  color: #fff;
-  text-align: center;
-  border-radius: .25rem;
+  padding: 0 .5rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.result--correct {
+.answer input {
+  position: absolute;
+  left: 150%;
+}
+
+.answer label {
+  cursor: pointer;
+}
+
+.answer--correct {
+  color: #fff;
   background: #72d269;
 }
 
-.result--incorrect {
+.answer--incorrect {
+  color: #fff;
   background: #d23e1d;
 }

@@ -46,38 +46,49 @@ app.get('/topics/:id/quiz', (req, res) => {
   res.send(render('quiz', { title: topic.name, topic, firstQuestion }))
 })
 
-// quiz question (right/wrong)
-app.get('/questions/:id', (req, res) => {
+const renderQuestion = (req, res) => {
   const question = database.get('questions', req.params.id)
   const topic = database.get('topics', question.topicId)
-  const answers =
-    [
-      { answer: question.answer1 },
-      { answer: question.answer2 },
-      { answer: question.answer3 }
-    ]
+  const { tried = '', answer = '' } = req.body
+  const answerIndex = [1, 2, 3].find(n => question[`answer${n}`] === answer)
 
-  res.send(render('question', { title: topic.name, topic, answered: false, question, answers }))
-})
+  const formatAnswer = (index) => {
+    const thisAnswer = question[`answer${index}`]
+    const checked = answer === thisAnswer
+    const selected = checked || tried.indexOf(index) > -1
 
-app.post('/questions/:id', (req, res) => {
-  const question = database.get('questions', req.params.id)
-  const topic = database.get('topics', question.topicId)
-  const { answer } = req.body
+    return {
+      answer: thisAnswer,
+      hotkey: `Digit${index}`,
+      correct: selected && thisAnswer === question.correctAnswer,
+      incorrect: selected && thisAnswer !== question.correctAnswer,
+      checked: answer === thisAnswer
+    }
+  }
 
-  const answers =
-      [
-        { answer: question.answer1, checked: answer === question.answer1 },
-        { answer: question.answer2, checked: answer === question.answer2 },
-        { answer: question.answer3, checked: answer === question.answer3 }
-      ]
-
-  const correct = req.body.answer === question.answer1
+  const answers = [formatAnswer('1'), formatAnswer('2'), formatAnswer('3')]
+  const correct = answer === question.correctAnswer
   const questions = database.filter('questions', (q) => q.topicId === topic.id)
   const questionIndex = questions.indexOf(question)
   const nextQuestion = questions[questionIndex + 1]
-  res.send(render('question', { title: topic.name, question, topic, answered: true, correct, answers, nextQuestion }))
-})
+
+  res.send(render(
+    'question',
+    {
+      title: topic.name,
+      question,
+      topic,
+      correct,
+      answers,
+      nextQuestion,
+      tried: `${tried}${answerIndex || ''}`
+    }
+  ))
+}
+
+app.get('/questions/:id', (req, res) => renderQuestion(req, res))
+
+app.post('/questions/:id', (req, res) => renderQuestion(req, res))
 
 // quiz complete
 app.get('/topics/:id/complete', (req, res) => {

@@ -1,0 +1,34 @@
+<h1>{{topic.name}}</h1>
+<div class="question">
+  <div class="question__symbol">
+    {{question.question}}
+  </div>
+  <form class="question__form" data-redact-autosubmit method="post" action="/questions/{{question.id}}">
+    <input type="hidden" name="tried" value="{{tried}}" />
+    {{#answers}}
+      <div class="answer {{#correct}}answer--correct{{/correct}} {{#incorrect}}answer--incorrect{{/incorrect}}">
+        <input type="radio" id="answer_{{@index}}" name="answer" value="{{answer}}" {{#checked}}checked{{/checked}} data-redact-hotkey="{{hotkey}}" />
+        <label for="answer_{{@index}}">{{answer}}</label>
+      </div>
+    {{/answers}}
+    {{#if correct}}
+      {{#if nextQuestion}}
+        <p>
+          <a class="btn" href="/questions/{{nextQuestion.id}}" data-redact-hotkey="Space Enter ArrowRight">
+            Continue
+          </a>
+        </p>
+      {{else}}
+        <p>
+          <a class="btn" href="/topics/{{topic.id}}/complete" data-redact-hotkey="Space Enter ArrowRight">
+            Continue
+          </a>
+        </p>
+      {{/if}}
+    {{else}}
+      <button class="btn btn--submit">
+        Check
+      </button>
+    {{/if}}
+  </form>
+</div>
