@@ -1,9 +1,9 @@
-- feat: Inline - Multiple render targets for inline
+- feat: Inline - Multiple render targets
 - feat: Inline - Optionally update location (preserve history)
-- feat: Check for newly-revealed nodes based on media query changes
 - feat: Autoclick - Click link (or button, or submit form?) when it scrolls into view, or after a duration; should interoperate with other features e.g. inline load
 - doc: Example - Blog/portfolio, including carousel, contact form, and infinite scroll
 - chore: Ensure interoperability with Stimulus
 - feat: Bindings for swiping? Swipe on hinted el = click on selected button?
 - feat: Inline - Form submission should support multipart
 - chore: Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
+- feat: Check for newly-revealed nodes based on media query changes
