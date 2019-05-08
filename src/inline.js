@@ -15,7 +15,7 @@ export const bind = (element) => {
   if (typeof element.dataset.redactInline !== 'undefined') {
     const args = parseArgs(element.dataset.redactInline)
     const [targetSelector, destinationSelector] = args.args
-    const { template: templateSelector } = args.options
+    const { template: templateSelector, method = 'replace' } = args.options
 
     const eventName = element.nodeName === 'FORM' ? 'submit' : 'click'
 
@@ -65,8 +65,45 @@ export const bind = (element) => {
           content = fragment
         }
 
+        if (method.indexOf('reduce') === 0) {
+          Array.prototype.forEach.call(destination.children, (child) => {
+            child.dataset.redactChild = 'true'
+          })
+
+          const savedChild = element.closest('[data-redact-child]')
+
+          if (savedChild) {
+            savedChild.removeAttribute('data-redact-child')
+          }
+
+          Array.prototype.forEach.call(destination.querySelectorAll('[data-redact-child]'), (child) => {
+            child.parentNode.removeChild(child)
+          })
+        }
+
+        const html = content instanceof window.DocumentFragment ? content.innerHTML : content.outerHTML
+
+        switch (method) {
+          case 'replace':
+            destination.innerHTML = html
+            break
+
+          case 'reduce-prepend': // fall through
+          case 'prepend': // fall through
+            destination.innerHTML = `${html}${destination.innerHTML}`
+            break
+
+          case 'reduce-append': // fall through
+          case 'append':
+            destination.innerHTML = `${destination.innerHTML}${html}`
+            break
+
+          default:
+            followElement(element, eventName)
+            break
+        }
+
         element.classList.remove('redact-loading')
-        destination.innerHTML = content.innerHTML
       })
     })
 

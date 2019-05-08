@@ -37,6 +37,12 @@ When the link is followed or form is submitted, load the target document into a 
 - selector for target in current document to replace (optional, defaults to `body`)
 - selector in target document to use (optional, defaults to `body`)
 - `template`: selector for a template that will wrap your loaded content. If this argument is present, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-redact-inline-target` property will be _replaced_ with the loaded content, and all of this will replace the target specified in the first argument. (optional)
+- `method`: One of `replace`, `prepend`, `append`, `reduce-prepend`, or `reduce-append`. (Optional, defaults to `replace`)
+  - `replace`: The children of your destination element will be removed and your new inline content will be inserted instead.
+  - `prepend`: The children of your destination element will be preserved and your new inline content will be inserted before it.
+  - `append`: The children of your destination element will be preserved and your new inline content will be inserted after it.
+  - `reduce-prepend`: If the triggering element is inside the destination element, the immediate child of the destination element that includes the triggering element will be preserved and your new inline content will be inserted before it. Otherwise, this works identically to `replace`.
+  - `reduce-append`: If the triggering element is inside the destination element, the immediate child of the destination element that includes the triggering element will be preserved and your new inline content will be inserted after it. Otherwise, this works identically to `replace`.
 
 ## Replacement
 

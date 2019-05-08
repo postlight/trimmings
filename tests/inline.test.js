@@ -53,4 +53,34 @@ describe('inline', () => {
     await expect(page).toClick('a')
     await expect(page).toMatchElement('.inline-target .template-body .include')
   })
+
+  describe('methods', () => {
+    test('prepend', async () => {
+      const page = await browser.newPage()
+      await page.goto('http://localhost:4444/inline-method.html')
+      await expect(page).toClick('a.prepend')
+      await expect(page).toMatchElement('.include + .child-1 + .child-2 + .child-3')
+    })
+
+    test('append', async () => {
+      const page = await browser.newPage()
+      await page.goto('http://localhost:4444/inline-method.html')
+      await expect(page).toClick('a.append')
+      await expect(page).toMatchElement('.child-1 + .child-2 + .child-3 + .include')
+    })
+
+    test('reduce-prepend', async () => {
+      const page = await browser.newPage()
+      await page.goto('http://localhost:4444/inline-method.html')
+      await expect(page).toClick('a.reduce-prepend')
+      await expect(page).toMatchElement('.include:first-child + .child-2:last-child')
+    })
+
+    test('reduce-append', async () => {
+      const page = await browser.newPage()
+      await page.goto('http://localhost:4444/inline-method.html')
+      await expect(page).toClick('a.reduce-append')
+      await expect(page).toMatchElement('.child-2:first-child + .include:last-child')
+    })
+  })
 })

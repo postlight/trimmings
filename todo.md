@@ -1,4 +1,3 @@
-- feat: Inline - Choose add method (replace, append, prepend, reduce-append, reduce-prepend; default is replace)
 - feat: Inline - Multiple render targets for inline
 - feat: Inline - Optionally update location (preserve history)
 - feat: Check for newly-revealed nodes based on media query changes
