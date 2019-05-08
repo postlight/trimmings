@@ -1,33 +1,20 @@
-import parseArgs from './parseArgs'
-
-const registered = []
-
-export const selectors = [
-  'a[data-redact-hotkey]',
-  'button[data-redact-hotkey]'
-]
-
 export const listen = () => {
   window.addEventListener('keydown', (e) => {
-    const { controlKey, shiftKey, altKey, metaKey, keyCode } = e
+    const identifier =
+      [
+        e.altKey ? 'Alt' : null,
+        e.ctrlKey ? 'Control' : null,
+        e.metaKey ? 'Meta' : null,
+        e.shiftKey ? 'Shift' : null,
+        !e.code.match(/Alt|Shift|Control|Meta/) ? e.code : null
+      ]
+        .filter(Boolean)
+        .join('+')
 
-    const input =
-      `${String.fromCharCode(keyCode)} ${controlKey ? 'ctrl' : ''} ${shiftKey ? 'shift' : ''} ${metaKey ? 'meta' : ''} ${altKey ? 'alt' : ''}`
-        .trim()
-        .toLowerCase()
-        .split(/\s+/g)
-        .sort()
-
-    const element = (registered.find(hotkey => hotkey[1].join(',') === input.join(',')) || [])[0]
+    const element = document.querySelector(`[data-redact-hotkey~="${identifier}"]`)
 
     if (element) {
       element.click()
     }
   })
-}
-
-export const bind = (element) => {
-  if (typeof element.dataset.redactHotkey !== 'undefined') {
-    registered.push([element, parseArgs(element.dataset.redactHotkey.toLowerCase()).sort()])
-  }
 }

@@ -1,6 +1,5 @@
 import bind from './bind'
 import { selectors as autosubmitSelectors } from './autosubmit'
-import { selectors as hotkeysSelectors } from './hotkeys'
 import { selectors as inlineSelectors } from './inline'
 import { selectors as prefetchSelectors } from './prefetch'
 import { selectors as removeSelectors } from './remove'
@@ -10,7 +9,6 @@ import { selectors as toggleSelectors } from './toggle'
 const selectors =
   []
     .concat(autosubmitSelectors)
-    .concat(hotkeysSelectors)
     .concat(inlineSelectors)
     .concat(prefetchSelectors)
     .concat(removeSelectors)

@@ -83,16 +83,13 @@ When a `<button>` with this hint is clicked, the target node is removed from the
 
 ## Hotkey
 
-Treat the user pressing the specified keyboard shortcut as a click on this button or link.
+Treat the user pressing the specified keyboard shortcut as a click on this button or link. If multiple elements match the shortcut, only the first one (as matched by document.querySelector) will be clicked.
 
-    <button data-react-hotkey="ctrl, s">
+    <button data-react-hotkey="Ctrl+KeyS">
 
 ### Arguments
 
-- the key to press (case-insensitive)
-- one or more modifers that must also be depressed (optional, any of ctrl, control, command, cmd, shift, alt, opt, or option)
-- note that ctrl, control, cmd, and command are all synonyms, as are alt, opt, and option
-- note that arguments may appear in any order
+One or more key combinations, separated by spaces (**No commas!**). The keys in a combination must be separated by plus signs (`+`). If you wish to include modifiers, they must be present in this order: Alt, Control, Meta, Shift. Your non-modifer keys must exactly match the values returned by [`KeyboardEvent.code`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code).
 
 ## Current (auto feature)
 
