@@ -17,6 +17,8 @@ const selectors =
     .join(',')
 
 const bindChildren = (container) => {
+  document.body.classList.add('redact')
+
   Array.prototype.forEach.call(container.querySelectorAll(selectors), (element) => {
     bind(element)
   })

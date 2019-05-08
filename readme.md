@@ -95,3 +95,6 @@ One or more key combinations, separated by spaces (**No commas!**). The keys in 
 
 Any `<a>` whose `href` matches the current URL will automatically receive the `redact-current` class. A `<a>` whose `href` matches the current URL _including the fragment_ will additionally receive the `redact-current--fragment` class. If the location or fragment changes, these links will be updated on all `<a>` tags as necessary.
 
+## Enabled (auto feature)
+
+When Redact begins scanning your page, it will add the `redact` class to `<body>`. Useful for toggling visibility of Javascript-enabled features with CSS.
