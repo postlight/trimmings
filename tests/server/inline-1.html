@@ -7,7 +7,8 @@
 </head>
 <body>
   <p>This is page 1.</p>
-  <a data-redact-inline=".include, .inline-target" href="/inline-2.html">Load page 2</a>
+  <a class="first" data-redact-inline=".include, .inline-target" href="/inline-2.html">Load page 2</a>
+  <a class="update-title" data-redact-inline=".include, .inline-target, updateTitle: true" href="/inline-2.html">Load page 2 (again, but with title)</a>
   <div class="inline-target"></div>
   <a class="false-target" data-redact-inline=".include, .does-not-exist" href="/inline-2.html">
     Try loading page 2 into a container that does not exist

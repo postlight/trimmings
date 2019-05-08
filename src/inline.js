@@ -15,7 +15,11 @@ export const bind = (element) => {
   if (typeof element.dataset.redactInline !== 'undefined') {
     const args = parseArgs(element.dataset.redactInline)
     const [targetSelector, destinationSelector] = args.args
-    const { template: templateSelector, method = 'replace' } = args.options
+    const {
+      template: templateSelector,
+      method = 'replace',
+      updateTitle
+    } = args.options
 
     const eventName = element.nodeName === 'FORM' ? 'submit' : 'click'
 
@@ -101,6 +105,10 @@ export const bind = (element) => {
           default:
             followElement(element, eventName)
             break
+        }
+
+        if (updateTitle) {
+          document.title = doc.querySelector('title').innerHTML
         }
 
         element.classList.remove('redact-loading')

@@ -36,6 +36,7 @@ When the link is followed or form is submitted, load the target document into a 
 
 - selector for target in current document to replace (optional, defaults to `body`)
 - selector in target document to use (optional, defaults to `body`)
+- `updateTitle`: when this is `true`, the document title will be replace with the title of the target document after loading. (optional, defaults to false)
 - `template`: selector for a template that will wrap your loaded content. If this argument is present, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-redact-inline-target` property will be _replaced_ with the loaded content, and all of this will replace the target specified in the first argument. (optional)
 - `method`: One of `replace`, `prepend`, `append`, `reduce-prepend`, or `reduce-append`. (Optional, defaults to `replace`)
   - `replace`: The children of your destination element will be removed and your new inline content will be inserted instead.
