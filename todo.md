@@ -2,7 +2,6 @@
 - chore: Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
 - feat: Inline - Multiple render targets for inline
 - feat: Inline - Form submission should support multipart
-- feat: Inline - Optionally update document.title
 - feat: Inline - Optionally update location (preserve history)
 - feat: Inline - Choose add method (replace, append, prepend; default is replace)
 - feat: Embed - Don't embed if element is not rendered/something controllable with breakpoints?

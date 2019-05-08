@@ -7,4 +7,5 @@ test('replace', async () => {
   await expect(page).toMatch('This is page 2.')
   await expect(page).toMatch('This has always been page 2!')
   await expect(page).toMatch('Thank you for your time.')
+  expect(await page.title()).toMatch('Page 2')
 })
