@@ -1,11 +1,10 @@
 - chore: Ensure interoperability with Stimulus
 - chore: Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
 - feat: Inline - Follow link as usual if target does not exist
-- feat: Inline - Multiple render targets for inline?
-- feat: Inline - Optionally update history
+- feat: Inline - Multiple render targets for inline
 - feat: Inline - Form submission should support multipart
-- feat: Inline - Optionally keep destination's previous contents (i.e. sliding/page turning effects)
-- feat: Inline - Optionally update location and document.title
+- feat: Inline - Optionally update document.title
+- feat: Inline - Optionally update location (preserve history)
 - feat: Inline - Choose add method (replace, append, prepend; default is replace)
 - feat: Embed - Don't embed if element is not rendered/something controllable with breakpoints?
 - feat: Bindings for swiping? Swipe on hinted el = click on selected button?
