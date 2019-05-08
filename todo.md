@@ -3,7 +3,6 @@
 - feat: Inline - Follow link as usual if target does not exist
 - feat: Inline - Multiple render targets for inline?
 - feat: Inline - Optionally update history
-- feat: Inline - Loading states
 - feat: Inline - Form submission should support multipart
 - feat: Inline - Optionally keep destination's previous contents (i.e. sliding/page turning effects)
 - feat: Inline - Optionally update location and document.title

@@ -15,7 +15,9 @@ export const bind = (element) => {
 
     element.addEventListener(eventName, (e) => {
       e.preventDefault()
+      element.classList.add('redact-loading')
       loadElement(element).then((doc) => {
+        element.classList.remove('redact-loading')
         const destination = document.querySelector(destinationSelector)
         destination.innerHTML = ''
         let content = doc.querySelector(targetSelector)
