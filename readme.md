@@ -36,7 +36,7 @@ When the link is followed or form is submitted, load the target document into a 
 
 - selector for target in current document to replace (optional, defaults to `body`)
 - selector in target document to use (optional, defaults to `body`)
-- selector for a template that will wrap your loaded content. If this argument is present, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-react-inline-target` property will be _replaced_ with the loaded content, and all of this will replace the target specified in the first argument. (optional)
+- selector for a template that will wrap your loaded content. If this argument is present, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-redact-inline-target` property will be _replaced_ with the loaded content, and all of this will replace the target specified in the first argument. (optional)
 
 ## Replacement
 
@@ -50,7 +50,7 @@ When the link is followed or form is submitted, replace all of the selected elem
 
 - selector for target in current document to replace (optional, defaults to `body`)
 - selector in target document to use (optional, defaults to `body`)
-- selector for a template that will wrap your loaded content. If this argument is present, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-react-inline-target` property will be _replaced_ with the loaded content, and all of this will replace the target specified in the first argument. (optional)
+- selector for a template that will wrap your loaded content. If this argument is present, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-redact-inline-target` property will be _replaced_ with the loaded content, and all of this will replace the target specified in the first argument. (optional)
 
 ## Autosubmit
 
@@ -85,7 +85,7 @@ When a `<button>` with this hint is clicked, the target node is removed from the
 
 Treat the user pressing the specified keyboard shortcut as a click on this button or link. If multiple elements match the shortcut, only the first one (as matched by document.querySelector) will be clicked.
 
-    <button data-react-hotkey="Ctrl+KeyS">
+    <button data-redact-hotkey="Ctrl+KeyS">
 
 ### Arguments
 
