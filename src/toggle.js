@@ -5,6 +5,44 @@ export const selectors = [
   'input[data-redact-toggle]'
 ]
 
+const inputHandler = (element, targetSelector, className) =>
+  () => {
+    const type = element.getAttribute('type')
+
+    if (['radio', 'checkbox'].includes(type)) {
+      document
+        .querySelector(targetSelector)
+        .classList
+        .toggle(className, element.checked)
+
+      if (type === 'radio') {
+        if (element.dataset.redactChainToggle === 'true') {
+          element.dataset.redactChainToggle = null
+          return
+        }
+
+        const name = element.getAttribute('name')
+        const radios =
+          document.querySelectorAll(`input[type="radio"][name="${name}"]`)
+
+        Array.prototype.forEach.call(radios, (radio) => {
+          if (radio === element) {
+            return
+          }
+
+          radio.dataset.redactChainToggle = 'true'
+          radio.dispatchEvent(new window.Event('change'))
+        })
+      }
+    } else {
+      console.log('length', (element.value || '').toString().length)
+      document
+        .querySelector(targetSelector)
+        .classList
+        .toggle(className, (element.value || '').toString().length > 0)
+    }
+  }
+
 export const bind = (element) => {
   if (typeof element.dataset.redactToggle === 'undefined') {
     return
@@ -17,13 +55,9 @@ export const bind = (element) => {
       document.querySelector(targetSelector).classList.toggle(className)
     })
   } else if (element.nodeName === 'INPUT') {
-    element.addEventListener('change', () => {
-      // TODO: this is not un-toggling for the previously-checked radio
-      document
-        .querySelector(targetSelector)
-        .classList
-        .toggle(className, element.checked)
-    })
+    const handler = inputHandler(element, targetSelector, className)
+    element.addEventListener('input', handler)
+    element.addEventListener('change', handler)
   }
 
   element.removeAttribute('data-redact-toggle')

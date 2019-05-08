@@ -62,7 +62,7 @@ Submits a form automatically on change.
 
 ## Toggle
 
-Controls a class on a target element when the user interacts with the current element. When used on a `<button>`, the class is toggled. On an `<input>` of type `checkbox` or `radio`, the class's presence is synced with the checked state of the input (i.e. if the input is checked, the class is added).
+Controls a class on a target element when the user interacts with the current element. When used on a `<button>`, the class is toggled. On a text `<input>`, the class's presence is synced with the presence of a field value. On an `<input>` of type `checkbox` or `radio`, the class's presence is synced with the checked state of the input (i.e. if the input is checked, the class is added). Note that other `radio` element with the same `name` attribute will be _un_-toggled.
 
     <button data-redact-toggle=".menu, menu--visible">
 
