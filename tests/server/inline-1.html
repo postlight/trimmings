@@ -9,5 +9,22 @@
   <p>This is page 1.</p>
   <a data-redact-inline=".include, .inline-target" href="/inline-2.html">Load page 2</a>
   <div class="inline-target"></div>
+  <a class="false-target" data-redact-inline=".include, .does-not-exist" href="/inline-2.html">
+    Try loading page 2 into a container that does not exist
+  </a>
+  <a class="false-include" data-redact-inline=".does-not-exist, .inline-target" href="/inline-2.html">
+    Try loading page 2 into a container that does exist but from a target that does not
+  </a>
+  <a class="false-template" data-redact-inline=".include, .inline-target, .false-template" href="/inline-2.html">
+    Try loading page 2 from and to real elements BUT with a template that doesn’t exist
+  </a>
+  <form method="get" action="/inline-2.html" data-redact-inline=".include, .form-inline-target">
+    <button class="good">Submit inline form</button>
+  </form>
+  <div class="form-inline-target"></div>
+  <form method="get" action="/inline-2.html" data-redact-inline=".does-not-exist, .form-inline-target">
+    <input type="hidden" name="foo" value="bar" />
+    <button class="bad">Submit bad inline form</button>
+  </form>
 </body>
 </html>

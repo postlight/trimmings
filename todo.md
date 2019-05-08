@@ -1,6 +1,5 @@
 - chore: Ensure interoperability with Stimulus
 - chore: Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
-- feat: Inline - Follow link as usual if target does not exist
 - feat: Inline - Multiple render targets for inline
 - feat: Inline - Form submission should support multipart
 - feat: Inline - Optionally update document.title
