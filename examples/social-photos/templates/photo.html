@@ -3,7 +3,7 @@
     {{#if previousPhoto}}
       <a
         data-redact-inline=".full-photo, .modal-container, template: #modal-template"
-        data-redact-hotkey="%"
+        data-redact-hotkey="ArrowLeft"
         class="photo-navigation photo-navigation--previous"
         href="/photos/{{previousPhoto.id}}"
       >
@@ -59,7 +59,7 @@
     {{#if nextPhoto}}
       <a
         data-redact-inline=".full-photo, .modal-container, template: #modal-template"
-        data-redact-hotkey="'"
+        data-redact-hotkey="ArrowRight"
         class="photo-navigation photo-navigation--next"
         href="/photos/{{nextPhoto.id}}"
       >
