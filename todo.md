@@ -6,3 +6,4 @@
 - feat: Inline - Form submission should support multipart
 - chore: Ensure cross-browser compatibility (IE11, Chrome, Safari, Firefox)
 - feat: Check for newly-revealed nodes based on media query changes
+  - listen on resize, orientation change
