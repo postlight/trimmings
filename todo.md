@@ -1,4 +1,3 @@
-- feat: Inline - Optionally update location (preserve history)
 - feat: Autoclick - Click link (or button, or submit form?) when it scrolls into view, or after a duration; should interoperate with other features e.g. inline load
 - doc: Example - Blog/portfolio, including carousel, contact form, and infinite scroll
 - chore: Ensure interoperability with Stimulus
