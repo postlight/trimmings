@@ -25,6 +25,14 @@ const matchFragment = (href) => {
   return `#${href.split('#')[1]}` === fragment
 }
 
+const toggleClass = (element, className, state) => {
+  if (state && !element.classList.contains(className)) {
+    element.classList.add(className)
+  } else if (!state && element.classList.contains(className)) {
+    element.classList.remove(className)
+  }
+}
+
 export const render = (parent) => {
   const { pathname, search, hash } = window.location
 
@@ -35,7 +43,7 @@ export const render = (parent) => {
     const href = link.getAttribute('href')
     const currentPath = matchLocation(href)
     const currentFragment = currentPath && matchFragment(href)
-    link.classList.toggle('redact-current', currentPath)
-    link.classList.toggle('redact-current--fragment', currentFragment)
+    toggleClass(link, 'redact-current', currentPath)
+    toggleClass(link, 'redact-current--fragment', currentFragment)
   })
 }

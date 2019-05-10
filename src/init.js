@@ -18,6 +18,13 @@ const handlers = [
 
 const checkEligibility = (e, dataKeys) => {
   if (dataKeys.join(',').indexOf('redact') === -1) {
+    if (e.type === 'click') {
+      const parent = e.target.closest('[data-redact-inline]')
+      if (parent) {
+        return { keys: 'redactInline' }
+      }
+    }
+
     if (['change', 'input'].includes(e.type)) {
       const form = e.target.closest('form')
       if (form && typeof form.dataset.redactAutosubmit !== 'undefined') {
@@ -52,8 +59,6 @@ const init = () => {
 
   const handleEvent = (e) => {
     const dataKeys = Object.keys(e.target.dataset)
-
-    console.log('greetings', e.type, dataKeys, e.target.value)
 
     const eligibility = checkEligibility(e, dataKeys)
 

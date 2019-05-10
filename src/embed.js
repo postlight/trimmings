@@ -2,7 +2,7 @@ import load from './load'
 
 export const render = (container) => {
   Array.prototype.forEach.call(container.querySelectorAll('a[data-redact-embed]'), element => {
-    if (window.getComputedStyle(element).display === 'none') {
+    if (window.getComputedStyle(element).display === 'none' || element.classList.contains('redact-loading')) {
       return
     }
     const targetSelector = element.dataset.redactEmbed || 'body'
@@ -11,6 +11,5 @@ export const render = (container) => {
       const newNode = doc.querySelector(targetSelector)
       element.parentNode.replaceChild(newNode, element)
     })
-    element.removeAttribute('data-redact-embed')
   })
 }

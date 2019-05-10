@@ -1,3 +1,5 @@
 export const render = () => {
-  document.body.classList.add('redact')
+  if (!document.body.classList.contains('redact')) {
+    document.body.classList.add('redact')
+  }
 }

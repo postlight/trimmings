@@ -7,16 +7,20 @@ export const selectors = [
   'form[data-redact-inline]'
 ]
 
-const followElement = (element, eventName) => {
-  element.dataset.redactDisableInline = 'true'
+const followElement = (element, boundElement, eventName) => {
+  boundElement.removeAttribute('data-redact-inline')
   element[eventName]()
 }
 
 const updateState = () => {
   const { content, tag, title } = window.history.state
-  document.title = title
-  document.querySelector(`[data-redact-location-tag="${tag}"]`).innerHTML =
-    content
+  if (title) {
+    document.title = title
+  }
+  const taggedEl = document.querySelector(`[data-redact-location-tag="${tag}"]`)
+  if (taggedEl) {
+    taggedEl.innerHTML = content
+  }
 }
 
 export const listen = () => {
@@ -24,7 +28,17 @@ export const listen = () => {
 }
 
 export const handle = (e) => {
-  const element = e.target
+  const originalElement = e.target
+  let element = originalElement
+
+  if (typeof element.dataset.redactInline === 'undefined') {
+    element = e.target.closest('[data-redact-inline]')
+  }
+
+  if (element.dataset.redactDisableInline === 'true') {
+    return true
+  }
+
   const eventName = e.type
 
   const args = parseArgs(element.dataset.redactInline)
@@ -36,16 +50,20 @@ export const handle = (e) => {
     updateTitle
   } = args.options
 
-  if (element.dataset.redactDisableInline === 'true') {
+  const destination = document.querySelector(destinationSelector)
+
+  if (!destination) {
     return true
   }
 
   e.preventDefault()
-  const destination = document.querySelector(destinationSelector)
 
-  if (!destination) {
-    followElement(element, eventName)
-    return
+  const fallback = () => {
+    followElement(originalElement, element, eventName)
+  }
+
+  if (element.classList.contains('redact-loading')) {
+    return false
   }
 
   const previousState = destination.innerHTML
@@ -56,7 +74,7 @@ export const handle = (e) => {
     let content = doc.querySelector(targetSelector)
 
     if (!content) {
-      followElement(element, eventName)
+      fallback()
       return
     }
 
@@ -64,7 +82,7 @@ export const handle = (e) => {
       const template = document.querySelector(templateSelector)
 
       if (!template) {
-        followElement(element, eventName)
+        fallback()
         return
       }
 
@@ -73,7 +91,7 @@ export const handle = (e) => {
       const target = holder.querySelector('[data-redact-inline-target]')
 
       if (!target) {
-        followElement(element, eventName)
+        fallback()
         return
       }
 
@@ -117,7 +135,7 @@ export const handle = (e) => {
         break
 
       default:
-        followElement(element, eventName)
+        fallback()
         break
     }
 
