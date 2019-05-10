@@ -64,7 +64,7 @@ describe('inline', () => {
     await expect(page).toMatchElement('.inline-target .template-body .include')
   })
 
-  test.only('update location', async () => {
+  test('update location', async () => {
     const page = await browser.newPage()
     await page.goto('http://localhost:4444/inline-location.html')
 

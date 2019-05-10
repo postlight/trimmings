@@ -25,7 +25,7 @@ const matchFragment = (href) => {
   return `#${href.split('#')[1]}` === fragment
 }
 
-export const update = (parent) => {
+export const render = (parent) => {
   const { pathname, search, hash } = window.location
 
   path = `${pathname}${search}`
@@ -37,20 +37,5 @@ export const update = (parent) => {
     const currentFragment = currentPath && matchFragment(href)
     link.classList.toggle('redact-current', currentPath)
     link.classList.toggle('redact-current--fragment', currentFragment)
-  })
-}
-
-const events = [
-  [window, 'DOMContentLoaded'],
-  [document, 'turbolinks:render'],
-  [window, 'hashchange'],
-  [window, 'popstate'],
-  [window, 'pushstate']
-]
-
-export const listen = () => {
-  update(document)
-  events.forEach(([context, eventName]) => {
-    context.addEventListener(eventName, () => { update(document) })
   })
 }

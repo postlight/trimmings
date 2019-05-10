@@ -1,12 +1,14 @@
 import parseArgs from './parseArgs'
 
-export const selectors = [
-  'button[data-redact-toggle]',
-  'input[data-redact-toggle]'
-]
+export const handle = (e) => {
+  const element = e.target
 
-const inputHandler = (element, targetSelector, className) =>
-  () => {
+  const [targetSelector, className] =
+    parseArgs(element.dataset.redactToggle).args
+
+  if (element.nodeName === 'BUTTON') {
+    document.querySelector(targetSelector).classList.toggle(className)
+  } else if (element.nodeName === 'INPUT') {
     const type = element.getAttribute('type')
 
     if (['radio', 'checkbox'].includes(type)) {
@@ -31,35 +33,15 @@ const inputHandler = (element, targetSelector, className) =>
           }
 
           radio.dataset.redactChainToggle = 'true'
-          radio.dispatchEvent(new window.Event('change'))
+          console.log('change', radio.value)
+          radio.dispatchEvent(new window.Event('change', { bubbles: true }), true)
         })
       }
     } else {
-      console.log('length', (element.value || '').toString().length)
       document
         .querySelector(targetSelector)
         .classList
         .toggle(className, (element.value || '').toString().length > 0)
     }
   }
-
-export const bind = (element) => {
-  if (typeof element.dataset.redactToggle === 'undefined') {
-    return
-  }
-
-  const [targetSelector, className] =
-    parseArgs(element.dataset.redactToggle).args
-
-  if (element.nodeName === 'BUTTON') {
-    element.addEventListener('click', () => {
-      document.querySelector(targetSelector).classList.toggle(className)
-    })
-  } else if (element.nodeName === 'INPUT') {
-    const handler = inputHandler(element, targetSelector, className)
-    element.addEventListener('input', handler)
-    element.addEventListener('change', handler)
-  }
-
-  element.removeAttribute('data-redact-toggle')
 }

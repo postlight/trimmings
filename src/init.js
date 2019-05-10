@@ -1,20 +1,75 @@
-import { listen as currentListen } from './current'
 import { listen as hotkeysListen } from './hotkeys'
-import { listen as inlineListen } from './inline'
-import bindChildren from './bindChildren'
 import observe from './observe'
+import render from './render'
+
+import { handle as toggleHandle } from './toggle'
+import { handle as replaceHandle } from './replace'
+import { handle as removeHandle } from './remove'
+import { handle as inlineHandle, listen as inlineListen } from './inline'
+import { handle as autosubmitHandle } from './autosubmit'
+
+const handlers = [
+  ['redactToggle', ['click', 'input', 'change'], toggleHandle],
+  ['redactReplace', ['submit', 'click'], replaceHandle],
+  ['redactRemove', ['click'], removeHandle],
+  ['redactInline', ['submit', 'click'], inlineHandle],
+  ['redactAutosubmit', ['change'], autosubmitHandle]
+]
+
+const checkEligibility = (e, dataKeys) => {
+  if (dataKeys.join(',').indexOf('redact') === -1) {
+    if (['change', 'input'].includes(e.type)) {
+      const form = e.target.closest('form')
+      console.log(form, typeof form.dataset.redactAutosubmit)
+      if (form && typeof form.dataset.redactAutosubmit !== 'undefined') {
+        return { keys: 'redactAutosubmit' }
+      }
+    }
+
+    return null
+  }
+
+  return { keys: dataKeys }
+}
 
 const init = () => {
-  currentListen()
   hotkeysListen()
   inlineListen()
   observe()
-  bindChildren(document)
-  document.addEventListener('turbolinks:render', () => {
-    // TODO: This is probably inefficient and we should maybe be more careful
-    // about creating new MutationObservers
-    observe()
-    bindChildren(document)
+  render(document)
+
+  const events = [
+    [window, 'DOMContentLoaded'],
+    [document, 'turbolinks:render'],
+    [window, 'hashchange'],
+    [window, 'popstate'],
+    [window, 'pushstate']
+  ]
+
+  events.forEach(([context, eventName]) => {
+    context.addEventListener(eventName, () => { render(document) })
+  })
+
+  const handleEvent = (e) => {
+    const dataKeys = Object.keys(e.target.dataset)
+
+    console.log('greetings', e.type, dataKeys, e.target.value)
+
+    const eligibility = checkEligibility(e, dataKeys)
+
+    if (!eligibility) {
+      return true
+    }
+
+    handlers.forEach(([key, types, handle]) => {
+      if (eligibility.keys.includes(key) && types.includes(e.type)) {
+        handle(e)
+      }
+    })
+  }
+
+  ;['click', 'submit', 'input', 'change'].forEach((type) => {
+    document.addEventListener(type, handleEvent)
   })
 }
 

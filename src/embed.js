@@ -1,12 +1,10 @@
 import load from './load'
-import match from './match'
 
-export const selectors = [
-  'a[data-redact-embed]'
-]
-
-export const bind = (element) => {
-  if (match(element, 'A', 'redactEmbed') && window.getComputedStyle(element).display !== 'none') {
+export const render = (container) => {
+  Array.prototype.forEach.call(container.querySelectorAll('a[data-redact-embed]'), element => {
+    if (window.getComputedStyle(element).display === 'none') {
+      return
+    }
     const targetSelector = element.dataset.redactEmbed || 'body'
     element.classList.add('redact-loading')
     load(element.getAttribute('href')).then((doc) => {
@@ -14,5 +12,5 @@ export const bind = (element) => {
       element.parentNode.replaceChild(newNode, element)
     })
     element.removeAttribute('data-redact-embed')
-  }
+  })
 }
