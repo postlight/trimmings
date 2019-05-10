@@ -33,7 +33,6 @@ export const handle = (e) => {
           }
 
           radio.dataset.redactChainToggle = 'true'
-          console.log('change', radio.value)
           radio.dispatchEvent(new window.Event('change', { bubbles: true }), true)
         })
       }

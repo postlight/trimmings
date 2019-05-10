@@ -1,3 +1,5 @@
+import serialize from './serialize'
+
 const getDestination = (element) => {
   if (element.nodeName === 'A') {
     return element.getAttribute('href')

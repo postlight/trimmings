@@ -20,7 +20,6 @@ const checkEligibility = (e, dataKeys) => {
   if (dataKeys.join(',').indexOf('redact') === -1) {
     if (['change', 'input'].includes(e.type)) {
       const form = e.target.closest('form')
-      console.log(form, typeof form.dataset.redactAutosubmit)
       if (form && typeof form.dataset.redactAutosubmit !== 'undefined') {
         return { keys: 'redactAutosubmit' }
       }
