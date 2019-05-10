@@ -8,6 +8,15 @@ describe('inline', () => {
     expect(await page.title()).toContain('Page 1')
   })
 
+  test('nested element', async () => {
+    const page = await browser.newPage()
+    await page.goto('http://localhost:4444/inline-1.html')
+    await expect(page).toClick('div.nested-link')
+    await expect(page).not.toMatch('This is page 2')
+    await expect(page).toMatch('Is this what you were expecting?')
+    expect(await page.title()).toContain('Page 1')
+  })
+
   test('standard link with updated title', async () => {
     const page = await browser.newPage()
     await page.goto('http://localhost:4444/inline-1.html')
