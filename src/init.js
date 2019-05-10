@@ -42,7 +42,8 @@ const init = () => {
     [document, 'turbolinks:render'],
     [window, 'hashchange'],
     [window, 'popstate'],
-    [window, 'pushstate']
+    [window, 'pushstate'],
+    [window, 'onorientationchange']
   ]
 
   events.forEach(([context, eventName]) => {
