@@ -61,11 +61,11 @@ When the link is followed or form is submitted, replace all of the selected elem
 
 ## Autosubmit
 
-Submits a form automatically on change.
+Submits a form automatically on change. When applied to a form, any change within the form will submit; when applied to indidual elements, only changes on those elements will submit.
 
-    <form data-redact-auto>
+    <form data-redact-autosubmit>
 
-    <select data-redact-auto>
+    <select data-redact-autosubmit>
 
 ## Toggle
 
