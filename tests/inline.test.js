@@ -64,6 +64,43 @@ describe('inline', () => {
     await expect(page).toMatchElement('.inline-target .template-body .include')
   })
 
+  test.only('update location', async () => {
+    const page = await browser.newPage()
+    await page.goto('http://localhost:4444/inline-location.html')
+
+    // First, click our link
+    await expect(page).toClick('a')
+    await expect(page).toMatch('This is a starting page')
+    await expect(page).toMatch('Is this what you were expecting?')
+    expect(await page.title()).toMatch('Page 2')
+    await expect(page.url()).toContain('/inline-2.html')
+
+    // Now go back and make sure things are how they were
+    await page.goBack()
+    await expect(page).toMatch('This is a starting page')
+    await expect(page).toMatch('Load page 2 with an updated location')
+    await expect(page).not.toMatch('Is this what you were expecting?')
+    expect(await page.title()).toMatch('Inline (Location)')
+    await expect(page.url()).toContain('/inline-location.html')
+
+    // Now go forward and make sure that all of that works too
+    await page.goForward()
+    await expect(page).toMatch('This is a starting page')
+    await expect(page).toMatch('Is this what you were expecting?')
+    expect(await page.title()).toMatch('Page 2')
+    await expect(page.url()).toContain('/inline-2.html')
+
+    // Finally, go back again and click the link *again* to make sure it's still
+    // properly bound
+    await page.goBack()
+    await expect(page).toClick('a')
+    await expect(page).toMatch('This is a starting page')
+    await expect(page).toMatch('Is this what you were expecting?')
+    expect(await page.title()).toMatch('Page 2')
+    await expect(page.url()).toContain('/inline-2.html')
+
+  })
+
   describe('methods', () => {
     test('prepend', async () => {
       const page = await browser.newPage()
