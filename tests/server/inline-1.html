@@ -8,6 +8,10 @@
 <body>
   <p>This is page 1.</p>
   <a class="first" data-redact-inline=".include, .inline-target" href="/inline-2.html">Load page 2</a>
+  <a class="hidden" data-redact-inline=".include, .hidden-inline-target" href="/inline-2.html">
+    Load page 2 in a hidden container
+  </a>
+  <div class="hidden-inline-target" style="display: none"></div>
   <a class="update-title" data-redact-inline=".include, .inline-target, updateTitle: true" href="/inline-2.html">Load page 2 (again, but with title)</a>
   <div class="inline-target"></div>
   <a class="false-target" data-redact-inline=".include, .does-not-exist" href="/inline-2.html">

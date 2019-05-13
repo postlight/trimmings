@@ -28,7 +28,7 @@ Replaces an `<a>` tag with the contents of the link it points to. Must be the sa
 
 ## Inline loading
 
-When the link is followed or form is submitted, load the target document into a specified selector on the current page. Used for modals, partial page changes, preserving state in i.e. sidebar, etc.
+When the link is followed or form is submitted, load the target document into a specified selector on the current page. Used for modals, partial page changes, preserving state in i.e. sidebar, etc. If the destination does not exist or its `display` property is `none`, Redact will fall back to standard link behavior—that is, the link will just navigate to wherever it’s pointing.
 
     <a data-redact-inline=".sidebar, main">Menu</a>
 

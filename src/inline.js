@@ -1,3 +1,4 @@
+import isHidden from './isHidden'
 import getDestination from './getDestination'
 import loadElement from './loadElement'
 import parseArgs from './parseArgs'
@@ -52,7 +53,7 @@ export const handle = (e) => {
 
   const destination = document.querySelector(destinationSelector)
 
-  if (!destination) {
+  if (!destination || isHidden(destination)) {
     return true
   }
 

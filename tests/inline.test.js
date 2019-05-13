@@ -8,6 +8,14 @@ describe('inline', () => {
     expect(await page.title()).toContain('Page 1')
   })
 
+  test('hidden link', async () => {
+    const page = await browser.newPage()
+    await page.goto('http://localhost:4444/inline-1.html')
+    await expect(page).toClick('a.hidden')
+    await page.waitForNavigation({ timeout: 100 })
+    expect(await page.url()).toMatch('/inline-2.html')
+  })
+
   test('nested element', async () => {
     const page = await browser.newPage()
     await page.goto('http://localhost:4444/inline-1.html')
