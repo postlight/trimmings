@@ -1,8 +1,6 @@
 import loadElement from '../utils/loadElement'
 import parseArgs from '../utils/parseArgs'
 
-export const name = 'Replace'
-
 export const handle = (e) => {
   e.preventDefault()
 

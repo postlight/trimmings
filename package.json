@@ -9,8 +9,7 @@
     "lint": "standard *.js tests/**/*.js src/**/*.js",
     "test": "jest",
     "test-server": "node tests/server.js",
-    "build": "rollup -c",
-    "docs": "node -r esm document.js"
+    "build": "rollup -c"
   },
   "jest": {
     "preset": "jest-puppeteer"

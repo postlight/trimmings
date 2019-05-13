@@ -1,5 +1,3 @@
-export const name = 'Current (auto feature)'
-
 let path = ''
 let fragment = ''
 

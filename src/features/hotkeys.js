@@ -1,5 +1,3 @@
-export const name = 'Hotkey'
-
 export const listen = () => {
   window.addEventListener('keydown', (e) => {
     const identifier =
