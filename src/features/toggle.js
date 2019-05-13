@@ -1,3 +1,4 @@
+import isRegularClick from '../utils/isRegularClick'
 import parseArgs from '../utils/parseArgs'
 
 export const key = 'redactToggle'
@@ -11,6 +12,10 @@ export const handle = (e) => {
     parseArgs(element.dataset.redactToggle).args
 
   if (element.nodeName === 'BUTTON') {
+    if (e.type === 'click' && !isRegularClick(e)) {
+      return
+    }
+
     document.querySelector(targetSelector).classList.toggle(className)
   } else if (element.nodeName === 'INPUT') {
     const type = element.getAttribute('type')

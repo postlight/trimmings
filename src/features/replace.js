@@ -1,3 +1,4 @@
+import isRegularClick from '../utils/isRegularClick'
 import loadElement from '../utils/loadElement'
 import parseArgs from '../utils/parseArgs'
 
@@ -6,6 +7,10 @@ export const key = 'redactReplace'
 export const eventNames = ['submit', 'click']
 
 export const handle = (e) => {
+  if (e.type === 'click' && !isRegularClick(e)) {
+    return
+  }
+
   e.preventDefault()
 
   const element = e.target

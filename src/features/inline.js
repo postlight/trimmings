@@ -1,4 +1,5 @@
 import isHidden from '../utils/isHidden'
+import isRegularClick from '../utils/isRegularClick'
 import getDestination from '../utils/getDestination'
 import loadElement from '../utils/loadElement'
 import parseArgs from '../utils/parseArgs'
@@ -28,6 +29,10 @@ export const listen = () => {
 }
 
 export const handle = (e) => {
+  if (e.type === 'click' && !isRegularClick(e)) {
+    return
+  }
+
   const originalElement = e.target
   let element = originalElement
 
