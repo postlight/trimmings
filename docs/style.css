@@ -5,7 +5,7 @@
 }
 
 html {
-  font: 20px/30px "IBM Plex Mono", monospace;
+  font: 20px/30px "IBM Plex Serif", serif;
 }
 
 body {
@@ -23,7 +23,7 @@ body:before {
   top: 0;
   z-index: -1;
   width: 200vw;
-  height: 8.5rem;
+  height: 9rem;
   background: #ffebcf;
   box-shadow: inset 0 0 1rem #9f581510;
 }
@@ -42,6 +42,8 @@ a:focus {
 
 header h1 {
   font: inherit;
+  font-size: 1.5rem;
+  line-height: 2rem;
   font-weight: 600;
 }
 
@@ -77,6 +79,7 @@ nav a.current:focus {
 
 main {
   margin-top: 4rem;
+  min-height: calc(100vh - 15rem);
 }
 
 main h1 {
@@ -105,9 +108,20 @@ main pre {
   margin-bottom: 1rem;
 }
 
-pre,
-code {
-  font: inherit;
-  font-weight: 200;
+main pre,
+main code {
+  font-family: "IBM Plex Mono", monospace;
   background: #eee;
+}
+
+main pre {
+  padding: .5rem;
+  margin-left: -.5rem;
+  margin-right: -.5rem;
+}
+
+footer p {
+  font-size: .75rem;
+  line-height: 1rem;
+  color: #777;
 }

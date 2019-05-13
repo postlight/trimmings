@@ -10,7 +10,7 @@
       Redact.js
     </title>
     <link rel="stylesheet" href="/style.css" />
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:200,400,400i,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Serif:300,400,400i,500" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
   </head>
   <body>
@@ -28,11 +28,17 @@
       <a href="/" {% if page.url == "/" %}class="current"{% endif %}>
         Introduction
       </a>
+      <a href="/installation" {% if page.url == "/installation.html" %}class="current"{% endif %}>
+        Installation
+      </a>
       <a href="/features" {% if page.url == "/features.html" %}class="current"{% endif %}>
         Features
       </a>
       <a href="/examples" {% if page.url == "/examples.html" %}class="current"{% endif %}>
         Examples
+      </a>
+      <a href="https://github.com/postlight/redact">
+        GitHub
       </a>
     </nav>
     <main>
@@ -43,5 +49,10 @@
       {% endif %}
       {{ content }}
     </main>
+    <footer>
+      <p>
+        Redact!
+      </p>
+    </footer>
   </body>
 </html>
