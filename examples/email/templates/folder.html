@@ -13,6 +13,9 @@
     <h1>
       {{folder.name}}
     </h1>
+    <a data-redact-inline=".big-sidebar, .big-sidebar-holder" href="/{{folder.id}}">
+      Refresh
+    </a>
     <form data-redact-inline=".messages, .messages-holder" method="get" action="/{{folder.id}}">
       <input type="text" name="q" value="{{query}}" class="search" />
     </form>
