@@ -2,3 +2,4 @@
 node_modules/
 dist/
 tests/server/redact.js
+docs/_site

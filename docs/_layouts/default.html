@@ -1,10 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>{{ page.title }} – Redact.js</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <title>
+      {% if page.title %}
+        {{ page.title }} –
+      {% endif %}
+      Redact.js
+    </title>
+    <link rel="stylesheet" href="/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:200,400,400i,600" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
   </head>
   <body>
-    {{ content }}
+    <header>
+      <h1>
+        <a href="/">
+          Redact.js
+        </a>
+      </h1>
+      <h2>
+        Trust your HTML.
+      </h2>
+    </header>
+    <nav>
+      <a href="/" {% if page.url == "/" %}class="current"{% endif %}>
+        Introduction
+      </a>
+      <a href="/features" {% if page.url == "/features.html" %}class="current"{% endif %}>
+        Features
+      </a>
+      <a href="/examples" {% if page.url == "/examples.html" %}class="current"{% endif %}>
+        Examples
+      </a>
+    </nav>
+    <main>
+      {% if page.title %}
+        <h1>
+          {{ page.title }}
+        </h1>
+      {% endif %}
+      {{ content }}
+    </main>
   </body>
 </html>
