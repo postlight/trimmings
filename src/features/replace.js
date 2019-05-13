@@ -1,5 +1,5 @@
-import loadElement from './loadElement'
-import parseArgs from './parseArgs'
+import loadElement from '../utils/loadElement'
+import parseArgs from '../utils/parseArgs'
 
 export const handle = (e) => {
   e.preventDefault()

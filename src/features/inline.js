@@ -1,7 +1,7 @@
-import isHidden from './isHidden'
-import getDestination from './getDestination'
-import loadElement from './loadElement'
-import parseArgs from './parseArgs'
+import isHidden from '../utils/isHidden'
+import getDestination from '../utils/getDestination'
+import loadElement from '../utils/loadElement'
+import parseArgs from '../utils/parseArgs'
 
 export const selectors = [
   'a[data-redact-inline]',

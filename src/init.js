@@ -1,12 +1,12 @@
-import { listen as hotkeysListen } from './hotkeys'
-import observe from './observe'
-import render from './render'
+import { listen as hotkeysListen } from './features/hotkeys'
+import observe from './utils/observe'
+import render from './utils/render'
 
-import { handle as toggleHandle } from './toggle'
-import { handle as replaceHandle } from './replace'
-import { handle as removeHandle } from './remove'
-import { handle as inlineHandle, listen as inlineListen } from './inline'
-import { handle as autosubmitHandle } from './autosubmit'
+import { handle as toggleHandle } from './features/toggle'
+import { handle as replaceHandle } from './features/replace'
+import { handle as removeHandle } from './features/remove'
+import { handle as inlineHandle, listen as inlineListen } from './features/inline'
+import { handle as autosubmitHandle } from './features/autosubmit'
 
 const handlers = [
   ['redactToggle', ['click', 'input', 'change'], toggleHandle],

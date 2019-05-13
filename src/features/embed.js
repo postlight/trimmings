@@ -1,5 +1,5 @@
-import isHidden from './isHidden'
-import load from './load'
+import isHidden from '../utils/isHidden'
+import load from '../utils/load'
 
 export const render = (container) => {
   Array.prototype.forEach.call(container.querySelectorAll('a[data-redact-embed]'), element => {

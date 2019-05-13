@@ -1,4 +1,4 @@
-import parseArgs from './parseArgs'
+import parseArgs from '../utils/parseArgs'
 
 export const handle = (e) => {
   const element = e.target
