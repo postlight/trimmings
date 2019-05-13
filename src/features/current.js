@@ -1,3 +1,7 @@
+export const key = 'redactToggle'
+
+export const eventNames = ['click', 'input', 'change']
+
 let path = ''
 let fragment = ''
 

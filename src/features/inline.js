@@ -3,6 +3,10 @@ import getDestination from '../utils/getDestination'
 import loadElement from '../utils/loadElement'
 import parseArgs from '../utils/parseArgs'
 
+export const key = 'redactInline'
+
+export const eventNames = ['submit', 'click']
+
 const followElement = (element, boundElement, eventName) => {
   boundElement.removeAttribute('data-redact-inline')
   element[eventName]()

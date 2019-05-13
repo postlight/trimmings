@@ -1,34 +1,20 @@
-import { listen as hotkeysListen } from './features/hotkeys'
+import features from './features/index'
 import observe from './utils/observe'
 import render from './utils/render'
-
-import { handle as toggleHandle } from './features/toggle'
-import { handle as replaceHandle } from './features/replace'
-import { handle as removeHandle } from './features/remove'
-import { handle as inlineHandle, listen as inlineListen } from './features/inline'
-import { handle as autosubmitHandle } from './features/autosubmit'
-
-const handlers = [
-  ['redactToggle', ['click', 'input', 'change'], toggleHandle],
-  ['redactReplace', ['submit', 'click'], replaceHandle],
-  ['redactRemove', ['click'], removeHandle],
-  ['redactInline', ['submit', 'click'], inlineHandle],
-  ['redactAutosubmit', ['change'], autosubmitHandle]
-]
 
 const checkEligibility = (e, dataKeys) => {
   if (dataKeys.join(',').indexOf('redact') === -1) {
     if (e.type === 'click') {
       const parent = e.target.closest('[data-redact-inline]')
       if (parent) {
-        return { keys: 'redactInline' }
+        return { keys: ['redactInline'] }
       }
     }
 
     if (['change', 'input'].includes(e.type)) {
       const form = e.target.closest('form')
       if (form && typeof form.dataset.redactAutosubmit !== 'undefined') {
-        return { keys: 'redactAutosubmit' }
+        return { keys: ['redactAutosubmit'] }
       }
     }
 
@@ -38,9 +24,17 @@ const checkEligibility = (e, dataKeys) => {
   return { keys: dataKeys }
 }
 
+const featureHandles =
+  Object
+    .values(features)
+    .filter(f => f.key && f.eventNames && f.handle)
+    .map(f => ({ key: f.key, eventNames: f.eventNames, handle: f.handle }))
+
 const init = () => {
-  hotkeysListen()
-  inlineListen()
+  Object
+    .values(features)
+    .filter(f => typeof f.listen === 'function')
+    .forEach(f => { f.listen() })
   observe()
   render(document)
 
@@ -66,16 +60,19 @@ const init = () => {
       return true
     }
 
-    handlers.forEach(([key, types, handle]) => {
-      if (eligibility.keys.includes(key) && types.includes(e.type)) {
+    featureHandles.forEach(({ key, eventNames, handle }) => {
+      if (eligibility.keys.includes(key) && eventNames.includes(e.type)) {
         handle(e)
       }
     })
   }
 
-  ;['click', 'submit', 'input', 'change'].forEach((type) => {
-    document.addEventListener(type, handleEvent)
-  })
+  featureHandles
+    .reduce((acc, h) => acc.concat(h.eventNames), [])
+    .filter((m, i, a) => a.indexOf(m) === i)
+    .forEach((type) => {
+      document.addEventListener(type, handleEvent)
+    })
 }
 
 export default init

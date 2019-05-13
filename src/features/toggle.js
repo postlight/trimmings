@@ -1,5 +1,9 @@
 import parseArgs from '../utils/parseArgs'
 
+export const key = 'redactToggle'
+
+export const eventNames = ['click', 'input', 'change']
+
 export const handle = (e) => {
   const element = e.target
 

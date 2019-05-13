@@ -1,6 +1,10 @@
 import loadElement from '../utils/loadElement'
 import parseArgs from '../utils/parseArgs'
 
+export const key = 'redactReplace'
+
+export const eventNames = ['submit', 'click']
+
 export const handle = (e) => {
   e.preventDefault()
 

@@ -1,11 +1,15 @@
-import { render as currentRender } from '../features/current'
-import { render as embedRender } from '../features/embed'
-import { render as enabledRender } from '../features/enabled'
+import features from '../features/index'
+
+const renderers =
+  Object
+    .values(features)
+    .filter(f => typeof f.render === 'function')
+    .map(f => f.render)
 
 const render = (container) => {
-  currentRender(container)
-  embedRender(container)
-  enabledRender(container)
+  renderers.forEach((render) => {
+    render(container)
+  })
 }
 
 export default render
