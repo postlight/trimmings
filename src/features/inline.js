@@ -3,10 +3,7 @@ import getDestination from '../utils/getDestination'
 import loadElement from '../utils/loadElement'
 import parseArgs from '../utils/parseArgs'
 
-export const selectors = [
-  'a[data-redact-inline]',
-  'form[data-redact-inline]'
-]
+export const name = 'Inline'
 
 const followElement = (element, boundElement, eventName) => {
   boundElement.removeAttribute('data-redact-inline')

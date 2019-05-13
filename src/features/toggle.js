@@ -1,5 +1,7 @@
 import parseArgs from '../utils/parseArgs'
 
+export const name = 'Toggle'
+
 export const handle = (e) => {
   const element = e.target
 

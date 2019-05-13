@@ -9,7 +9,8 @@
     "lint": "standard *.js tests/**/*.js src/**/*.js",
     "test": "jest",
     "test-server": "node tests/server.js",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "docs": "node -r esm document.js"
   },
   "jest": {
     "preset": "jest-puppeteer"
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@ampproject/rollup-plugin-closure-compiler": "^0.9.0",
+    "esm": "^3.2.22",
     "express": "^4.16.4",
     "jest": "^24.8.0",
     "jest-puppeteer": "^4.1.1",
