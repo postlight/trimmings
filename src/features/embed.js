@@ -10,11 +10,20 @@ export const render = (container) => {
     if (isHidden(element) || element.classList.contains('redact-loading')) {
       return
     }
+
+    if (!element.parentNode || !element.getAttribute('href')) {
+      return
+    }
+
     const targetSelector = element.dataset.redactEmbed || 'body'
     element.classList.add('redact-loading')
     load(element.getAttribute('href')).then((doc) => {
       const newNode = doc.querySelector(targetSelector)
-      element.parentNode.replaceChild(newNode, element)
+      if (doc) {
+        element.parentNode.replaceChild(newNode, element)
+      } else {
+        element.classList.remove('redact-loading')
+      }
     })
   })
 }

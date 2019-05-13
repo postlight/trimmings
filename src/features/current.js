@@ -1,3 +1,5 @@
+import toggleClass from '../utils/toggleClass'
+
 export const key = 'redactToggle'
 
 export const eventNames = ['click', 'input', 'change']
@@ -27,14 +29,6 @@ const matchFragment = (href) => {
   }
 
   return `#${href.split('#')[1]}` === fragment
-}
-
-const toggleClass = (element, className, state) => {
-  if (state && !element.classList.contains(className)) {
-    element.classList.add(className)
-  } else if (!state && element.classList.contains(className)) {
-    element.classList.remove(className)
-  }
 }
 
 export const render = (parent) => {
