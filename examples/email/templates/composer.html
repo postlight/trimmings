@@ -1,17 +1,15 @@
-<nav class="smol">
-  <a href="{{lastLocation}}">
-    {{#if unreadCount}}
-      <span class="unread-count">
-        {{unreadCount}}
-      </span>
-    {{/if}}
-    Cancel
-  </a>
-</nav>
-<main class="containing-composer">
+<div class="composer-inner">
   <form class="composer" method="post" action="/messages">
-    <div class="controls">
-      <button>
+    <div class="composer-nav">
+      <a href="{{lastLocation}}">
+        {{#if unreadCount}}
+          <span class="smol unread-count">
+            {{unreadCount}}
+          </span>
+        {{/if}}
+        Cancel
+      </a>
+      <button class="submit">
         Send
       </button>
     </div>
@@ -24,4 +22,4 @@
     <input id="subject" type="text" name="subject" value="{{message.subject}}" />
     <textarea rows="10" cols="30" name="body">{{message.body}}</textarea>
   </form>
-</main>
+</div>

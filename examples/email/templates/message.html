@@ -1,9 +1,9 @@
-<div class="sidebar big">
-  <a data-redact-embed=".big-sidebar" href="/{{folder.id}}">
+<div class="big-sidebar-holder">
+  <a class="big" data-redact-embed=".big-sidebar" href="/{{folder.id}}">
     {{folder.name}}
   </a>
 </div>
-<nav class="smol">
+<nav class="smol smol-nav">
   <a href="/{{folder.id}}">
     {{#if unreadCount}}
       <span class="unread-count">
@@ -23,25 +23,28 @@
     </div>
   </div>
 </nav>
-<main class="message">
-  <div class="big big-actions">
-    {{> actions message=message}}
-  </div>
-  {{#message}}
-    <h1 class="message__subject {{#unless read}}message__subject--unread{{/unless}}">
-      {{subject}}
-    </h1>
-    {{#if message.sent}}
-      <p class="message__from">
-        To: {{to}}
-      </p>
-    {{else}}
-      <p class="message__from">
-        From: <b>{{from}}</b>
-      </p>
-    {{/if}}
-    <div class="message__body">
-      {{{body}}}
+<div class="main-holder">
+  <div class="message main">
+    <div class="big big-actions">
+      {{> actions message=message}}
     </div>
-  {{/message}}
-</main>
+    {{#message}}
+      <h1 class="message__subject {{#unless read}}message__subject--unread{{/unless}}">
+        {{subject}}
+      </h1>
+      {{#if message.sent}}
+        <p class="message__from">
+          To: {{to}}
+        </p>
+      {{else}}
+        <p class="message__from">
+          From: <b>{{from}}</b>
+        </p>
+      {{/if}}
+      <div class="message__body">
+        {{{body}}}
+      </div>
+    {{/message}}
+  </div>
+</div>
+<div class="big composer-holder"></div>

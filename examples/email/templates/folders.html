@@ -1,4 +1,4 @@
-<main>
+<div class="big-sidebar-holder">
   <div class="big-sidebar">
     <h1>
       Mailboxes
@@ -6,7 +6,7 @@
     <ul class="folders">
       {{#folders}}
         <li>
-          <a href="/{{id}}" data-redact-replace=".big-sidebar, .big-sidebar">
+          <a href="/{{id}}" data-redact-inline=".big-sidebar, .big-sidebar-holder, updateLocation: true, updateTitle: true">
             {{#if unreadCount}}
               <span class="unread-count">
                 {{unreadCount}}
@@ -18,4 +18,6 @@
       {{/folders}}
     </ul>
   </div>
-</main>
+</div>
+<div class="main-holder"></div>
+<div class="big composer-holder"></div>

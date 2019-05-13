@@ -1,45 +1,49 @@
-<nav class="smol">
+<nav class="smol smol-nav">
   <a href="/">
     Mailboxes
   </a>
 </nav>
-<main>
+<div class="big-sidebar-holder">
   <div class="big-sidebar">
     <div class="big">
-      <a href="/" data-redact-replace=".big-sidebar, .big-sidebar">
+      <a href="/" data-redact-inline=".big-sidebar, .big-sidebar-holder, updateLocation: true">
         Mailboxes
       </a>
     </div>
     <h1>
       {{folder.name}}
     </h1>
-    <form data-redact-inline=".messages, .messages" method="get" action="/{{folder.id}}">
+    <form data-redact-inline=".messages, .messages-holder" method="get" action="/{{folder.id}}">
       <input type="text" name="q" value="{{query}}" class="search" />
     </form>
-    {{^messages}}
-      <div class="messages">
-        <p>Nothing to see here!</p>
-      </div>
-    {{/messages}}
-    <ol class="messages">
-      {{#messages}}
-        <li>
-          <a href="/messages/{{id}}" class="messages__item">
-            <div class="messages__item__from">
-              {{from}}
-            </div>
-            <div class="messages__item__subject">
-              {{#unless read}}
-                •
-              {{/unless}}
-              {{subject}}
-            </div>
-            <div class="messages__item__excerpt">
-              {{excerpt}}
-            </div>
-          </a>
-        </li>
+    <div class="messages-holder">
+      {{^messages}}
+        <div class="messages">
+          <p>Nothing to see here!</p>
+        </div>
       {{/messages}}
+      <ol class="messages">
+        {{#messages}}
+          <li>
+            <a data-redact-inline=".main, .main-holder, updateTitle: true, updateLocation: true" href="/messages/{{id}}" class="messages__item">
+              <div class="messages__item__from">
+                {{from}}
+              </div>
+              <div class="messages__item__subject">
+                {{#unless read}}
+                  •
+                {{/unless}}
+                {{subject}}
+              </div>
+              <div class="messages__item__excerpt">
+                {{excerpt}}
+              </div>
+            </a>
+          </li>
+        {{/messages}}
+      </div>
     </ol>
   </div>
-</main>
+</div>
+<div class="big main-holder"></div>
+<div class="big composer-holder"></div>

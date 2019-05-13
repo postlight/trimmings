@@ -15,13 +15,13 @@
       {{/if}}
     </button>
   </form>
-  <form method="get" action="/messages/new">
+  <form data-redact-inline=".composer-inner, .composer-holder" method="get" action="/messages/new">
     <input type="hidden" name="replyTo" value="{{message.id}}" />
     <button>
       Reply
     </button>
   </form>
-  <form method="get" action="/messages/new">
+  <form data-redact-inline=".composer-inner, .composer-holder" method="get" action="/messages/new">
     <input type="hidden" name="forwardOf" value="{{message.id}}" />
     <button>
       Forward
