@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Trust your HTML.
+permalink: /
 ---
 Not every product on the web needs to be an app. What happens to your process when you can focus on designing views and stop thinking about how to stitch them together? *Redact* is a zero-configuration Javascript library that adds a layer of smooth and fast in-page interaction to your web pages. All you have to do is add some hints to the HTML you already have.
 
@@ -40,4 +41,4 @@ Just include `redact.js` in your `<head>`. That's it. Redact will automatically 
 
 ## Usage
 
-Redact features are enabled on specific elements by adding `data-redact-*` attributes. Refer to [Features](/features) for more details on how each feature works.
+Redact features are enabled on specific elements by adding `data-redact-*` attributes. Refer to [Features]({{site.baseurl}}/features) for more details on how each feature works.

@@ -17,19 +17,19 @@
     <div class="top">
       <header>
         <h1>
-          <a href="/">
+          <a href="{{site.baseurl}}/">
             Redact
           </a>
         </h1>
       </header>
       <nav>
-        <a href="/" {% if page.url == "/" %}class="current"{% endif %}>
+        <a href="{{site.baseurl}}/" {% if page.url == "{{site.baseurl}}/" %}class="current"{% endif %}>
           Introduction
         </a>
-        <a href="/features" {% if page.url contains "/features" %}class="current"{% endif %}>
+        <a href="{{site.baseurl}}/features" {% if page.url contains "{{site.baseurl}}/features" %}class="current"{% endif %}>
           Features
         </a>
-        <a href="/examples" {% if page.url == "/examples.html" %}class="current"{% endif %}>
+        <a href="{{site.baseurl}}/examples" {% if page.url == "{{site.baseurl}}/examples.html" %}class="current"{% endif %}>
           Examples
         </a>
         <a href="https://github.com/postlight/redact">
