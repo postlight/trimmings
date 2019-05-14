@@ -37,3 +37,7 @@ Just include `redact.js` in your `<head>`. That's it. Redact will automatically 
 ```
 <script src="/redact.js"></script>
 ```
+
+## Usage
+
+Redact features are enabled on specific elements by adding `data-redact-*` attributes. Refer to [Features](/features) for more details on how each feature works.
