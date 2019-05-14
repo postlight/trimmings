@@ -29,9 +29,14 @@ a:focus {
 }
 
 .top {
-  display: flex;
-  justify-content: space-between;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .top {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .top:after {
@@ -62,15 +67,20 @@ header a:focus {
   color: #1d6ed7;
 }
 
-nav {
-  display: flex;
-  justify-content: flex-start;
+@media (min-width: 768px) {
+  nav {
+    display: flex;
+  }
 }
 
-nav a {
-  display: block;
-  line-height: 1.5rem;
-  margin: .25rem 0 .25rem 1rem;
+nav p {
+  margin: .25rem 0;
+}
+
+@media (min-width: 768px) {
+  nav p {
+    margin-left: 1rem;
+  }
 }
 
 nav a.current,

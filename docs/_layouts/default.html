@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta charset="utf-8" />
@@ -23,18 +23,26 @@
         </h1>
       </header>
       <nav>
-        <a href="{{site.baseurl}}/" {% if page.url == "{{site.baseurl}}/" %}class="current"{% endif %}>
-          Introduction
-        </a>
-        <a href="{{site.baseurl}}/features" {% if page.url contains "{{site.baseurl}}/features" %}class="current"{% endif %}>
-          Features
-        </a>
-        <a href="{{site.baseurl}}/examples" {% if page.url == "{{site.baseurl}}/examples.html" %}class="current"{% endif %}>
-          Examples
-        </a>
-        <a href="https://github.com/postlight/redact">
-          GitHub
-        </a>
+        <p>
+          <a href="{{site.baseurl}}/" {% if page.url == "{{site.baseurl}}/" %}class="current"{% endif %}>
+            Introduction
+          </a>
+        </p>
+        <p>
+          <a href="{{site.baseurl}}/features" {% if page.url contains "{{site.baseurl}}/features" %}class="current"{% endif %}>
+            Features
+          </a>
+        </p>
+        <p>
+          <a href="{{site.baseurl}}/examples" {% if page.url == "{{site.baseurl}}/examples.html" %}class="current"{% endif %}>
+            Examples
+          </a>
+        </p>
+        <p>
+          <a href="https://github.com/postlight/redact">
+            GitHub
+          </a>
+        </p>
       </nav>
     </div>
     <main>
