@@ -1,4 +1,3 @@
-<h1>{{topic.name}}</h1>
 <div class="question">
   <div class="question__symbol">
     {{question.question}}
@@ -7,27 +6,21 @@
     <input type="hidden" name="tried" value="{{tried}}" />
     {{#answers}}
       <div class="answer {{#correct}}answer--correct{{/correct}} {{#incorrect}}answer--incorrect{{/incorrect}}">
-        <input type="radio" id="answer_{{@index}}" name="answer" value="{{answer}}" {{#checked}}checked{{/checked}} data-redact-hotkey="{{hotkey}}" />
+        <input data-redact-autosubmit type="radio" id="answer_{{@index}}" name="answer" value="{{answer}}" {{#checked}}checked{{/checked}} data-redact-hotkey="{{hotkey}}" />
         <label for="answer_{{@index}}">{{answer}}</label>
       </div>
     {{/answers}}
     {{#if correct}}
-      {{#if nextQuestion}}
-        <p>
-          <a class="btn" href="/questions/{{nextQuestion.id}}" data-redact-hotkey="Space Enter ArrowRight">
-            Continue
-          </a>
-        </p>
-      {{else}}
-        <p>
-          <a class="btn" href="/topics/{{topic.id}}/complete" data-redact-hotkey="Space Enter ArrowRight">
-            Continue
-          </a>
-        </p>
-      {{/if}}
+      <p>
+        {{#if nextQuestion}}
+          {{> continue href=(concat "/questions/" nextQuestion.id) label="👉" }}
+        {{else}}
+          {{> continue href=(concat "/topics/" topic.id "/complete") label="👉" }}
+        {{/if}}
+      </p>
     {{else}}
       <button class="btn btn--submit">
-        Check
+        ❔
       </button>
     {{/if}}
   </form>

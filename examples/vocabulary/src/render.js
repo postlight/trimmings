@@ -3,6 +3,8 @@ const fs = require('fs')
 
 const TEMPLATES_DIRECTORY = './templates'
 
+handlebars.registerHelper('concat', (...args) => args.slice(0, -1).join(''))
+
 const loadTemplates = () =>
   fs.readdirSync(TEMPLATES_DIRECTORY).reduce((acc, filename) => {
     const name = filename.replace(/\.html$/, '')

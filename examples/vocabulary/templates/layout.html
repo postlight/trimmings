@@ -7,32 +7,43 @@
       {{#if title}}
         {{title}} |
       {{/if}}
-      Vocabulary</title>
+      Vocabulary
+    </title>
+    <link rel="icon" href="/icon.png" />
     <link rel="stylesheet" href="/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
     <script src="/redact.js"></script>
   </head>
   <body>
-    <header>
-      <div class="header-inner">
-        <h1>
-          <a href="/">
-            Vocabulary
-          </a>
-        </h1>
-      </div>
-    </header>
-    <main>
-      {{{content}}}
-    </main>
-    <template id="modal-template">
-      <div class="modal">
-        <button class="modal__close" data-redact-remove=".modal">
-          Close
-        </button>
-        <div data-redact-inline-target></div>
-      </div>
-    </template>
+    <div class="inline-target">
+      <header>
+        <div class="header-inner">
+          <h1>
+            <a href="/">
+              Vocabulary
+            </a>
+          </h1>
+        </div>
+      </header>
+      <main>
+        {{{content}}}
+      </main>
+      <details class="shortcuts">
+        <summary data-redact-hotkey="Slash Shift+Slash">Keyboard Shortcuts</summary>
+        <div class="shortcuts__modal">
+          <div class="shortcuts__inner">
+            <dl>
+              <dt>Space</dt>
+              <dd>Advance to next screen</dd>
+              <dt>1-9</dt>
+              <dd>Choose menu item or quiz answer</dd>
+              <dt>?</dt>
+              <dd>Show or hide this modal</dd>
+            </dl>
+          </div>
+        </div>
+      </details>
+    </div>
   </body>
 </html>

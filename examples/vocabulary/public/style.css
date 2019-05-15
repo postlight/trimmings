@@ -10,16 +10,56 @@ html {
 }
 
 body {
-  background: #ddddff;
   color: #112;
+  min-height: calc(100vh - 2rem);
+}
+
+.inline-target {
   border-radius: 1rem;
+  overflow: hidden;
   margin: 1rem;
   padding: 1rem;
-  min-height: calc(100vh - 2rem);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: #ddddff;
+  position: absolute;
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  left: 0;
+  top: 0;
+}
+
+.inline-target:first-child {
+  animation: push .5s both;
+}
+
+.inline-target:last-child {
+  animation: pop .5s both;
+}
+
+.inline-target:first-child:last-child {
+  animation: none;
+}
+
+@keyframes pop {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes push {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 header {
@@ -154,4 +194,48 @@ a {
 .answer--incorrect {
   color: #fff;
   background: #d23e1d;
+}
+
+.redact .btn--submit {
+  position: absolute;
+  top: -100vw;
+}
+
+.shortcuts {
+  position: absolute;
+  top: -100vh;
+  left: 0;
+}
+
+.shortcuts__modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shortcuts__inner {
+  background: #fff;
+  padding: 1rem;
+}
+
+.shortcuts dl {
+  display: flex;
+  flex-wrap: wrap;
+  width: 25rem;
+}
+
+.shortcuts dt {
+  font-weight: bold;
+  padding-right: 1rem;
+  flex: 0 0 5rem;
+}
+
+.shortcuts dd {
+  flex: 0 0 20rem;
 }

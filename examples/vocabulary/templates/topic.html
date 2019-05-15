@@ -1,9 +1,7 @@
-<h1>{{topic.name}}</h1>
 <p>
-  It’s time to learn about {{topic.name}}. Are you ready?
+  {{topic.name}}<br />
+  👩‍🏫👉🧠
 </p>
 <p>
-  <a class="btn" href="/cards/{{firstCard.id}}" data-redact-hotkey="Space Enter ArrowRight">
-    Begin
-  </a>
+  {{> continue href=(concat "/cards/" firstCard.id) label="👉" }}
 </p>

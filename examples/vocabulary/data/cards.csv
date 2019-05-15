@@ -1,9 +1,9 @@
 id,topicId,symbol,name
-8fb80c,weather,☃,snowman
+8fb80c,weather,⛄️,snowman
 70555d,animals,🦊,fox
 94e63f,animals,🐰,rabbit
-408b72,weather,☂,umbrella
-303ca6,weather,☀,sun
+408b72,weather,☂️,umbrella
+303ca6,weather,☀️,sun
 e58167,animals,🐷,pig
 4cf893,plants,🌳,deciduous tree
 c93e50,animals,🐵,monkey
@@ -21,7 +21,7 @@ b182a9,plants,🌺,hibiscus
 e960b1,instruments,🎺,trumpet
 befaec,animals,🐱,cat
 61d506,animals,🐺,wolf
-396d21,weather,☁,cloud
+396d21,weather,☁️,cloud
 eb8d51,plants,🌹,rose
 cca8a3,plants,🌱,seedling
 56c64a,weather,🔥,fire
@@ -50,6 +50,6 @@ e15ec1,plants,☘,shamrock
 76624b,weather,🌙,moon
 c82f82,animals,🐶,dog
 f94e6e,animals,🐹,hamster
-ff0b0f,weather,❄,snowflake
+ff0b0f,weather,❄️,snowflake
 7ac064,animals,🐻,bear
 8448e8,weather,🌪,tornado

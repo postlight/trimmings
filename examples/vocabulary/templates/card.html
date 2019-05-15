@@ -7,23 +7,10 @@
     {{card.name}}
   </div>
 </div>
-{{#if nextCard}}
-  <p>
-    <a class="btn" href="/cards/{{nextCard.id}}" data-redact-hotkey="Space Enter ArrowRight">
-      Next
-    </a>
-  </p>
-{{else}}
-  <p>
-    <a class="btn" href="/topics/{{topic.id}}/quiz" data-redact-hotkey="Space Enter ArrowRight">
-      Continue
-    </a>
-  </p>
-{{/if}}
-{{#if previousCard}}
-  <!-- <p>
-    <a class="btn" href="/cards/{{previousCard.id}}">
-      Back
-    </a>
-  </p> -->
-{{/if}}
+<p>
+  {{#if nextCard}}
+    {{> continue href=(concat "/cards/" nextCard.id) label="👉" }}
+  {{else}}
+    {{> continue href=(concat "/topics/" topic.id "/quiz") label="👉" }}
+  {{/if}}
+</p>
