@@ -19,7 +19,7 @@ const updateState = () => {
     document.title = title
   }
   const taggedEl = document.querySelector(`[data-redact-location-tag="${tag}"]`)
-  if (taggedEl) {
+  if (taggedEl && taggedEl.innerHTML !== content) {
     taggedEl.innerHTML = content
   }
 }
@@ -122,21 +122,24 @@ export const handle = (e) => {
       })
     }
 
-    const html = content instanceof window.DocumentFragment ? content.innerHTML : content.outerHTML
-
     switch (method) {
       case 'replace':
+        const html = content instanceof window.DocumentFragment ? content.innerHTML : content.outerHTML
         destination.innerHTML = html
         break
 
       case 'reduce-prepend': // fall through
       case 'prepend': // fall through
-        destination.innerHTML = `${html}${destination.innerHTML}`
+        if (destination.hasChildNodes()) {
+          destination.insertBefore(content, destination.firstChild)
+        } else {
+          destination.appendChild(content)
+        }
         break
 
       case 'reduce-append': // fall through
       case 'append':
-        destination.innerHTML = `${destination.innerHTML}${html}`
+        destination.appendChild(content)
         break
 
       default:
