@@ -1,107 +1,39 @@
-# Redact.js
+# Redact
 
-Not every product on the web needs to be an app. What happens to your process when you can focus on designing views and stop thinking about how to stitch them together? *Redact* is a zero-configuration Javascript library that adds a layer of smooth and fast in-page interaction to your web pages. All you have to do is add some hints to the HTML you already have.
+What happens to your web development process when you can focus on designing views and stop thinking about how to stitch them together? *Redact* is a zero-configuration Javascript library that adds a layer of smooth and fast in-page interaction to your web pages. All you have to do is add some hints to the HTML you already have.
 
-This project follows in the footsteps of libraries like Turbolinks and Stimulus. It believes that the best place for your business and rendering logic is on the server, that you should send your users HTML, and that Javascript is best suited for progressively-enhanced DOM manipulation.
+This project follows in the footsteps of libraries like [Turbolinks](https://github.com/turbolinks/turbolinks/) and [Stimulus](https://stimulusjs.org). It believes that the best place for your business and rendering logic is on the server, that you should send your users HTML, and that Javascript is best suited for progressively-enhanced DOM manipulation. Redact is a set of patterns that allow you to add DOM manipulation to your app by adding `data-redact-*` attributes to your interactive elements. Less Javascript in your project means less risk.
 
-- *Increased stability.* An HTML-powered product means your inputs and outputs are much easier to predict, which means your app is much easier to test. Progressively enhance your UX with stable code that you don't need to worry about.
+Once you've built your website and it's serving HTML that's presented the way you like it, you can start adding Redact hints that will enhance the way your interactions behave.
 
-- *App-like responsiveness.* Define subtle interactions with markup instead of code. Pair Redact with Turbolinks for an even more seamless experience!
+Perhaps you have a link to a detail page that you'd like to open in a modal. The standalone page probably has a header and footer that you wouldn't want to render in your modal. That's no problem. Just add an `inline` hint to your link:
 
-- *Effortless modals.* Add a modal hint to any internal link and the contents of that link will open inline as a modal while preserving URLs and navigation history.
+```
+<a data-redact-inline=".detail-container, .modal-container" href="/photos/2">
+  View as a modal
+</a>
+```
 
-- *Easier caching.* Keep your pages small and focused and use Redact's powerful inline-embed features to compose them into complex views. Now you don't need to think about fragment caching—it's all just pages.
+If your visitor clicks that link, the page will be fetched in the background, the element with the `detail-container` class will be extracted from the result, and it will be inserted in an element with the `modal-container` class that's already on the page. You can write CSS that will make this show up however you like. Now you have a modal! That's all there is to it!
 
-- *Eject as necessary.* Redact's API was inspired by Stimulus and the two libraries work happily together. Redact is designed to never allow extension with client-side code, but if you ever need to add your own logic, you can drop in Stimulus controllers without disrupting your workflow or your existing Redact hints.
+## Installation
 
-# Features
+Just include `redact.js` in your `<head>`. That's it. Redact will automatically activate when your page loads—no need to think about lifecycles.
 
-## Embed
+```
+<script src="/redact.js"></script>
+```
 
-Replaces an `<a>` tag with the contents of the link it points to. Must be the same host but a different path. If the element’s `display` style property is `none`, it will not be replaced. If its `display` property changes as the result of a DOM change (like adding a class), its `embed` hint will be followed immediately.
+## Usage
 
-    <a data-redact-embed="main">Thumbnails</a>
+Redact features are enabled on specific elements by adding `data-redact-*` attributes. For more details on usage of each Redact feature, please consult [the Redact handbook](https://postlight.github.io/redact).
 
-### Arguments
+## Contributing
 
-- selector in target document to use (optional, defaults to `body`)
+If you've found a bug or you'd like to propose a new feature, [submit an issue](https://github.com/postlight/redact/issues) and let's talk about it!
 
-## Inline loading
+We expect that all contributors to Redact will abide by our [Code of Conduct](CODE_OF_CONDUCT.md).
 
-When the link is followed or form is submitted, load the target document into a specified selector on the current page. Used for modals, partial page changes, preserving state in i.e. sidebar, etc. If the destination does not exist or its `display` property is `none`, Redact will fall back to standard link behavior—that is, the link will just navigate to wherever it’s pointing.
+---
 
-    <a data-redact-inline=".sidebar, main">Menu</a>
-
-### Arguments
-
-- selector for target in current document to replace (optional, defaults to `body`)
-- selector in target document to use (optional, defaults to `body`)
-- `updateTitle`: when this is `true`, the document title will be replace with the title of the target document after loading. (optional, defaults to false)
-- `template`: selector for a template that will wrap your loaded content. If this argument is present, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-redact-inline-target` property will be _replaced_ with the loaded content, and all of this will replace the target specified in the first argument. (optional)
-- `method`: One of `replace`, `prepend`, `append`, `reduce-prepend`, or `reduce-append`. (Optional, defaults to `replace`)
-  - `replace`: The children of your destination element will be removed and your new inline content will be inserted instead.
-  - `prepend`: The children of your destination element will be preserved and your new inline content will be inserted before it.
-  - `append`: The children of your destination element will be preserved and your new inline content will be inserted after it.
-  - `reduce-prepend`: If the triggering element is inside the destination element, the immediate child of the destination element that includes the triggering element will be preserved and your new inline content will be inserted before it. Otherwise, this works identically to `replace`.
-  - `reduce-append`: If the triggering element is inside the destination element, the immediate child of the destination element that includes the triggering element will be preserved and your new inline content will be inserted after it. Otherwise, this works identically to `replace`.
-
-## Replacement
-
-When the link is followed or form is submitted, replace all of the selected elements in the current document with their respective elements in the target document. Useful when the user takes an action that updates some data, like a shopping cart count, but shouldn’t replace the entire page.
-
-    <form data-redact-replace=".like-count, .flash-message">
-      <button>Like</button>
-    </form>
-
-### Arguments
-
-- selector for target in current document to replace (optional, defaults to `body`)
-- selector in target document to use (optional, defaults to `body`)
-- selector for a template that will wrap your loaded content. If this argument is present, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-redact-inline-target` property will be _replaced_ with the loaded content, and all of this will replace the target specified in the first argument. (optional)
-
-## Autosubmit
-
-Submits a form automatically on change. When applied to a form, any change within the form will submit; when applied to indidual elements, only changes on those elements will submit.
-
-    <form data-redact-autosubmit>
-
-    <select data-redact-autosubmit>
-
-## Toggle
-
-Controls a class on a target element when the user interacts with the current element. When used on a `<button>`, the class is toggled. On a text `<input>`, the class's presence is synced with the presence of a field value. On an `<input>` of type `checkbox` or `radio`, the class's presence is synced with the checked state of the input (i.e. if the input is checked, the class is added). Note that other `radio` element with the same `name` attribute will be _un_-toggled.
-
-    <button data-redact-toggle=".menu, menu--visible">
-
-### Arguments
-
-- selector of element to modify
-- class to toggle
-
-## Remove
-
-When a `<button>` with this hint is clicked, the target node is removed from the DOM.
-
-    <button data-redact-remove=".modal">
-
-### Arguments
-
-- selector of element to remove
-
-## Hotkey
-
-Treat the user pressing the specified keyboard shortcut as a click on this button or link. If multiple elements match the shortcut, only the first one (as matched by document.querySelector) will be clicked.
-
-    <button data-redact-hotkey="Ctrl+KeyS">
-
-### Arguments
-
-One or more key combinations, separated by spaces (**No commas!**). The keys in a combination must be separated by plus signs (`+`). If you wish to include modifiers, they must be present in this order: Alt, Control, Meta, Shift. Your non-modifer keys must exactly match the values returned by [`KeyboardEvent.code`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code).
-
-## Current (auto feature)
-
-Any `<a>` whose `href` matches the current URL will automatically receive the `redact-current` class. A `<a>` whose `href` matches the current URL _including the fragment_ will additionally receive the `redact-current--fragment` class. If the location or fragment changes, these links will be updated on all `<a>` tags as necessary.
-
-## Enabled (auto feature)
-
-When Redact begins scanning your page, it will add the `redact` class to `<body>`. Useful for toggling visibility of Javascript-enabled features with CSS.
+🔬 A Labs project from your friends at [Postlight](https://postlight.com). Happy coding!
