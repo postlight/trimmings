@@ -1,4 +1,4 @@
-export const key = 'redactAutosubmit'
+export const key = 'trimAutosubmit'
 
 export const eventNames = ['change']
 

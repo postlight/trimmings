@@ -1,6 +1,6 @@
 import toggleClass from '../utils/toggleClass'
 
-export const key = 'redactToggle'
+export const key = 'trimToggle'
 
 export const eventNames = ['click', 'input', 'change']
 
@@ -41,7 +41,7 @@ export const render = (parent) => {
     const href = link.getAttribute('href')
     const currentPath = matchLocation(href)
     const currentFragment = currentPath && matchFragment(href)
-    toggleClass(link, 'redact-current', currentPath)
-    toggleClass(link, 'redact-current--fragment', currentFragment)
+    toggleClass(link, 'trim-current', currentPath)
+    toggleClass(link, 'trim-current--fragment', currentFragment)
   })
 }

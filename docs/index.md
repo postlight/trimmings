@@ -3,16 +3,16 @@ layout: default
 title: Trust your HTML.
 permalink: /
 ---
-What happens to your web development process when you can focus on designing views and stop thinking about how to stitch them together? *Redact* is a zero-configuration Javascript library that adds a layer of smooth and fast in-page interaction to your web pages. All you have to do is add some hints to the HTML you already have.
+What happens to your web development process when you can focus on designing views and stop thinking about how to stitch them together? *Trim* is a zero-configuration Javascript library that adds a layer of smooth and fast in-page interaction to your web pages. All you have to do is add some hints to the HTML you already have.
 
-This project follows in the footsteps of libraries like [Turbolinks](https://github.com/turbolinks/turbolinks/) and [Stimulus](https://stimulusjs.org). It believes that the best place for your business and rendering logic is on the server, that you should send your users HTML, and that Javascript is best suited for progressively-enhanced DOM manipulation. Redact is a set of patterns that allow you to add DOM manipulation to your app by adding `data-redact-*` attributes to your interactive elements. Less Javascript in your project means less risk.
+This project follows in the footsteps of libraries like [Turbolinks](https://github.com/turbolinks/turbolinks/) and [Stimulus](https://stimulusjs.org). It believes that the best place for your business and rendering logic is on the server, that you should send your users HTML, and that Javascript is best suited for progressively-enhanced DOM manipulation. Trim is a set of patterns that allow you to add DOM manipulation to your app by adding `data-trim-*` attributes to your interactive elements. Less Javascript in your project means less risk.
 
-Once you've built your website and it's serving HTML that's presented the way you like it, you can start adding Redact hints that will enhance the way your interactions behave.
+Once you've built your website and it's serving HTML that's presented the way you like it, you can start adding Trim hints that will enhance the way your interactions behave.
 
 Perhaps you have a link to a detail page that you'd like to open in a modal. The standalone page probably has a header and footer that you wouldn't want to render in your modal. That's no problem. Just add an `inline` hint to your link:
 
 ```
-<a data-redact-inline=".detail-container, .modal-container" href="/photos/2">
+<a data-trim-inline=".detail-container, .modal-container" href="/photos/2">
   View as a modal
 </a>
 ```
@@ -23,22 +23,22 @@ If your visitor clicks that link, the page will be fetched in the background, th
 
 - *Increased stability.* An HTML-powered product means your inputs and outputs are much easier to predict, which means your app is much easier to test. Progressively enhance your UX with stable code that you don't need to worry about.
 
-- *App-like responsiveness.* Define subtle interactions with markup instead of code. Pair Redact with Turbolinks for an even more seamless experience!
+- *App-like responsiveness.* Define subtle interactions with markup instead of code. Pair Trim with Turbolinks for an even more seamless experience!
 
 - *Natural fallbacks.* If something goes wrong—Javascript is disabled, assets fail to load, a third-party tracker raises an exception—your modals and inline embeds will still work, because they're just links to other pages.
 
-- *Easier caching.* Keep your pages small and focused and use Redact's powerful inline-embed features to compose them into complex views. Now you don't need to think about fragment caching—it's all just pages!
+- *Easier caching.* Keep your pages small and focused and use Trim's powerful inline-embed features to compose them into complex views. Now you don't need to think about fragment caching—it's all just pages!
 
-- *Eject as necessary.* Redact's API was inspired by Stimulus and the two libraries work happily together. Redact is designed to never allow extension with client-side code, but if you ever need to add your own logic, you can drop in Stimulus controllers without disrupting your workflow or your existing Redact hints.
+- *Eject as necessary.* Trim's API was inspired by Stimulus and the two libraries work happily together. Trim is designed to never allow extension with client-side code, but if you ever need to add your own logic, you can drop in Stimulus controllers without disrupting your workflow or your existing Trim hints.
 
 ## Installation
 
-Just include `redact.js` in your `<head>`. That's it. Redact will automatically activate when your page loads—no need to think about lifecycles.
+Just include `trim.js` in your `<head>`. That's it. Trim will automatically activate when your page loads—no need to think about lifecycles.
 
 ```
-<script src="/redact.js"></script>
+<script src="/trim.js"></script>
 ```
 
 ## Usage
 
-Redact features are enabled on specific elements by adding `data-redact-*` attributes. Refer to [Features]({{site.baseurl}}/features) for more details on how each feature works.
+Trim features are enabled on specific elements by adding `data-trim-*` attributes. Refer to [Features]({{site.baseurl}}/features) for more details on how each feature works.

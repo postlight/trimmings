@@ -2,7 +2,7 @@ import isRegularClick from '../utils/isRegularClick'
 import parseArgs from '../utils/parseArgs'
 import toggleClass from '../utils/toggleClass'
 
-export const key = 'redactToggle'
+export const key = 'trimToggle'
 
 export const eventNames = ['click', 'input', 'change']
 
@@ -10,7 +10,7 @@ export const handle = (e) => {
   const element = e.target
 
   const [targetSelector, className] =
-    parseArgs(element.dataset.redactToggle).args
+    parseArgs(element.dataset.trimToggle).args
 
   const target = document.querySelector(targetSelector)
 
@@ -33,8 +33,8 @@ export const handle = (e) => {
       state = element.checked
 
       if (type === 'radio') {
-        if (element.dataset.redactChainToggle === 'true') {
-          element.dataset.redactChainToggle = null
+        if (element.dataset.trimChainToggle === 'true') {
+          element.dataset.trimChainToggle = null
         } else {
           const name = element.getAttribute('name')
           const radios =
@@ -45,7 +45,7 @@ export const handle = (e) => {
               return
             }
 
-            radio.dataset.redactChainToggle = 'true'
+            radio.dataset.trimChainToggle = 'true'
             radio.dispatchEvent(new window.Event('change', { bubbles: true }), true)
           })
         }

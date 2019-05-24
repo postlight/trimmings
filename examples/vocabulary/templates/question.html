@@ -2,11 +2,11 @@
   <div class="question__symbol">
     {{question.question}}
   </div>
-  <form class="question__form" data-redact-autosubmit method="post" action="/questions/{{question.id}}">
+  <form class="question__form" data-trim-autosubmit method="post" action="/questions/{{question.id}}">
     <input type="hidden" name="tried" value="{{tried}}" />
     {{#answers}}
       <div class="answer {{#correct}}answer--correct{{/correct}} {{#incorrect}}answer--incorrect{{/incorrect}}">
-        <input data-redact-autosubmit type="radio" id="answer_{{@index}}" name="answer" value="{{answer}}" {{#checked}}checked{{/checked}} data-redact-hotkey="{{hotkey}}" />
+        <input data-trim-autosubmit type="radio" id="answer_{{@index}}" name="answer" value="{{answer}}" {{#checked}}checked{{/checked}} data-trim-hotkey="{{hotkey}}" />
         <label for="answer_{{@index}}">{{answer}}</label>
       </div>
     {{/answers}}

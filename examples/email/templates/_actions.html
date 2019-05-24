@@ -1,11 +1,11 @@
 {{#unless message.sent}}
-  <form data-redact-replace="body" method="post" action="/messages/{{message.id}}">
+  <form data-trim-replace="body" method="post" action="/messages/{{message.id}}">
     <input type="hidden" name="read" value="0" />
     <button>
       Mark Unread
     </button>
   </form>
-  <form data-redact-replace="body" method="post" action="/messages/{{message.id}}">
+  <form data-trim-replace="body" method="post" action="/messages/{{message.id}}">
     <input type="hidden" name="folderId" value="{{#if message.archived}}inbox{{else}}archive{{/if}}" />
     <button>
       {{#if message.archived}}
@@ -15,13 +15,13 @@
       {{/if}}
     </button>
   </form>
-  <form data-redact-inline=".composer-inner, .composer-holder" method="get" action="/messages/new">
+  <form data-trim-inline=".composer-inner, .composer-holder" method="get" action="/messages/new">
     <input type="hidden" name="replyTo" value="{{message.id}}" />
     <button>
       Reply
     </button>
   </form>
-  <form data-redact-inline=".composer-inner, .composer-holder" method="get" action="/messages/new">
+  <form data-trim-inline=".composer-inner, .composer-holder" method="get" action="/messages/new">
     <input type="hidden" name="forwardOf" value="{{message.id}}" />
     <button>
       Forward

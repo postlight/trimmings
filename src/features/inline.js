@@ -4,12 +4,12 @@ import getDestination from '../utils/getDestination'
 import loadElement from '../utils/loadElement'
 import parseArgs from '../utils/parseArgs'
 
-export const key = 'redactInline'
+export const key = 'trimInline'
 
 export const eventNames = ['submit', 'click']
 
 const followElement = (element, boundElement, eventName) => {
-  boundElement.removeAttribute('data-redact-inline')
+  boundElement.removeAttribute('data-trim-inline')
   element[eventName]()
 }
 
@@ -18,7 +18,7 @@ const updateState = () => {
   if (title) {
     document.title = title
   }
-  const taggedEl = document.querySelector(`[data-redact-location-tag="${tag}"]`)
+  const taggedEl = document.querySelector(`[data-trim-location-tag="${tag}"]`)
   if (taggedEl && taggedEl.innerHTML !== content) {
     taggedEl.innerHTML = content
   }
@@ -36,17 +36,17 @@ export const handle = (e) => {
   const originalElement = e.target
   let element = originalElement
 
-  if (typeof element.dataset.redactInline === 'undefined') {
-    element = e.target.closest('[data-redact-inline]')
+  if (typeof element.dataset.trimInline === 'undefined') {
+    element = e.target.closest('[data-trim-inline]')
   }
 
-  if (element.dataset.redactDisableInline === 'true') {
+  if (element.dataset.trimDisableInline === 'true') {
     return true
   }
 
   const eventName = e.type
 
-  const args = parseArgs(element.dataset.redactInline)
+  const args = parseArgs(element.dataset.trimInline)
   const [targetSelector, destinationSelector] = args.args
   const {
     method = 'replace',
@@ -67,13 +67,13 @@ export const handle = (e) => {
     followElement(originalElement, element, eventName)
   }
 
-  if (element.classList.contains('redact-loading')) {
+  if (element.classList.contains('trim-loading')) {
     return false
   }
 
   const previousState = destination.innerHTML
 
-  element.classList.add('redact-loading')
+  element.classList.add('trim-loading')
 
   loadElement(element).then((doc) => {
     let content = doc.querySelector(targetSelector)
@@ -93,7 +93,7 @@ export const handle = (e) => {
 
       const holder = document.createElement('div')
       holder.innerHTML = template.innerHTML
-      const target = holder.querySelector('[data-redact-inline-target]')
+      const target = holder.querySelector('[data-trim-inline-target]')
 
       if (!target) {
         fallback()
@@ -108,16 +108,16 @@ export const handle = (e) => {
 
     if (method.indexOf('reduce') === 0) {
       Array.prototype.forEach.call(destination.children, (child) => {
-        child.dataset.redactChild = 'true'
+        child.dataset.trimChild = 'true'
       })
 
-      const savedChild = element.closest('[data-redact-child]')
+      const savedChild = element.closest('[data-trim-child]')
 
       if (savedChild) {
-        savedChild.removeAttribute('data-redact-child')
+        savedChild.removeAttribute('data-trim-child')
       }
 
-      Array.prototype.forEach.call(destination.querySelectorAll('[data-redact-child]'), (child) => {
+      Array.prototype.forEach.call(destination.querySelectorAll('[data-trim-child]'), (child) => {
         child.parentNode.removeChild(child)
       })
     }
@@ -150,11 +150,11 @@ export const handle = (e) => {
     const newTitle = updateTitle === 'true' ? doc.querySelector('title').innerHTML : null
 
     if (updateLocation === 'true') {
-      destination.dataset.redactLocationTag = destination.dataset.redactLocationTag || Math.random().toString()
+      destination.dataset.trimLocationTag = destination.dataset.trimLocationTag || Math.random().toString()
       window.history.replaceState(
         {
           title: document.title,
-          tag: destination.dataset.redactLocationTag,
+          tag: destination.dataset.trimLocationTag,
           content: previousState
         },
         null,
@@ -163,7 +163,7 @@ export const handle = (e) => {
       window.history.pushState(
         {
           title: newTitle || document.title,
-          tag: destination.dataset.redactLocationTag,
+          tag: destination.dataset.trimLocationTag,
           content: destination.innerHTML
         },
         null,
@@ -176,6 +176,6 @@ export const handle = (e) => {
       document.title = newTitle
     }
 
-    element.classList.remove('redact-loading')
+    element.classList.remove('trim-loading')
   })
 }

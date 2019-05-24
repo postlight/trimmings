@@ -5,7 +5,7 @@ title: Hotkey
 
 Treat the user pressing the specified keyboard shortcut as a click on this button or link.
 
-    <a href="/page/2" data-redact-hotkey="Space Enter Alt+KeyC">
+    <a href="/page/2" data-trim-hotkey="Space Enter Alt+KeyC">
       Press Space, Enter, or Alt-C to continue
     </a>
 

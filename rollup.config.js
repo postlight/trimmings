@@ -6,7 +6,7 @@ export default {
     compiler()
   ],
   output: {
-    file: 'dist/redact.js',
+    file: 'dist/trim.js',
     format: 'iife'
   }
 }

@@ -5,7 +5,7 @@ title: Remove
 
 When a `<button>` with this hint is clicked, the target node is removed from the DOM.
 
-    <button data-redact-remove=".modal">
+    <button data-trim-remove=".modal">
       Close modal
     </button>
 

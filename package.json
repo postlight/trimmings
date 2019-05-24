@@ -1,8 +1,8 @@
 {
-  "name": "redact",
+  "name": "trim",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:postlight/redact.git",
+  "repository": "git@github.com:postlight/trim.git",
   "author": "John Holdun <john@johnholdun.com>",
   "license": "MIT",
   "scripts": {

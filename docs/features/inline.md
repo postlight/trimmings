@@ -4,7 +4,7 @@ title: Inline
 ---
 When the link is followed or form is submitted, load the target document into a specified selector on the current page. Useful for things like modals and tabs, especially when you don't want to interrupt changes elsewhere on the page.
 
-    <a data-redact-inline=".sidebar, main">Menu</a>
+    <a data-trim-inline=".sidebar, main">Menu</a>
 
 ## Arguments
 
@@ -17,7 +17,7 @@ When the link is followed or form is submitted, load the target document into a 
 
 ## Templates
 
-If a link's Inline arguments include a template selector, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-redact-inline-target` property will be _replaced_ with the loaded content, and all of this will be inserted into the the target element.
+If a link's Inline arguments include a template selector, the _children_ of the selected node will be cloned, an element within the cloned nodes with the `data-trim-inline-target` property will be _replaced_ with the loaded content, and all of this will be inserted into the the target element.
 
 ## Replacement methods
 
@@ -45,4 +45,4 @@ the triggering element will be preserved and your new inline content will be ins
 
 ## Fail-proof
 
-If the destination does not exist or its `display` property is `none`, Redact will fall back to standard link behavior—that is, the link will just navigate to wherever it’s pointing.
+If the destination does not exist or its `display` property is `none`, Trim will fall back to standard link behavior—that is, the link will just navigate to wherever it’s pointing.

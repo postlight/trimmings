@@ -11,7 +11,7 @@ export const listen = () => {
         .filter(Boolean)
         .join('+')
 
-    const element = document.querySelector(`[data-redact-hotkey~="${identifier}"]`)
+    const element = document.querySelector(`[data-trim-hotkey~="${identifier}"]`)
 
     if (element) {
       element.click()

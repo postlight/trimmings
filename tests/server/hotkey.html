@@ -2,18 +2,18 @@
 <html>
 <head>
   <meta charset="utf8" />
-  <title>Redact test: Hotkey</title>
-  <script src="/redact.js"></script>
+  <title>Trim test: Hotkey</title>
+  <script src="/trim.js"></script>
 </head>
 <body>
   <p class="check">I only exist to be toggled</p>
   <button
-    data-redact-hotkey="Alt+Space Control+Space"
-    data-redact-toggle=".check, check--toggled"
+    data-trim-hotkey="Alt+Space Control+Space"
+    data-trim-toggle=".check, check--toggled"
   >
     Alt+Space, Control+Space
   </button>
-  <input type="radio" name="hotkey-check" value="1" class="radio-1" data-redact-hotkey="Digit1" />
-  <input type="radio" name="hotkey-check" value="1" class="radio-2" data-redact-hotkey="Digit2" />
+  <input type="radio" name="hotkey-check" value="1" class="radio-1" data-trim-hotkey="Digit1" />
+  <input type="radio" name="hotkey-check" value="1" class="radio-2" data-trim-hotkey="Digit2" />
 </body>
 </html>

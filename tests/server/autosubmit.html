@@ -2,18 +2,18 @@
 <html>
 <head>
   <meta charset="utf8" />
-  <title>Redact test: Autosubmit</title>
-  <script src="/redact.js"></script>
+  <title>Trim test: Autosubmit</title>
+  <script src="/trim.js"></script>
 </head>
 <body>
-  <form data-redact-autosubmit method="get" action="/autosubmit.html">
+  <form data-trim-autosubmit method="get" action="/autosubmit.html">
     <select class="select-form-autosubmit" name="foo">
       <option>Select…</option>
       <option value="bar">Bar</option>
     </select>
   </form>
   <form method="get" action="/autosubmit.html">
-    <select data-redact-autosubmit class="select-field-autosubmit" name="foo">
+    <select data-trim-autosubmit class="select-field-autosubmit" name="foo">
       <option>Select…</option>
       <option value="baz">Baz</option>
     </select>

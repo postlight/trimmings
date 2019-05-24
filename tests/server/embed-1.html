@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf8" />
-  <title>Redact test: Embed (Page 1)</title>
-  <script src="/redact.js"></script>
+  <title>Trim test: Embed (Page 1)</title>
+  <script src="/trim.js"></script>
   <style>
     .hidden-embed {
       display: none;
@@ -16,11 +16,11 @@
 </head>
 <body>
   <p>This is page 1.</p>
-  <a data-redact-embed=".include" href="/embed-2.html">Visit page 2</a>
-  <a class="hidden-embed" data-redact-embed=".include2" href="/embed-2.html">
+  <a data-trim-embed=".include" href="/embed-2.html">Visit page 2</a>
+  <a class="hidden-embed" data-trim-embed=".include2" href="/embed-2.html">
     This one should stay until it’s toggled
   </a>
-  <button class="reveal-embed" data-redact-toggle=".hidden-embed, hidden-embed--revealed">
+  <button class="reveal-embed" data-trim-toggle=".hidden-embed, hidden-embed--revealed">
     Activate hidden embed
   </button>
 </body>

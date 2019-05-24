@@ -1,5 +1,5 @@
 .DS_Store
 node_modules/
 dist/
-tests/server/redact.js
+tests/server/trim.js
 docs/_site

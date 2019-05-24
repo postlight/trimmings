@@ -3,18 +3,18 @@ import observe from './utils/observe'
 import render from './utils/render'
 
 const checkEligibility = (e, dataKeys) => {
-  if (dataKeys.join(',').indexOf('redact') === -1) {
+  if (dataKeys.join(',').indexOf('trim') === -1) {
     if (e.type === 'click') {
-      const parent = e.target.closest('[data-redact-inline]')
+      const parent = e.target.closest('[data-trim-inline]')
       if (parent) {
-        return { keys: ['redactInline'] }
+        return { keys: ['trimInline'] }
       }
     }
 
     if (['change', 'input'].includes(e.type)) {
       const form = e.target.closest('form')
-      if (form && typeof form.dataset.redactAutosubmit !== 'undefined') {
-        return { keys: ['redactAutosubmit'] }
+      if (form && typeof form.dataset.trimAutosubmit !== 'undefined') {
+        return { keys: ['trimAutosubmit'] }
       }
     }
 

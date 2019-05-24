@@ -2,13 +2,13 @@
 <html>
 <head>
   <meta charset="utf8" />
-  <title>Redact test: Inline (Template)</title>
-  <script src="/redact.js"></script>
+  <title>Trim test: Inline (Template)</title>
+  <script src="/trim.js"></script>
 </head>
 <body>
   <p>This is page…3?.</p>
   <a
-    data-redact-inline=".include, .inline-target, template: #template"
+    data-trim-inline=".include, .inline-target, template: #template"
     href="/inline-2.html"
   >
     Load page 2 with a template
@@ -17,7 +17,7 @@
   <template id="template">
     <div class="template-body">
       <p>You rendered it!</p>
-      <div data-redact-inline-target></div>
+      <div data-trim-inline-target></div>
     </div>
   </template>
 </body>

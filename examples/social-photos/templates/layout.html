@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
-    <script src="/redact.js"></script>
+    <script src="/trim.js"></script>
   </head>
   <body>
     <header>
@@ -35,14 +35,14 @@
       Created by
       <a href="https://johnholdun.com">John Holdun</a>
       to demonstrate
-      <a href="https://github.com/postlight/redact">Redact</a>!
+      <a href="https://github.com/postlight/trim">Trim</a>!
     </footer>
     <template id="modal-template">
       <div class="modal">
-        <button class="modal__close" data-redact-remove=".modal">
+        <button class="modal__close" data-trim-remove=".modal">
           Close
         </button>
-        <div data-redact-inline-target></div>
+        <div data-trim-inline-target></div>
       </div>
     </template>
   </body>

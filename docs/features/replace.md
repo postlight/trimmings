@@ -5,7 +5,7 @@ title: Replace
 
 When the link is followed or form is submitted, replace all of the selected elements in the current document with their respective elements in the target document.
 
-    <form method="post" action="/photos/123" data-redact-replace=".like-count, .flash-message">
+    <form method="post" action="/photos/123" data-trim-replace=".like-count, .flash-message">
       <button>Like</button>
     </form>
 

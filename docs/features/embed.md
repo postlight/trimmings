@@ -4,7 +4,7 @@ title: Embed
 ---
 Replaces an `<a>` tag with the contents of the link it points to.
 
-    <a data-redact-embed="main" href="/thumbnails">
+    <a data-trim-embed="main" href="/thumbnails">
       Thumbnails
     </a>
 
