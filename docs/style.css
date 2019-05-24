@@ -69,11 +69,8 @@ nav p {
   }
 }
 
-nav a.current,
-nav a.current:hover,
-nav a.current:focus {
-  color: inherit;
-  border-bottom-color: transparent;
+nav a.current {
+  border-bottom-color: currentColor;
 }
 
 main {

@@ -27,17 +27,22 @@
       </header>
       <nav>
         <p>
-          <a href="{{site.baseurl}}/" {% if page.url == "{{site.baseurl}}/" %}class="current"{% endif %}>
+          <a href="{{site.baseurl}}/" {% if page.url == "/" %}class="current"{% endif %}>
             Introduction
           </a>
         </p>
         <p>
-          <a href="{{site.baseurl}}/features" {% if page.url contains "{{site.baseurl}}/features" %}class="current"{% endif %}>
+          <a href="{{site.baseurl}}/features" {% if page.url contains "/features" %}class="current"{% endif %}>
             Features
           </a>
         </p>
         <p>
-          <a href="{{site.baseurl}}/examples" {% if page.url == "{{site.baseurl}}/examples.html" %}class="current"{% endif %}>
+          <a href="{{site.baseurl}}/guide" {% if page.url contains "/guide.html" %}class="current"{% endif %}>
+            Guide
+          </a>
+        </p>
+        <p>
+          <a href="{{site.baseurl}}/examples" {% if page.url contains "/examples.html" %}class="current"{% endif %}>
             Examples
           </a>
         </p>
