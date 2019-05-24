@@ -1,3 +1,5 @@
+![Trim logo](trim.svg)
+
 # Trim
 
 What happens to your web development process when you can focus on designing views and stop thinking about how to stitch them together? *Trim* is a zero-configuration Javascript library that adds a layer of smooth and fast in-page interaction to your web pages. All you have to do is add some hints to the HTML you already have.
