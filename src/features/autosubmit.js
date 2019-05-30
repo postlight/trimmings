@@ -1,4 +1,4 @@
-export const key = 'trimAutosubmit'
+export const key = 'trimmingsAutosubmit'
 
 export const eventNames = ['change']
 

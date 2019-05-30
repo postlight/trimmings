@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Developing websites for Trim
+title: Developing websites for Trimmings
 ---
-It's natural to attempt a comparison of Trim with web development frameworks like React. But there's a big difference: React and Vue and Angular and other modern client-side Javascript libraries are designed to encapsulate render logic as well as interactions—you start with nothing, you write some Javascript, you end up with a website. Trim is meant to be added only after your website is serving HTML in order to eliminate the friction in a full-page-load-oriented user experience.
+It's natural to attempt a comparison of Trimmings with web development frameworks like React. But there's a big difference: React and Vue and Angular and other modern client-side Javascript libraries are designed to encapsulate render logic as well as interactions—you start with nothing, you write some Javascript, you end up with a website. Trimmings is meant to be added only after your website is serving HTML in order to eliminate the friction in a full-page-load-oriented user experience.
 
-You can get here in many different ways: using Express, or Rails, or Wordpress, or Serverless, or countless other frameworks, or no framework at all. Once you've decided how you're going to be serving up all that HTML, this guide will help you design a reliable website that can take full advantage of Trim.
+You can get here in many different ways: using Express, or Rails, or Wordpress, or Serverless, or countless other frameworks, or no framework at all. Once you've decided how you're going to be serving up all that HTML, this guide will help you design a reliable website that can take full advantage of Trimmings.
 
 ## Each thing has one URL
 
@@ -18,13 +18,13 @@ As you might have guessed, each of your things should have a URL, and those rela
 
 As you start laying out your content across many interlinked pages, be careful not to repeat yourself too much. For ease of use, you may want your mailbox page to include the full content of each of its related messages, but copying all of each message's content into its related mailbox page can quickly become unwieldy. Instead, pick a small amount of information that uniquely identifies one message—perhaps a subject and the sender's name—and use that information as a link to the full message.
 
-> If you really want all of that linked content to show up on a related page, you can use [Trim's `embed` feature](/features/embed) to lazy-load it—but you still start with a link!
+> If you really want all of that linked content to show up on a related page, you can use [Trimmings's `embed` feature](/features/embed) to lazy-load it—but you still start with a link!
 
 ## Modeling your data
 
-If you're used to thinking of HTML as the technology beneath your JSX, or just a means to apply CSS to your content, it can be hard to thing of it as anything else. But on the web, [HTML is inevitable][track-changes], and it's one of the most important tools you have. A Trim website prioritizes HTML above everything else (except the URL).
+If you're used to thinking of HTML as the technology beneath your JSX, or just a means to apply CSS to your content, it can be hard to thing of it as anything else. But on the web, [HTML is inevitable][track-changes], and it's one of the most important tools you have. A Trimmings website prioritizes HTML above everything else (except the URL).
 
-HTML is not just the tags that hold your content. HTML describes your data and imposes hierarchy. In a client-side-rendering world, your data likely comes from an API request that returns JSON. You'd then push that JSON through some Javascript to produce HTML. In Trim's world, all of this happens much earlier in the process. Your user's browser will only ever receive HTML! Take all of the thoughts you'd put into a JSON API, with its many objects and attributes and relationships—all your _things_—and replace the JSON with HTML. Now we're getting somewhere.
+HTML is not just the tags that hold your content. HTML describes your data and imposes hierarchy. In a client-side-rendering world, your data likely comes from an API request that returns JSON. You'd then push that JSON through some Javascript to produce HTML. In Trimmings's world, all of this happens much earlier in the process. Your user's browser will only ever receive HTML! Take all of the thoughts you'd put into a JSON API, with its many objects and attributes and relationships—all your _things_—and replace the JSON with HTML. Now we're getting somewhere.
 
 ## Working with designers
 

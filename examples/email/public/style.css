@@ -288,7 +288,7 @@ input[type="text"].search {
   border-width: 1px 0;
 }
 
-.messages__item.trim-current {
+.messages__item.trimmings-current {
   background: #009;
   color: #fff;
 }

@@ -2,13 +2,13 @@
 <html>
 <head>
   <meta charset="utf8" />
-  <title>Trim test: Inline (Template)</title>
-  <script src="/trim.js"></script>
+  <title>Trimmings test: Inline (Template)</title>
+  <script src="/trimmings.js"></script>
 </head>
 <body>
   <p>This is page…3?.</p>
   <a
-    data-trim-inline=".include, .inline-target, template: #template"
+    data-trimmings-inline=".include, .inline-target, template: #template"
     href="/inline-2.html"
   >
     Load page 2 with a template
@@ -17,7 +17,7 @@
   <template id="template">
     <div class="template-body">
       <p>You rendered it!</p>
-      <div data-trim-inline-target></div>
+      <div data-trimmings-inline-target></div>
     </div>
   </template>
 </body>

@@ -1,6 +1,6 @@
 import isRegularClick from '../utils/isRegularClick'
 
-export const key = 'trimRemove'
+export const key = 'trimmingsRemove'
 
 export const eventNames = ['click']
 
@@ -9,7 +9,7 @@ export const handle = (e) => {
     return
   }
 
-  const selector = e.target.dataset.trimRemove
+  const selector = e.target.dataset.trimmingsRemove
   const toRemove = document.querySelector(selector)
 
   if (toRemove && toRemove.parentNode) {

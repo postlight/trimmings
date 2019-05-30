@@ -6,7 +6,7 @@ export default {
     compiler()
   ],
   output: {
-    file: 'dist/trim.js',
+    file: 'dist/trimmings.js',
     format: 'iife'
   }
 }

@@ -2,7 +2,7 @@
 layout: default
 title: Examples
 ---
-To help you start thinking about how to build rich user experiences with Trim, we provide the source code for a few web apps. All of these were written with Express.js, but keep in mind that that is irrelevant to Trim—it just wants HTML, and it doesn't care how it gets into the browser.
+To help you start thinking about how to build rich user experiences with Trimmings, we provide the source code for a few web apps. All of these were written with Express.js, but keep in mind that that is irrelevant to Trimmings—it just wants HTML, and it doesn't care how it gets into the browser.
 
 ## Social Photos
 

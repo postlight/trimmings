@@ -1,6 +1,6 @@
 import toggleClass from '../utils/toggleClass'
 
-export const key = 'trimToggle'
+export const key = 'trimmingsToggle'
 
 export const eventNames = ['click', 'input', 'change']
 
@@ -41,7 +41,7 @@ export const render = (parent) => {
     const href = link.getAttribute('href')
     const currentPath = matchLocation(href)
     const currentFragment = currentPath && matchFragment(href)
-    toggleClass(link, 'trim-current', currentPath)
-    toggleClass(link, 'trim-current--fragment', currentFragment)
+    toggleClass(link, 'trimmings-current', currentPath)
+    toggleClass(link, 'trimmings-current--fragment', currentFragment)
   })
 }

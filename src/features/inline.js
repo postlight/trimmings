@@ -4,12 +4,12 @@ import getDestination from '../utils/getDestination'
 import loadElement from '../utils/loadElement'
 import parseArgs from '../utils/parseArgs'
 
-export const key = 'trimInline'
+export const key = 'trimmingsInline'
 
 export const eventNames = ['submit', 'click']
 
 const followElement = (element, boundElement, eventName) => {
-  boundElement.removeAttribute('data-trim-inline')
+  boundElement.removeAttribute('data-trimmings-inline')
   element[eventName]()
 }
 
@@ -18,7 +18,7 @@ const updateState = () => {
   if (title) {
     document.title = title
   }
-  const taggedEl = document.querySelector(`[data-trim-location-tag="${tag}"]`)
+  const taggedEl = document.querySelector(`[data-trimmings-location-tag="${tag}"]`)
   if (taggedEl && taggedEl.innerHTML !== content) {
     taggedEl.innerHTML = content
   }
@@ -36,17 +36,17 @@ export const handle = (e) => {
   const originalElement = e.target
   let element = originalElement
 
-  if (typeof element.dataset.trimInline === 'undefined') {
-    element = e.target.closest('[data-trim-inline]')
+  if (typeof element.dataset.trimmingsInline === 'undefined') {
+    element = e.target.closest('[data-trimmings-inline]')
   }
 
-  if (element.dataset.trimDisableInline === 'true') {
+  if (element.dataset.trimmingsDisableInline === 'true') {
     return true
   }
 
   const eventName = e.type
 
-  const args = parseArgs(element.dataset.trimInline)
+  const args = parseArgs(element.dataset.trimmingsInline)
   const [targetSelector, destinationSelector] = args.args
   const {
     method = 'replace',
@@ -67,13 +67,13 @@ export const handle = (e) => {
     followElement(originalElement, element, eventName)
   }
 
-  if (element.classList.contains('trim-loading')) {
+  if (element.classList.contains('trimmings-loading')) {
     return false
   }
 
   const previousState = destination.innerHTML
 
-  element.classList.add('trim-loading')
+  element.classList.add('trimmings-loading')
 
   loadElement(element).then((doc) => {
     let content = doc.querySelector(targetSelector)
@@ -93,7 +93,7 @@ export const handle = (e) => {
 
       const holder = document.createElement('div')
       holder.innerHTML = template.innerHTML
-      const target = holder.querySelector('[data-trim-inline-target]')
+      const target = holder.querySelector('[data-trimmings-inline-target]')
 
       if (!target) {
         fallback()
@@ -108,16 +108,16 @@ export const handle = (e) => {
 
     if (method.indexOf('reduce') === 0) {
       Array.prototype.forEach.call(destination.children, (child) => {
-        child.dataset.trimChild = 'true'
+        child.dataset.trimmingsChild = 'true'
       })
 
-      const savedChild = element.closest('[data-trim-child]')
+      const savedChild = element.closest('[data-trimmings-child]')
 
       if (savedChild) {
-        savedChild.removeAttribute('data-trim-child')
+        savedChild.removeAttribute('data-trimmings-child')
       }
 
-      Array.prototype.forEach.call(destination.querySelectorAll('[data-trim-child]'), (child) => {
+      Array.prototype.forEach.call(destination.querySelectorAll('[data-trimmings-child]'), (child) => {
         child.parentNode.removeChild(child)
       })
     }
@@ -150,11 +150,11 @@ export const handle = (e) => {
     const newTitle = updateTitle === 'true' ? doc.querySelector('title').innerHTML : null
 
     if (updateLocation === 'true') {
-      destination.dataset.trimLocationTag = destination.dataset.trimLocationTag || Math.random().toString()
+      destination.dataset.trimmingsLocationTag = destination.dataset.trimmingsLocationTag || Math.random().toString()
       window.history.replaceState(
         {
           title: document.title,
-          tag: destination.dataset.trimLocationTag,
+          tag: destination.dataset.trimmingsLocationTag,
           content: previousState
         },
         null,
@@ -163,7 +163,7 @@ export const handle = (e) => {
       window.history.pushState(
         {
           title: newTitle || document.title,
-          tag: destination.dataset.trimLocationTag,
+          tag: destination.dataset.trimmingsLocationTag,
           content: destination.innerHTML
         },
         null,
@@ -176,6 +176,6 @@ export const handle = (e) => {
       document.title = newTitle
     }
 
-    element.classList.remove('trim-loading')
+    element.classList.remove('trimmings-loading')
   })
 }

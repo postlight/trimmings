@@ -13,7 +13,7 @@ Arguments must be separated by a comma and (optionally) whitespace. If no elemen
 
 ## On a button
 
-    <button data-trim-toggle=".diagram, diagram--highlighted">
+    <button data-trimmings-toggle=".diagram, diagram--highlighted">
       Highlight diagram
     </button>
 
@@ -21,14 +21,14 @@ When used on a `<button>`, the class is toggled every time the button is clicked
 
 ## On a text input
 
-    <input type="text" data-trim-toggle=".text-form, form--filled" />
+    <input type="text" data-trimmings-toggle=".text-form, form--filled" />
 
-On a `<input>` with type `text`, the class's presence is synced with the presence of a value. If the field contains _any_ text—even just whitespace—the class will be added to the target element. If the field is empty, the class will be removed. Trim will sync the class state whenever the field triggers an `input` or `change` event.
+On a `<input>` with type `text`, the class's presence is synced with the presence of a value. If the field contains _any_ text—even just whitespace—the class will be added to the target element. If the field is empty, the class will be removed. Trimmings will sync the class state whenever the field triggers an `input` or `change` event.
 
 ## Radios and checkboxes
 
-    <input type="radio" name="color" value="green" data-trim-toggle=".radio-status, green-checked" />
-    <input type="radio" name="color" value="blue" data-trim-toggle=".radio-status, blue-checked" />
+    <input type="radio" name="color" value="green" data-trimmings-toggle=".radio-status, green-checked" />
+    <input type="radio" name="color" value="blue" data-trimmings-toggle=".radio-status, blue-checked" />
 
 On an `<input>` of type `checkbox` or `radio`, the class's presence is synced with the checked state of the input: if the input is checked, the class is added.
 
@@ -36,4 +36,4 @@ Note that when a radio button is checked, other radio buttons with the same `nam
 
 ## Consider the details
 
-Trim's maintainers recommend using Toggle only for visual enhancements and not to disclose content. For disclosure, we recommend using the native and more accessible [`<details>` tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details).
+Trimmings's maintainers recommend using Toggle only for visual enhancements and not to disclose content. For disclosure, we recommend using the native and more accessible [`<details>` tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details).

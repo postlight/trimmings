@@ -2,8 +2,8 @@
   <div class="full-photo">
     {{#if previousPhoto}}
       <a
-        data-trim-inline=".full-photo, .modal-container, template: #modal-template"
-        data-trim-hotkey="ArrowLeft"
+        data-trimmings-inline=".full-photo, .modal-container, template: #modal-template"
+        data-trimmings-hotkey="ArrowLeft"
         class="photo-navigation photo-navigation--previous"
         href="/photos/{{previousPhoto.id}}"
       >
@@ -46,10 +46,10 @@
           {{/comments}}
         </div>
         <div class="full-photo__actions">
-          <form data-trim-replace=".flash-container, .full-photo__likes-count" method="post" action="/photos/{{id}}/likes">
+          <form data-trimmings-replace=".flash-container, .full-photo__likes-count" method="post" action="/photos/{{id}}/likes">
             <span class="full-photo__likes-count">{{likes}} likes</span> • <button>Like</button>
           </form>
-          <form class="comment-form" data-trim-replace=".flash-container, .full-photo__comments, .comment-form" method="post" action="/photos/{{id}}/comments">
+          <form class="comment-form" data-trimmings-replace=".flash-container, .full-photo__comments, .comment-form" method="post" action="/photos/{{id}}/comments">
             <input type="text" name="text" placeholder="Add a comment…" />
             <button>Post</button>
           </form>
@@ -58,8 +58,8 @@
     {{/photo}}
     {{#if nextPhoto}}
       <a
-        data-trim-inline=".full-photo, .modal-container, template: #modal-template"
-        data-trim-hotkey="ArrowRight"
+        data-trimmings-inline=".full-photo, .modal-container, template: #modal-template"
+        data-trimmings-hotkey="ArrowRight"
         class="photo-navigation photo-navigation--next"
         href="/photos/{{nextPhoto.id}}"
       >

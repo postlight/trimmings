@@ -1,7 +1,7 @@
 {
   "name": "social-photos",
   "version": "1.0.0",
-  "description": "A social photo sharing site, demo for Trim",
+  "description": "A social photo sharing site, demo for Trimmings",
   "main": "index.js",
   "author": "John Holdun",
   "license": "MIT",

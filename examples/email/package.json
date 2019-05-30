@@ -1,7 +1,7 @@
 {
   "name": "email",
   "version": "1.0.0",
-  "description": "A fake email app, demo for Trim",
+  "description": "A fake email app, demo for Trimmings",
   "main": "index.js",
   "author": "John Holdun",
   "license": "MIT",

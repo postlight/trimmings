@@ -2,7 +2,7 @@
 layout: default
 title: Features
 ---
-Trim offers many features for adding rich interaction to your static HTML. Most features are enabled by adding `data-trim-*` attributes to interactive elements like buttons and links. Some, like [Current]({{site.baseurl}}/features/current), listen for changes to the current page and add classes to specific elements automatically. Refer to the pages below for more details on each feature.
+Trimmings offers many features for adding rich interaction to your static HTML. Most features are enabled by adding `data-trimmings-*` attributes to interactive elements like buttons and links. Some, like [Current]({{site.baseurl}}/features/current), listen for changes to the current page and add classes to specific elements automatically. Refer to the pages below for more details on each feature.
 
 [Autosubmit]({{site.baseurl}}/features/autosubmit): Submit your form automatically when a field changes.
 
@@ -10,7 +10,7 @@ Trim offers many features for adding rich interaction to your static HTML. Most 
 
 [Embed]({{site.baseurl}}/features/embed): Pre-fetch and replace links with the content they're linking to on page load.
 
-[Enabled]({{site.baseurl}}/features/enabled): Determine when Trim is in effect.
+[Enabled]({{site.baseurl}}/features/enabled): Determine when Trimmings is in effect.
 
 [Hotkey]({{site.baseurl}}/features/hotkey): Add keyboard shortcuts to your links and buttons.
 

@@ -1,8 +1,8 @@
 {
-  "name": "trim",
+  "name": "trimmings",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:postlight/trim.git",
+  "repository": "git@github.com:postlight/trimmings.git",
   "author": "John Holdun <john@johnholdun.com>",
   "license": "MIT",
   "scripts": {

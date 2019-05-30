@@ -2,7 +2,7 @@ import isRegularClick from '../utils/isRegularClick'
 import loadElement from '../utils/loadElement'
 import parseArgs from '../utils/parseArgs'
 
-export const key = 'trimReplace'
+export const key = 'trimmingsReplace'
 
 export const eventNames = ['submit', 'click']
 
@@ -15,7 +15,7 @@ export const handle = (e) => {
 
   const element = e.target
 
-  const replacementSelectors = parseArgs(element.dataset.trimReplace).args
+  const replacementSelectors = parseArgs(element.dataset.trimmingsReplace).args
 
   loadElement(element).then((doc) => {
     replacementSelectors.forEach((selector) => {
