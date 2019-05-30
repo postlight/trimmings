@@ -4,16 +4,18 @@ title: Inline
 ---
 When the link is followed or form is submitted, load the target document into a specified selector on the current page. Useful for things like modals and tabs, especially when you don't want to interrupt changes elsewhere on the page.
 
-    <a data-trimmings-inline=".sidebar, main">Menu</a>
+    <a data-trimmings-inline="from: .sidebar, to: main">Menu</a>
 
 ## Arguments
 
-- A selector targeting an element in the current document where our content will be inserted
-- A selector targeting the linked page where our content will come front
+Arguments for Inline are **named** and separated by commas. The name and value for an argument must be separated by a colon. Neither names nor values should be wrapped in quotes (`"`) or apostrophes (`'`).
+
+- `from`: A selector targeting an element in the current document where our content will be inserted. (required)
+- `to`: A selector targeting the linked page where our content will come from. (reqired)
 - `updateTitle`: When this is `true`, the document title will be replace with the title of the target document after loading. (optional, defaults to `false`)
 - `updateLocation`: When this is `true`, the current URL will be replaced with the target URL. (optional, defaults to `false`)
 - `template`: A selector targeting a template in the current document that will wrap your loaded content. See Templates, below. (optional)
-- `method`: Specifies how the linked content should interact with existing content in the destination element. See Replacement methods, below. (Optional, defaults to `replace`)
+- `method`: Specifies how the linked content should interact with existing content in the destination element. See Replacement methods, below. (optional, defaults to `replace`)
 
 ## Templates
 

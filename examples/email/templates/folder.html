@@ -6,17 +6,17 @@
 <div class="big-sidebar-holder">
   <div class="big-sidebar">
     <div class="big">
-      <a href="/" data-trimmings-inline=".big-sidebar, .big-sidebar-holder, updateLocation: true">
+      <a href="/" data-trimmings-inline="from: .big-sidebar, to: .big-sidebar-holder, updateLocation: true">
         Mailboxes
       </a>
     </div>
     <h1>
       {{folder.name}}
     </h1>
-    <a data-trimmings-inline=".big-sidebar, .big-sidebar-holder" href="/{{folder.id}}">
+    <a data-trimmings-inline="from: .big-sidebar, to: .big-sidebar-holder" href="/{{folder.id}}">
       Refresh
     </a>
-    <form data-trimmings-inline=".messages, .messages-holder" method="get" action="/{{folder.id}}">
+    <form data-trimmings-inline="from: .messages, to: .messages-holder" method="get" action="/{{folder.id}}">
       <input type="text" name="q" value="{{query}}" class="search" />
     </form>
     <div class="messages-holder">
@@ -28,7 +28,7 @@
       <ol class="messages">
         {{#messages}}
           <li>
-            <a data-trimmings-inline=".main, .main-holder, updateTitle: true, updateLocation: true" href="/messages/{{id}}" class="messages__item">
+            <a data-trimmings-inline="from: .main, to: .main-holder, updateTitle: true, updateLocation: true" href="/messages/{{id}}" class="messages__item">
               <div class="messages__item__from">
                 {{from}}
               </div>

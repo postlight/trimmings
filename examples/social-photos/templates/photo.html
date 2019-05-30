@@ -2,7 +2,7 @@
   <div class="full-photo">
     {{#if previousPhoto}}
       <a
-        data-trimmings-inline=".full-photo, .modal-container, template: #modal-template"
+        data-trimmings-inline="from: .full-photo, to: .modal-container, template: #modal-template"
         data-trimmings-hotkey="ArrowLeft"
         class="photo-navigation photo-navigation--previous"
         href="/photos/{{previousPhoto.id}}"
@@ -58,7 +58,7 @@
     {{/photo}}
     {{#if nextPhoto}}
       <a
-        data-trimmings-inline=".full-photo, .modal-container, template: #modal-template"
+        data-trimmings-inline="from: .full-photo, to: .modal-container, template: #modal-template"
         data-trimmings-hotkey="ArrowRight"
         class="photo-navigation photo-navigation--next"
         href="/photos/{{nextPhoto.id}}"

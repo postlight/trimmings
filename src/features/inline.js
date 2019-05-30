@@ -46,14 +46,15 @@ export const handle = (e) => {
 
   const eventName = e.type
 
-  const args = parseArgs(element.dataset.trimmingsInline)
-  const [targetSelector, destinationSelector] = args.args
+  const { options } = parseArgs(element.dataset.trimmingsInline)
   const {
+    from: targetSelector,
+    to: destinationSelector,
     method = 'replace',
     template: templateSelector,
     updateLocation,
     updateTitle
-  } = args.options
+  } = options
 
   const destination = document.querySelector(destinationSelector)
 

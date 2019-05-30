@@ -15,13 +15,13 @@
       {{/if}}
     </button>
   </form>
-  <form data-trimmings-inline=".composer-inner, .composer-holder" method="get" action="/messages/new">
+  <form data-trimmings-inline="from: .composer-inner, to: .composer-holder" method="get" action="/messages/new">
     <input type="hidden" name="replyTo" value="{{message.id}}" />
     <button>
       Reply
     </button>
   </form>
-  <form data-trimmings-inline=".composer-inner, .composer-holder" method="get" action="/messages/new">
+  <form data-trimmings-inline="from: .composer-inner, to: .composer-holder" method="get" action="/messages/new">
     <input type="hidden" name="forwardOf" value="{{message.id}}" />
     <button>
       Forward

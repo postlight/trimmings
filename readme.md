@@ -11,7 +11,7 @@ Once you've built your website and it's serving HTML that's presented the way yo
 Perhaps you have a link to a detail page that you'd like to open in a modal. The standalone page probably has a header and footer that you wouldn't want to render in your modal. That's no problem. Just add an `inline` hint to your link:
 
 ```
-<a data-trimmings-inline=".detail-container, .modal-container" href="/photos/2">
+<a data-trimmings-inline="from: .detail-container, to: .modal-container" href="/photos/2">
   View as a modal
 </a>
 ```
