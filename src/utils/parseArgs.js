@@ -1,5 +1,5 @@
 const parseArgs = (argString) => {
-  const tokens = argString.trimmings().split(/\s*,\s*/g)
+  const tokens = argString.trim().split(/\s*,\s*/g)
   const args = []
   const options = {}
 
