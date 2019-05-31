@@ -12,8 +12,26 @@
     <link rel="stylesheet" href="{{site.baseurl}}/style.css" />
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans:300,400,400i,500" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+    <script>
+      // Javascript isn't bad! It's just most effective for little DOM tweaks like this:
+      var adjustNav = function () {
+        document.body.classList.remove('no-js')
+        document.body.classList.add('js')
+        var navDetails = document.querySelector('nav details')
+        if (!navDetails) {
+          return
+        }
+        var summary = navDetails.querySelector('summary')
+        if (summary && window.getComputedStyle(summary).display === 'none') {
+          navDetails.setAttribute('open', 'open')
+        }
+      }
+
+      addEventListener('DOMContentLoaded', adjustNav)
+      addEventListener('turbolinks:render', adjustNav)
+    </script>
   </head>
-  <body>
+  <body class="no-js">
     <div class="top">
       <header>
         <h1>
@@ -25,42 +43,96 @@
           </a>
         </h1>
       </header>
-      <nav>
-        <p>
-          <a href="{{site.baseurl}}/" {% if page.url == "/" %}class="current"{% endif %}>
-            Introduction
-          </a>
-        </p>
-        <p>
-          <a href="{{site.baseurl}}/features" {% if page.url contains "/features" %}class="current"{% endif %}>
-            Features
-          </a>
-        </p>
-        <p>
-          <a href="{{site.baseurl}}/guide" {% if page.url contains "/guide.html" %}class="current"{% endif %}>
-            Guide
-          </a>
-        </p>
-        <p>
-          <a href="{{site.baseurl}}/examples" {% if page.url contains "/examples.html" %}class="current"{% endif %}>
-            Examples
-          </a>
-        </p>
-        <p>
-          <a href="https://github.com/postlight/trimmings">
-            GitHub
-          </a>
-        </p>
-      </nav>
     </div>
-    <main>
-      {% if page.title %}
-        <h1>
-          {{ page.title }}
-        </h1>
-      {% endif %}
-      {{ content }}
-    </main>
+    <div class="middle">
+      <nav>
+        <details>
+          <summary>Menu</summary>
+          <p>
+            <a href="{{site.baseurl}}/" {% if page.url == "/" %}class="current"{% endif %}>
+              Introduction
+            </a>
+          </p>
+          <p>
+            <a href="{{site.baseurl}}/features" {% if page.url contains "/features" %}class="current"{% endif %}>
+              Features
+            </a>
+          </p>
+          {% if page.url contains "/features" %}
+            <aside class="sub-nav">
+              <p>
+                <a {% if page.url contains "/features/autosubmit" %}class="current"{% endif %} href="{{site.baseurl}}/features/autosubmit">
+                  Autosubmit
+                </a>
+              </p>
+              <p>
+                <a {% if page.url contains "/features/current" %}class="current"{% endif %} href="{{site.baseurl}}/features/current">
+                  Current
+                </a>
+              </p>
+              <p>
+                <a {% if page.url contains "/features/embed" %}class="current"{% endif %} href="{{site.baseurl}}/features/embed">
+                  Embed
+                </a>
+              </p>
+              <p>
+                <a {% if page.url contains "/features/enabled" %}class="current"{% endif %} href="{{site.baseurl}}/features/enabled">
+                  Enabled
+                </a>
+              </p>
+              <p>
+                <a {% if page.url contains "/features/hotkey" %}class="current"{% endif %} href="{{site.baseurl}}/features/hotkey">
+                  Hotkey
+                </a>
+              </p>
+              <p>
+                <a {% if page.url contains "/features/inline" %}class="current"{% endif %} href="{{site.baseurl}}/features/inline">
+                  Inline
+                </a>
+              </p>
+              <p>
+                <a {% if page.url contains "/features/remove" %}class="current"{% endif %} href="{{site.baseurl}}/features/remove">
+                  Remove
+                </a>
+              </p>
+              <p>
+                <a {% if page.url contains "/features/replace" %}class="current"{% endif %} href="{{site.baseurl}}/features/replace">
+                  Replace
+                </a>
+              </p>
+              <p>
+                <a {% if page.url contains "/features/toggle" %}class="current"{% endif %} href="{{site.baseurl}}/features/toggle">
+                  Toggle
+                </a>
+              </p>
+            </aside>
+          {% endif %}
+          <p>
+            <a href="{{site.baseurl}}/guide" {% if page.url contains "/guide.html" %}class="current"{% endif %}>
+              Guide
+            </a>
+          </p>
+          <p>
+            <a href="{{site.baseurl}}/examples" {% if page.url contains "/examples.html" %}class="current"{% endif %}>
+              Examples
+            </a>
+          </p>
+          <p>
+            <a href="https://github.com/postlight/trimmings">
+              GitHub
+            </a>
+          </p>
+        </details>
+      </nav>
+      <main>
+        {% if page.title %}
+          <h1>
+            {{ page.title }}
+          </h1>
+        {% endif %}
+        {{ content }}
+      </main>
+    </div>
     <footer>
       <p>
         Trimmings!

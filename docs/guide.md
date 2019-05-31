@@ -32,9 +32,9 @@ Visual design and information design are complementary disciplines. If you're wo
 
 When you feel like you have a good grasp on the boundaries between things, start thinking about URLs. The aggregate view most likely owns its primary data and links to secondary data. As in our email example, you can `embed` those secondary data.
 
-### Related reading
+## Related reading
 
-https://en.wikipedia.org/wiki/Domain-driven_design
-http://smethur.st/posts/64839140
-https://www.smashingmagazine.com/2014/05/responsive-design-begins-with-the-url/
-https://www.bbc.co.uk/blogs/internet/entries/5c236ed9-5895-366b-8f26-f46961274b04
+- [Domain-driven design](https://en.wikipedia.org/wiki/Domain-driven_design)
+- [One from the archive: the /programmes manifesto](http://smethur.st/posts/64839140)
+- [Responsive Design Begins with the URL](https://www.smashingmagazine.com/2014/05/responsive-design-begins-with-the-url/)
+- [BBC Programme pages: content driven responsive redesign](https://www.bbc.co.uk/blogs/internet/entries/5c236ed9-5895-366b-8f26-f46961274b04)
