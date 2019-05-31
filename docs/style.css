@@ -110,11 +110,11 @@ nav details[open] summary {
 }
 
 @media (min-width: 768px) {
-  .js nav summary {
+  nav summary {
     display: none;
   }
 
-  .js nav details:not([open]) summary {
+  nav details:not([open]) summary {
     display: block;
   }
 }

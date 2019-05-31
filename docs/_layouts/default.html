@@ -13,17 +13,26 @@
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans:300,400,400i,500" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
     <script>
-      // Javascript isn't bad! It's just most effective for little DOM tweaks like this:
+      // Javascript isn't bad! It's just most effective for little DOM tweaks
+      // like this: our menu <details> starts open for the most accessible
+      // default layout, and on wide screens we hide the <summary> control
+      // because the menu gets its own dedicated real estate and there's no
+      // reason to contract it. But! On small screens we want to hide the menu
+      // by default so as not to distract from the primary content, so *if* the
+      // summary control is present and visible on page load (or on a
+      // turbolinks-enabled page click with turbolinks:render), we close the
+      // menu.
       var adjustNav = function () {
-        document.body.classList.remove('no-js')
-        document.body.classList.add('js')
         var navDetails = document.querySelector('nav details')
+
         if (!navDetails) {
           return
         }
+
         var summary = navDetails.querySelector('summary')
-        if (summary && window.getComputedStyle(summary).display === 'none') {
-          navDetails.setAttribute('open', 'open')
+
+        if (summary && window.getComputedStyle(summary).display !== 'none') {
+          navDetails.removeAttribute('open')
         }
       }
 
@@ -31,7 +40,7 @@
       addEventListener('turbolinks:render', adjustNav)
     </script>
   </head>
-  <body class="no-js">
+  <body>
     <div class="top">
       <header>
         <h1>
@@ -46,7 +55,7 @@
     </div>
     <div class="middle">
       <nav>
-        <details>
+        <details open>
           <summary>Menu</summary>
           <p>
             <a href="{{site.baseurl}}/" {% if page.url == "/" %}class="current"{% endif %}>
