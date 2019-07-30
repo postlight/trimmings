@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Developing websites for Trimmings
+title: Getting Started
 ---
 It's natural to attempt a comparison of Trimmings with web development frameworks like React. But there's a big difference: React and Vue and Angular and other modern client-side Javascript libraries are designed to encapsulate render logic as well as interactions—you start with nothing, you write some Javascript, you end up with a website. Trimmings is meant to be added only after your website is serving HTML in order to eliminate the friction in a full-page-load-oriented user experience.
 
