@@ -23,24 +23,16 @@
         />
       </div>
       <div class="full-photo__meta">
-        <div class="full-photo__author">
-          <div class="user-photo user-photo--small"></div>
-          <p class="full-photo__user">
-            <a href="/{{user.id}}">
-              {{user.id}}
-            </a>
-          </p>
-        </div>
         <div class="full-photo__comments">
-          {{#if caption}}
-            <div class="comment">
-              <a href="/{{userId}}">{{userId}}</a>
-              {{caption}}
-            </div>
-          {{/if}}
+          <div class="comment comment--author">
+            <div class="comment__avatar" style="background-image: url('{{user.avatar}}')"></div>
+            <a href="/{{userId}}">{{user.name}}</a>
+            {{caption}}
+          </div>
           {{#comments}}
             <div class="comment">
-              <a href="/{{userId}}">{{userId}}</a>
+              <div class="comment__avatar" style="background-image: url('{{user.avatar}}')"></div>
+              <a href="/{{userId}}">{{user.name}}</a>
               {{text}}
             </div>
           {{/comments}}
@@ -66,7 +58,7 @@
         Next
       </a>
     {{else}}
-      <span class="photo-navigation"></span>
+      <span class="photo-navigation photo-navigation--none"></span>
     {{/if}}
   </div>
 </div>

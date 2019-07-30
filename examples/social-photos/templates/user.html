@@ -1,10 +1,10 @@
 <div class="user">
   <div class="user__photo">
-    <div class="user-photo"></div>
+    <div class="user-photo" style="background-image: url('{{user.avatar}}')"></div>
   </div>
   <div class="user__data">
-    <h1 class="user__id">
-      {{user.id}}
+    <h1 class="user__name">
+      {{user.name}} (@{{user.id}})
     </h1>
     <div class="user__stats">
       <p class="user__stat">
@@ -17,14 +17,9 @@
         <b>{{user.following}}</b> following
       </p>
     </div>
-    <p class="user__name">
-      {{user.name}}
+    <p class="user__bio">
+      {{user.bio}}
     </p>
-    {{#if user.bio}}
-      <p class="user__bio">
-        {{user.bio}}
-      </p>
-    {{/if}}
   </div>
 </div>
 <div class="photos">

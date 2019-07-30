@@ -1,7 +1,5 @@
-<h1>Everyone’s Photos</h1>
-
 <div class="photos">
   {{#each photos}}
-    {{> photo photo=photo}}
+    {{> photo photo=photo root=true}}
   {{/each}}
 </div>

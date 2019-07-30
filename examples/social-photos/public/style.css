@@ -15,21 +15,33 @@ body {
 
 header {
   background: #fff;
-  border-bottom: 1px solid #ccc;
-  text-align: center;
+  border-bottom: 1px solid #00000019;
+  padding: 1rem 3rem;
+}
+
+header h1 {
+  font-weight: lighter;
+  font-size: 1.5rem;
+  font-family: "Leckerli One";
 }
 
 header a {
-  font-family: Pacifico;
-  font-weight: normal;
-  color: #35a7e3;
+  color: inherit;
   text-decoration: none;
+  position: relative;
+  display: inline-block;
+  line-height: 2rem;
 }
 
-.header-inner {
-  max-width: 940px;
-  margin: 0 auto;
-  padding: 1rem;
+header a:before {
+  content: " ";
+  display: inline-block;
+  vertical-align: middle;
+  background: url("/camera.svg");
+  background-size: cover;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: -.15rem .1rem 0 0;
 }
 
 main {
@@ -55,15 +67,41 @@ footer a {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin: 1rem -.5rem;
+  margin: 1rem -1rem;
 }
 
 .photo {
-  flex: 0 0 33%;
-  padding: 0 .5rem .5rem;
+  flex: 0 0 33.333%;
+  padding: 0 1rem 2rem;
   position: relative;
   color: inherit;
   text-decoration: none;
+}
+
+.photo__user {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 2rem;
+  padding: 0 1rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: .75rem;
+  line-height: 4rem;
+  padding-top: 3rem;
+  background: linear-gradient(#00000000, #00000077);
+}
+
+.photo__avatar {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #fff;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center center;
+  margin-right: .5rem;
+  vertical-align: middle;
 }
 
 .photo__inner {
@@ -72,35 +110,6 @@ footer a {
   padding-bottom: 100%;
   background: no-repeat center center;
   background-size: cover;
-}
-
-.photo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.photo__meta {
-  position: absolute;
-  display: none;
-  top: 0;
-  right: .5rem;
-  bottom: .5rem;
-  left: .5rem;
-  color: #fff;
-  background: #00000080;
-  justify-content: center;
-  align-items: center;
-}
-
-.photo:hover .photo__meta {
-  display: flex;
-}
-
-.photo__meta * {
-  margin: 0 1rem;
 }
 
 .flash {
@@ -180,13 +189,11 @@ footer a {
 
 .user {
   display: flex;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #ccc;
-  margin-bottom: 2rem;
+  margin: 1rem 0 2rem;
 }
 
 .user__photo {
-  flex: 0 0 33%;
+  flex: 0 0 calc(33.333% + .5rem);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,7 +203,8 @@ footer a {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: #fff;
+  background-size: cover;
+  background-position: center center;
   border: 1px solid #ccc;
 }
 
@@ -205,7 +213,7 @@ footer a {
   height: 40px;
 }
 
-.user__id {
+.user__name  {
   font-weight: normal;
   font-size: 2rem;
   line-height: 2rem;
@@ -219,10 +227,6 @@ footer a {
 
 .user__stat {
   margin-right: 1rem;
-}
-
-.user__name {
-  font-weight: bold;
 }
 
 .full-photo {
@@ -263,25 +267,32 @@ footer a {
   border-width: 1px 1px 1px 0;
 }
 
-.full-photo__author {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  border-bottom: 1px solid #ccc;
-  width: 100%;
-}
-
-.full-photo__user a {
-  display: block;
-  font-weight: bold;
-  margin-left: 1rem;
-  color: inherit;
-  text-decoration: none;
-}
-
 .full-photo__comments {
-  padding: 1rem;
   flex: 1 1 auto;
+  padding: 1rem 0;
+}
+
+.comment {
+  padding: .25rem 1rem 0 4rem;
+  margin-bottom: 1rem;
+  position: relative;
+  min-height: 2rem;
+}
+
+.comment--author {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.comment__avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center center;
+  position: absolute;
+  left: 1rem;
+  top: 0;
 }
 
 .full-photo__comments a {
@@ -345,18 +356,20 @@ footer a {
 }
 
 .photo-navigation:before {
+  content: " ";
   display: block;
   width: calc(100% - 2rem);
   height: calc(100% - 2rem);
   margin: 1rem;
-  background: #fff;
+  background: #fff url("/arrow.svg") no-repeat center center;
+  background-size: 1rem;
   border-radius: 50%;
 }
 
-.photo-navigation--previous:before {
-  content: "👈";
+.photo-navigation--next:before {
+  transform: rotate(180deg);
 }
 
-.photo-navigation--next:before {
-  content: "👉";
+.photo-navigation--none:before {
+  display: none;
 }

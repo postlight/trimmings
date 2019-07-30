@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
       .all('photos')
       .map(p => ({
         ...p,
+        user: database.get('users', p.userId),
         height500: Math.round(parseInt(p.ratio, 10) / 100 * 500)
       }))
   res.send(render('root', { title: 'Welcome!', photos }))
@@ -43,7 +44,10 @@ app.get('/photos/:id', (req, res) => {
   const photo = database.get('photos', req.params.id)
   const user = database.get('users', photo.userId)
   const comments =
-    database.all('comments').filter(c => c.photoId === photo.id)
+    database
+      .all('comments')
+      .filter(c => c.photoId === photo.id)
+      .map(p => ({ ...p, user: database.get('users', p.userId) }))
 
   const userPhotos = database.all('photos').filter(p => p.userId === user.id)
   const photoIndex = userPhotos.indexOf(photo)

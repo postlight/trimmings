@@ -1,9 +1,10 @@
 <a data-trimmings-inline="from: .full-photo, to: .modal-container, template: #modal-template" class="photo" href="/photos/{{id}}">
   <div class="photo__inner" style="background-image: url('{{url}}')">
-    <!-- <img src="{{url}}" alt="{{caption}}" width="500" height="{{height500}}" /> -->
-    <div class="photo__meta">
-      <span class="likes-count">❤️ {{likes}}</span>
-      <span class="comments-count">💬 {{commentsCount}}</span>
-    </div>
+    {{#if root}}
+      <div class="photo__user">
+        <div class="photo__avatar" style="background-image: url('{{user.avatar}}')"></div>
+        {{user.name}}
+      </div>
+    {{/if}}
   </div>
 </a>
