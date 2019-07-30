@@ -3,7 +3,9 @@ layout: default
 title: Trust your HTML.
 permalink: /
 ---
-What happens to your web development process when you can focus on designing views and stop thinking about how to stitch them together? *Trimmings* is a zero-configuration Javascript library that adds a layer of smooth and fast in-page interaction to your web pages. All you have to do is add some hints to the HTML you already have.
+# What happens to your web development process when you can focus on designing views and stop thinking about how to stitch them together?
+
+Trimmings is a zero-configuration Javascript library that adds a layer of smooth and fast in-page interaction to your web pages. All you have to do is add some hints to the HTML you already have.
 
 This project follows in the footsteps of libraries like [Turbolinks](https://github.com/turbolinks/turbolinks/) and [Stimulus](https://stimulusjs.org). It believes that the best place for your business and rendering logic is on the server, that you should send your users HTML, and that Javascript is best suited for progressively-enhanced DOM manipulation. Trimmings is a set of patterns that allow you to add DOM manipulation to your app by adding `data-trimmings-*` attributes to your interactive elements. Less Javascript in your project means less risk.
 

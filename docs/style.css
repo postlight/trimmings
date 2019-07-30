@@ -10,48 +10,22 @@ html {
 }
 
 body {
-  background: #fff;
-  color: #354;
-}
-
-a {
-  color: #0F6753;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: .1s border-color;
-}
-
-a:hover,
-a:focus {
-  border-bottom-color: currentColor;
-}
-
-.top {
-  background: linear-gradient(#094032CC 80%, #094032D0);
-  text-align: center;
+  background: #f2f2f2;
+  color: #0f0f0f;
+  display: flex;
 }
 
 @media (min-width: 768px) {
   .top {
-    margin-bottom: 2rem;
+    flex: 0 0 auto;
+    width: 23rem;
+    padding: 6.25rem 6rem 0;
     text-align: left;
   }
 }
 
 header {
-  max-width: 55rem;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-header h1 {
-  font-family: Palatino, Garamond, Georgia, serif;
-  font-size: 2.5rem;
-  line-height: 2rem;
-  height: 2rem;
-  font-weight: 600;
-  color: #fff;
-  margin: 1rem 0;
+  margin-bottom: 2.8765rem;
 }
 
 header h1 a {
@@ -59,27 +33,13 @@ header h1 a {
 }
 
 header svg {
-  height: 2rem;
-  width: 2rem;
-  display: inline-block;
-  vertical-align: baseline;
-}
-
-header svg path {
-  fill: currentColor;
+  height: 4rem;
+  width: 4rem;
+  display: block;
 }
 
 .middle {
   min-height: calc(100vh - 12rem);
-}
-
-@media (min-width: 768px) {
-  .middle {
-    max-width: 55rem;
-    display: flex;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
 }
 
 nav {
@@ -120,46 +80,62 @@ nav details[open] summary {
 }
 
 nav p {
-  line-height: 1.5rem;
+  line-height: 2rem;
+  margin: 0 0 .5rem;
+  font-weight: bold;
+}
+
+nav a {
+  display: inline-block;
+  color: inherit;
+  line-height: 2rem;
+  text-decoration: none;
+}
+
+nav a.external {
+  position: relative;
+  padding-right: 1.2rem;
+}
+
+nav a.external:before {
+  content: " ";
+  position: absolute;
+  right: .22rem;
+  top: .7rem;
+  width: .65625rem;
+  height: .59375rem;
+  background: #24f2c2;
+}
+
+nav a.external:after {
+  content: " ";
+  width: .75rem;
+  height: .75rem;
+  background: url("/assets/share.svg");
+  background-size: contain;
+  position: absolute;
+  right: 0;
+  top: .425rem;
+}
+
+nav .sub-nav p {
+  font-weight: inherit;
   margin: 0;
+  font-weight: normal;
 }
 
 nav a.current {
-  border-bottom-color: currentColor;
+  background: #24f2c2;
 }
 
 .sub-nav {
-  margin: .5rem 0;
-  padding-left: 1rem;
-  border-left: 1px solid #09403240;
+  margin: -.5rem 0 .5rem;
 }
 
 main {
-  max-width: 44rem;
-  padding: 0 1rem;
-}
-
-@media (min-width: 768px) {
-  main {
-    padding: 0;
-  }
-}
-
-main h1 {
-  font-size: 2rem;
-  line-height: 2rem;
-  font-weight: inherit;
-}
-
-main h2 {
-  font-size: 1.5rem;
-  line-height: 2rem;
-  font-weight: inherit;
-}
-
-main h3 {
-  font: inherit;
-  font-weight: 600;
+  margin: 1rem;
+  padding: 11.25rem 12.5rem;
+  background: #fff;
 }
 
 main h1,
@@ -173,25 +149,47 @@ main table {
   margin-bottom: 1rem;
 }
 
+main h1 {
+  font-size: 2rem;
+  line-height: 2rem;
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+  font-weight: inherit;
+  position: relative;
+}
+
+main h1:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 6.25rem;
+  border-top: .125rem solid currentColor;
+}
+
+main h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: inherit;
+  margin: 2rem 0 .5rem;
+}
+
+main h3 {
+  font: inherit;
+  font-weight: 600;
+}
+
 main pre,
 main code {
   font-family: "IBM Plex Mono", monospace;
-  background: #eee;
+  background: #f6f6f6;
+  color: #0f6753;
 }
 
 main pre {
-  padding: .5rem;
-  margin-left: -.5rem;
-  margin-right: -1rem;
-  width: calc(100% + 1.5rem);
+  width: 40rem;
+  padding: 1.5rem;
   overflow-x: auto;
-}
-
-@media (min-width: 768px) {
-  main pre {
-    margin-right: -.5rem;
-    width: calc(100% + 1rem);
-  }
 }
 
 main table {
@@ -215,21 +213,37 @@ main td {
 }
 
 main a {
-  font-weight: bold;
+  color: inherit;
+  text-decoration: underline;
 }
 
 footer {
-  max-width: 55rem;
-  margin: 1rem auto 0;
-  padding: 0 1rem 1rem;
+  padding: 0 1rem;
+  margin: -1rem 0 0 1rem;
+  line-height: 6.625rem;
   display: flex;
-  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 footer p {
-  width: 44rem;
-  max-width: 100%;
-  font-size: .75rem;
-  line-height: 1rem;
-  color: #777;
+  flex: 0 0 auto;
+}
+
+footer p + p:before {
+  content: "×";
+  display: inline-block;
+  width: 2.5rem;
+  text-align: center;
+  color: #24f2c2;
+}
+
+.postlight-link {
+  display: inline-block;
+  overflow: hidden;
+  width: 6.3888888889rem; /* 115 / 27 */
+  height: 1.5rem;
+  margin: 0 0 -.25rem .25rem;
+  background: url("/assets/postlight.svg");
+  background-size: contain;
+  text-indent: -100vw;
 }
