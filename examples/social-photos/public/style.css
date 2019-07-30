@@ -298,7 +298,7 @@ footer a {
 .full-photo__comments a {
   font-weight: bold;
   text-decoration: none;
-  color: inherit;
+  color: #0080AA;
 }
 
 .full-photo__actions {
@@ -313,7 +313,7 @@ footer a {
   -webkit-appearance: none;
   -moz-appearance: none;
   font-weight: bold;
-  color: #0a405e;
+  color: #0080AA;
   background: 0;
   border: 0;
 }
