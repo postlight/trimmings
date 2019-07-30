@@ -111,7 +111,7 @@ nav a.external:after {
   content: " ";
   width: .75rem;
   height: .75rem;
-  background: url("/assets/share.svg");
+  background: url("/trimmings/assets/share.svg");
   background-size: contain;
   position: absolute;
   right: 0;
@@ -243,7 +243,7 @@ footer p + p:before {
   width: 6.3888888889rem; /* 115 / 27 */
   height: 1.5rem;
   margin: 0 0 -.25rem .25rem;
-  background: url("/assets/postlight.svg");
+  background: url("/trimmings/assets/postlight.svg");
   background-size: contain;
   text-indent: -100vw;
 }
