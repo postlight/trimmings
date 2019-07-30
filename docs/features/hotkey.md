@@ -15,4 +15,4 @@ One or more key combinations, separated by whitespace **without commas**. The ke
 
 ## I'm #1
 
-If multiple elements have the same hotkey specified, only the first one (as matched by document.querySelector) will be clicked.
+If multiple elements have the same hotkey specified, only the first one (as matched by `document.querySelector`) will be clicked.
