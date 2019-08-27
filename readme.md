@@ -30,11 +30,26 @@ Just include `trimmings.js` in your `<head>`. That's it. Trimmings will automati
 
 Trimmings features are enabled on specific elements by adding `data-trimmings-*` attributes. For more details on usage of each Trimmings feature, please consult [the Trimmings handbook](https://postlight.github.io/trimmings).
 
+## License
+
+Licensed under either of
+
+- Apache License, Version 2.0
+  ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
+- MIT license
+  ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+
+at your option.
+
 ## Contributing
 
 If you've found a bug or you'd like to propose a new feature, [submit an issue](https://github.com/postlight/trimmings/issues) and let's talk about it!
 
 We expect that all contributors to Trimmings will abide by our [Code of Conduct](CODE_OF_CONDUCT.md).
+
+Unless you explicitly state otherwise, any contribution intentionally submitted
+for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
+dual licensed as above, without any additional terms or conditions.
 
 ---
 
