@@ -208,6 +208,10 @@ main h3 {
   font-weight: 600;
 }
 
+main li {
+  margin: 0 0 1rem 1.2rem;
+}
+
 main pre,
 main code {
   font-family: "IBM Plex Mono", monospace;
@@ -224,21 +228,23 @@ main pre {
 main table {
   border-collapse: collapse;
   border-spacing: 0;
-  margin-left: -.5rem;
-  margin-right: -.5rem;
   width: 100%;
-}
-
-main thead {
-  background: #eee;
+  margin: 2rem 0;
 }
 
 main th {
-  padding: 0 .5rem;
+  text-align: left;
+}
+
+main th:after {
+  content: " ";
+  display: block;
+  border-bottom: .125rem solid currentColor;
+  margin: 1rem 0 .5rem;
 }
 
 main td {
-  padding: 0 .5rem;
+  padding: .375rem 0;
 }
 
 main a {
@@ -247,34 +253,58 @@ main a {
 }
 
 footer {
-  padding: 0 1rem;
-  margin: -1rem 0 0 1rem;
-  line-height: 6.625rem;
-  display: flex;
-  align-items: flex-start;
+  padding: 1rem;
+  text-align: center;
 }
 
 footer p {
-  flex: 0 0 auto;
+  margin: 1rem 0;
 }
 
 footer p + p:before {
   content: "×";
-  display: inline-block;
+  display: block;
+  margin: 1rem auto;
   width: 2.5rem;
   text-align: center;
   color: #24f2c2;
 }
 
 .postlight-link {
-  display: inline-block;
   overflow: hidden;
   width: 6.3888888889rem; /* 115 / 27 */
   height: 1.5rem;
-  margin: 0 0 -.25rem .25rem;
   background: url("/trimmings/assets/postlight.svg");
   background-size: contain;
   text-indent: -100vw;
+  display: block;
+  margin: 1rem auto;
+}
+
+@media (min-width: 768px) {
+  footer {
+    padding: 0 1rem;
+    margin: -1rem 0 0 1rem;
+    display: flex;
+    line-height: 6.625rem;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  footer p {
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  footer p + p:before {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .postlight-link {
+    display: inline-block;
+    margin: 0 0 -.25rem .25rem;
+  }
 }
 
 .turbolinks-progress-bar {
