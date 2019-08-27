@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Trust your HTML.
+title: Get back to HTML.
 permalink: /
 ---
 # What happens to your web development process when you can focus on designing views and stop thinking about how to stitch them together?

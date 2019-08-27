@@ -12,10 +12,13 @@ html {
 body {
   background: #f2f2f2;
   color: #0f0f0f;
-  display: flex;
 }
 
 @media (min-width: 768px) {
+  body {
+    display: flex;
+  }
+
   .top {
     flex: 0 0 auto;
     width: 23rem;
@@ -25,17 +28,40 @@ body {
 }
 
 header {
-  margin-bottom: 2.8765rem;
+  margin: 1rem;
 }
 
 header h1 a {
   color: inherit;
+  text-decoration: none;
+  line-height: 4rem;
 }
 
 header svg {
   height: 4rem;
   width: 4rem;
   display: block;
+  float: left;
+  margin-right: 1rem;
+}
+
+.header-wordmark {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  header {
+    margin-bottom: 2.8765rem;
+  }
+
+  header svg {
+    float: none;
+    margin-right: 0;
+  }
+
+  .header-wordmark {
+    display: none;
+  }
 }
 
 .middle {
@@ -47,16 +73,12 @@ nav {
 }
 
 nav details {
-  padding: 1rem 1rem calc(1rem - 1px);
-  border-bottom: 1px solid #09403240;
-  margin-bottom: 1rem;
+  padding: 0 1rem .5rem;
 }
 
 @media (min-width: 768px) {
   nav details {
     padding: 0;
-    border-bottom: 0;
-    margin-bottom: 0;
   }
 }
 
@@ -92,12 +114,13 @@ nav a {
   text-decoration: none;
 }
 
-nav a.external {
+a.external {
+  text-decoration: none;
   position: relative;
   padding-right: 1.2rem;
 }
 
-nav a.external:before {
+a.external:before {
   content: " ";
   position: absolute;
   right: .22rem;
@@ -107,7 +130,7 @@ nav a.external:before {
   background: #24f2c2;
 }
 
-nav a.external:after {
+a.external:after {
   content: " ";
   width: .75rem;
   height: .75rem;
@@ -133,9 +156,15 @@ nav a.current {
 }
 
 main {
-  margin: 1rem;
-  padding: 11.25rem 12.5rem;
   background: #fff;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  main {
+    margin: 1rem;
+    padding: 11.25rem 12.5rem;
+  }
 }
 
 main h1,
@@ -246,4 +275,8 @@ footer p + p:before {
   background: url("/trimmings/assets/postlight.svg");
   background-size: contain;
   text-indent: -100vw;
+}
+
+.turbolinks-progress-bar {
+  background-color: #0F6753;
 }
