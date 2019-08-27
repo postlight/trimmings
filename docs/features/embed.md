@@ -10,7 +10,7 @@ Replaces an `<a>` tag with the contents of the link it points to.
 
 ## Arguments
 
-- A selector pointing to an element in the target document with which to replace the `<a>`. If no argument is specified, the selector is `body`, meaning the entire the entire body of the target document will be embedded in the current document. If the selected element does not exist in the target document, the original `<a>` will be left unchanged.
+- A selector pointing to an element in the target document with which to replace the `<a>`. If no argument is specified, the selector is `body`, meaning the entire body of the target document will be embedded in the current document. If the selected element does not exist in the target document, the original `<a>` will be left unchanged.
 
 ## Internal only
 
