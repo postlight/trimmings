@@ -1,4 +1,0 @@
-id,read,folderId,subject,from,fromAddress,to,toAddress,body
-1,0,inbox,Re: Dinner tomorrow?,John Holdun,john@johnholdun.com,You Fakedemo,you@fake.email,"Dinner tomorrow sounds great, friend! My evening is totally free, so let me know where and when and I’ll be there.\n\nJohn"
-2,1,archive,THIS WEEKEND ONLY: Great deals!,Coolstuff Shoppe,marketing@coolstuffshoppe.fake,You Fakedemo,you@fake.email,"Wow. Don’t miss these great deals!\n\nThis weekend only!\n\nWrenches $1\nBath towels $2\nStainless steel saucepans $3.50\nFuji apples $8/lb\n\nCome on down to Coolstuff Shoppe!"
-3,0,inbox,Hello World!,John Holdun,john@johnholdun.com,You Fakedemo,you@fake.email,"Hello friend. It’s me, John. I hope you enjoy this fake email.\n\nJohn\n\nP.S. This isn’t real."
