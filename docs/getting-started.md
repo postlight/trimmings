@@ -22,7 +22,7 @@ As you start laying out your content across many interlinked pages, be careful n
 
 ## Modeling your data
 
-If you're used to thinking of HTML as the technology beneath your JSX, or just a means to apply CSS to your content, it can be hard to thing of it as anything else. But on the web, [HTML is inevitable][track-changes], and it's one of the most important tools you have. A Trimmings website prioritizes HTML above everything else (except the URL).
+If you're used to thinking of HTML as the technology beneath your JSX, or just a means to apply CSS to your content, it can be hard to thing of it as anything else. But on the web, [HTML is inevitable](https://postlight.com/trackchanges/back-to-html-introducing-trimmings), and it's one of the most important tools you have. A Trimmings website prioritizes HTML above everything else (except the URL).
 
 HTML is not just the tags that hold your content. HTML describes your data and imposes hierarchy. In a client-side-rendering world, your data likely comes from an API request that returns JSON. You'd then push that JSON through some Javascript to produce HTML. In Trimmings's world, all of this happens much earlier in the process. Your user's browser will only ever receive HTML! Take all of the thoughts you'd put into a JSON API, with its many objects and attributes and relationships—all your _things_—and replace the JSON with HTML. Now we're getting somewhere.
 
