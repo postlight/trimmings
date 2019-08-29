@@ -11,7 +11,7 @@ When the link is followed or form is submitted, load the target document into a 
 Arguments for Inline are **named** and separated by commas. The name and value for an argument must be separated by a colon. Neither names nor values should be wrapped in quotes (`"`) or apostrophes (`'`).
 
 - `from`: A selector targeting an element in the current document where our content will be inserted. (required)
-- `to`: A selector targeting the linked page where our content will come from. (reqired)
+- `to`: A selector targeting the linked page where our content will come from. (required)
 - `updateTitle`: When this is `true`, the document title will be replace with the title of the target document after loading. (optional, defaults to `false`)
 - `updateLocation`: When this is `true`, the current URL will be replaced with the target URL. (optional, defaults to `false`)
 - `template`: A selector targeting a template in the current document that will wrap your loaded content. See Templates, below. (optional)
