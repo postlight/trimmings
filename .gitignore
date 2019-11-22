@@ -1,5 +1,4 @@
 .DS_Store
 node_modules/
-dist/
 tests/server/trimmings.js
 docs/_site
