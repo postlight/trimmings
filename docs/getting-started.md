@@ -28,7 +28,7 @@ HTML is not just the tags that hold your content. HTML describes your data and i
 
 ## Your first feature
 
-Let's imagine you have three pages on your site. At the top of each page are three links. These links each point to one of the pages. The list of links is styled identically on each page, so to the user, it's not three lits of three links—it's just one menu.
+Let's imagine you have three pages on your site. At the top of each page are three links. These links each point to one of the pages. The list of links is styled identically on each page, so to the user, it's not three lists of three links—it's just one menu.
 
 ```
 <!DOCTYPE html>
