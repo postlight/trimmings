@@ -12,7 +12,7 @@ describe('inline', () => {
     const page = await browser.newPage()
     await page.goto('http://localhost:4444/inline-1.html')
     await expect(page).toClick('a.hidden')
-    await page.waitForNavigation({ timeout: 100 })
+    await page.waitForNavigation({ timeout: 200 })
     expect(await page.url()).toMatch('/inline-2.html')
   })
 
@@ -38,7 +38,7 @@ describe('inline', () => {
     const page = await browser.newPage()
     await page.goto('http://localhost:4444/inline-1.html')
     await expect(page).toClick('a.false-target')
-    await page.waitForNavigation({ timeout: 100 })
+    await page.waitForNavigation({ timeout: 200 })
     await expect(page.url()).toContain('/inline-2.html')
   })
 
@@ -46,7 +46,7 @@ describe('inline', () => {
     const page = await browser.newPage()
     await page.goto('http://localhost:4444/inline-1.html')
     await expect(page).toClick('a.false-include')
-    await page.waitForNavigation({ timeout: 100 })
+    await page.waitForNavigation({ timeout: 200 })
     await expect(page.url()).toContain('/inline-2.html')
   })
 
@@ -54,7 +54,7 @@ describe('inline', () => {
     const page = await browser.newPage()
     await page.goto('http://localhost:4444/inline-1.html')
     await expect(page).toClick('a.false-template')
-    await page.waitForNavigation({ timeout: 100 })
+    await page.waitForNavigation({ timeout: 200 })
     await expect(page.url()).toContain('/inline-2.html')
   })
 
@@ -70,7 +70,7 @@ describe('inline', () => {
     const page = await browser.newPage()
     await page.goto('http://localhost:4444/inline-1.html')
     await expect(page).toClick('button.bad')
-    await page.waitForNavigation({ timeout: 100 })
+    await page.waitForNavigation({ timeout: 200 })
     await expect(page.url()).toContain('/inline-2.html?foo=bar')
   })
 
@@ -115,7 +115,6 @@ describe('inline', () => {
     await expect(page).toMatch('Is this what you were expecting?')
     expect(await page.title()).toMatch('Page 2')
     await expect(page.url()).toContain('/inline-2.html')
-
   })
 
   describe('methods', () => {
