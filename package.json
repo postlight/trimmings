@@ -14,6 +14,15 @@
   "jest": {
     "preset": "jest-puppeteer"
   },
+  "standard": {
+    "globals": [
+      "browser",
+      "describe",
+      "Event",
+      "expect",
+      "test"
+    ]
+  },
   "dependencies": {
     "rollup": "^1.10.1"
   },
