@@ -55,4 +55,4 @@ dual licensed as above, without any additional terms or conditions.
 
 ---
 
-🔬 A Labs project from your friends at <a href="https://postlight.com"><img src="./postlight-logo.png"></a>. Happy coding!
+🔬 A Labs project from your friends at [Postlight](https://postlight.com). Happy coding!
