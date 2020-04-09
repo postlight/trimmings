@@ -273,7 +273,7 @@ footer p + p:before {
 .postlight-link {
   overflow: hidden;
   width: 6.3888888889rem; /* 115 / 27 */
-  height: 1.5rem;
+  height: 1.3rem;
   background: url("/trimmings/assets/postlight.svg");
   background-size: contain;
   text-indent: -100vw;
